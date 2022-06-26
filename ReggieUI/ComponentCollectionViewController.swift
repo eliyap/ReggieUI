@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 final internal class ComponentCollectionViewController: UICollectionViewController {
     
@@ -22,6 +23,9 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         /// Defuse implicitly unwrapped nil.
         dataSource = .init(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, itemIdentifier) in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath)
+            cell.contentConfiguration = UIHostingConfiguration {
+                Text("Hello World")
+            }
             return cell
         })
         
@@ -56,11 +60,6 @@ final internal class ComponentCell: UICollectionViewCell {
         // DEBUG
         layer.borderWidth = 4
         layer.borderColor = UIColor.black.cgColor
-        
-        let label = UILabel(frame: frame.offsetBy(dx: -frame.origin.x, dy: -frame.origin.y))
-        label.text = "POTATO"
-        
-        contentView.addSubview(label)
     }
     
     required init?(coder aDecoder: NSCoder) {
