@@ -30,6 +30,7 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         })
         
         collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
+        collectionView.dragDelegate = self
         
         // DEBUG
         collectionView.backgroundColor = .purple
@@ -46,6 +47,14 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ComponentCollectionViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [
+            UIDragItem(itemProvider: NSItemProvider(object: "" as NSString)),
+        ]
     }
 }
 
