@@ -33,12 +33,17 @@ struct RegexView: View {
                 }
             }
                 .padding(Self.internalPadding)
-                .safeAreaInset(edge: .bottom, content: {
-                    Color.clear
-                        .frame(height: sheetInsetConduit.sheetObscuringHeight)
-                })
                 .onDrop(of: [.plainText], delegate: self)
         }
+            /// - Warning:
+           /// When reducing sheet detent, scroll view does **NOT** move down if at bottom.
+           /// Though we could fix this by moving the `safeAreaInset` inside the `ScrollView`,
+           /// - it breaks hover-at-edge scrolling
+           /// - it does not update the scroll bar insets
+           .safeAreaInset(edge: .bottom, content: {
+               Color.clear
+                   .frame(height: sheetInsetConduit.sheetObscuringHeight)
+           })
             .coordinateSpace(name: coordinateSpaceName)
             .background {
                 BackgroundColor()
