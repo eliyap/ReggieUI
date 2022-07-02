@@ -8,7 +8,11 @@
 import UIKit
 
 final internal class PickerViewController: UIViewController {
-    init() {
+    
+    private let sheetInsetConduit: SheetInsetConduit
+    
+    init(sheetInsetConduit: SheetInsetConduit) {
+        self.sheetInsetConduit = sheetInsetConduit
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .red
         
@@ -65,6 +69,11 @@ final internal class PickerViewController: UIViewController {
         } else {
             Swift.debugPrint("Sheet controller not available!")
         }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        sheetInsetConduit.sheetObscuringHeight = view.frame.height
     }
 
     required init?(coder aDecoder: NSCoder) {

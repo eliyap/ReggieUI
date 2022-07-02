@@ -6,12 +6,7 @@
 //
 
 import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        StickyScrollView()
-    }
-}
+import Combine
 
 struct RegexView: View {
     
@@ -19,6 +14,12 @@ struct RegexView: View {
     
     /// In case of multiple instances, ensure this is instance specific.
     private let coordinateSpaceName = UUID().uuidString
+    
+    @ObservedObject private var sheetInsetConduit: SheetInsetConduit
+    
+    init(sheetInsetConduit: SheetInsetConduit) {
+        self.sheetInsetConduit = sheetInsetConduit
+    }
     
     var body: some View {
         ScrollView {
@@ -32,18 +33,14 @@ struct RegexView: View {
                 }
             }
                 .padding(Self.internalPadding)
+                .safeAreaInset(edge: .bottom, content: {
+                    Color.blue
+                        .frame(height: sheetInsetConduit.sheetObscuringHeight)
+                })
         }
+        
             .coordinateSpace(name: coordinateSpaceName)
     }
     
     public static let internalPadding: CGFloat = 30
-}
-
-struct StickyScrollView: View {
-    
-    let coordinateSpaceName = UUID().uuidString
-    
-    var body: some View {
-        RegexView()
-    }
 }
