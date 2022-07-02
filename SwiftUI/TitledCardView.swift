@@ -26,7 +26,7 @@ protocol TitledCardView: View {
 
 fileprivate let titleCornerRadius: CGFloat = 16
 fileprivate let intraCardSpacing: CGFloat = 10
-let interCardSpacing: CGFloat = 30
+let interCardSpacing: CGFloat = 10
 
 extension TitledCardView {
     
