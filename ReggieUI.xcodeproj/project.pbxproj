@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
+		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
+		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
+		22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BD28709DD200E64BAA /* RegexModel.swift */; };
+		22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BE28709DD200E64BAA /* Sticky.swift */; };
+		22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BF28709DD200E64BAA /* TitledCardView.swift */; };
+		22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5C028709DD200E64BAA /* ComponentCards.swift */; };
+		22D9E5C828709DD200E64BAA /* CardSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5C128709DD200E64BAA /* CardSymbols.swift */; };
 		22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */; };
 		22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */; };
 		22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECBC2868D0E5003B6F55 /* ViewController.swift */; };
@@ -21,6 +28,13 @@
 
 /* Begin PBXFileReference section */
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
+		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		22D9E5BC28709DD200E64BAA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22D9E5BD28709DD200E64BAA /* RegexModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexModel.swift; sourceTree = "<group>"; };
+		22D9E5BE28709DD200E64BAA /* Sticky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticky.swift; sourceTree = "<group>"; };
+		22D9E5BF28709DD200E64BAA /* TitledCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledCardView.swift; sourceTree = "<group>"; };
+		22D9E5C028709DD200E64BAA /* ComponentCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCards.swift; sourceTree = "<group>"; };
+		22D9E5C128709DD200E64BAA /* CardSymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSymbols.swift; sourceTree = "<group>"; };
 		22E3ECB52868D0E5003B6F55 /* ReggieUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReggieUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,11 +75,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		22D9E5BA28709DBB00E64BAA /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				22D9E5C128709DD200E64BAA /* CardSymbols.swift */,
+				22D9E5C028709DD200E64BAA /* ComponentCards.swift */,
+				22D9E5BB28709DD200E64BAA /* ComponentView.swift */,
+				22D9E5BC28709DD200E64BAA /* ContentView.swift */,
+				22D9E5BD28709DD200E64BAA /* RegexModel.swift */,
+				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
+				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		22E3ECAC2868D0E4003B6F55 = {
 			isa = PBXGroup;
 			children = (
 				22D9E5B528709D5900E64BAA /* Packages */,
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
+				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
 				22D9E5B728709D6B00E64BAA /* Frameworks */,
 			);
@@ -170,9 +199,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
+				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
+				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,
+				22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */,
+				22D9E5C828709DD200E64BAA /* CardSymbols.swift in Sources */,
+				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
 				22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */,
+				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
 				22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */,
 				22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */,
