@@ -25,13 +25,15 @@ struct RegexView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: interCardSpacing) {
+            LazyVStack(alignment: .trailing, spacing: interCardSpacing) {
+                DropRegion()
                 ForEach(model.components) { component in
                     ComponentView(
                         model: component,
                         coordinateSpaceName: coordinateSpaceName,
                         parentHeaders: EmptyView.init
                     )
+                    DropRegion()
                 }
             }
                 .padding(internalPadding)
