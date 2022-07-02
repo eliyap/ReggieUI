@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final internal class PickerViewController: UIViewController {
     
@@ -73,7 +74,9 @@ final internal class PickerViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        sheetInsetConduit.sheetObscuringHeight = view.frame.height
+        withAnimation(.default) {
+            sheetInsetConduit.sheetObscuringHeight = view.frame.height
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

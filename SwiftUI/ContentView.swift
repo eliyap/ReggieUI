@@ -34,7 +34,7 @@ struct RegexView: View {
             }
                 .padding(Self.internalPadding)
                 .safeAreaInset(edge: .bottom, content: {
-                    Color.blue
+                    Color.clear
                         .frame(height: sheetInsetConduit.sheetObscuringHeight)
                 })
         }
