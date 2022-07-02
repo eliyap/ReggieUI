@@ -23,7 +23,7 @@ struct RegexView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(spacing: interCardSpacing) {
                 ForEach(model.components) { component in
                     ComponentView(
                         model: component,
