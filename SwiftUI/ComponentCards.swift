@@ -48,8 +48,6 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
@@ -76,8 +74,6 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
@@ -104,8 +100,6 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
@@ -132,8 +126,6 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
@@ -160,8 +152,6 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
@@ -189,8 +179,6 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
-                
-                DropRegion()
             }
         }
     }
