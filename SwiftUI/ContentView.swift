@@ -40,7 +40,27 @@ struct RegexView: View {
         }
         
             .coordinateSpace(name: coordinateSpaceName)
+            .background {
+                BackgroundColor()
+                    .ignoresSafeArea()
+            }
     }
     
     public static let internalPadding: CGFloat = 30
+            
+    fileprivate struct BackgroundColor: View {
+        
+        @Environment(\.colorScheme) private var colorScheme
+        
+        var body: some View {
+            switch colorScheme {
+            case .dark:
+                Color(uiColor: .systemBackground)
+            case .light:
+                Color(uiColor: .secondarySystemBackground)
+            @unknown default:
+                Color(uiColor: .secondarySystemBackground)
+            }
+        }
+    }
 }
