@@ -61,6 +61,9 @@ extension TitledCardView {
             .background { CardBackground() }
             .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
             .modifier(TitleShadow())
+            .onDrag {
+                NSItemProvider(object: params.id as NSString)
+            }
     }
 }
 
