@@ -44,6 +44,27 @@ struct ComponentView<ParentHeader: View>: View {
     }
 }
 
+/// Lays out children at ideal size, while itself taking up a 1x1 area.
+struct ZeroSizeLayout: Layout {
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        /// `0, 0` results in not being drawn, so trick the layout engine.
+        return CGSize(width: 1, height: 1)
+    }
+    
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        for subview in subviews {
+            /// Get ideal size.
+            let size = subview.sizeThatFits(.infinity)
+            
+            var location = bounds.origin
+            location.x -= size.width / 2
+            location.y -= size.height / 2
+            
+            subview.place(at: location, proposal: ProposedViewSize.infinity)
+        }
+    }
+}
+
 struct DropRegion: View {
     
     @ScaledMetric private var radius: CGFloat = 10
