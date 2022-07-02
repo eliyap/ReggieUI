@@ -17,6 +17,8 @@ struct RegexView: View {
     
     @ObservedObject private var sheetInsetConduit: SheetInsetConduit
     
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    
     init(sheetInsetConduit: SheetInsetConduit) {
         self.sheetInsetConduit = sheetInsetConduit
     }
@@ -32,7 +34,7 @@ struct RegexView: View {
                     )
                 }
             }
-                .padding(Self.internalPadding)
+                .padding(internalPadding)
                 .safeAreaInset(edge: .bottom, content: {
                     Color.clear
                         .frame(height: sheetInsetConduit.sheetObscuringHeight)
@@ -46,7 +48,11 @@ struct RegexView: View {
             }
     }
     
-    public static let internalPadding: CGFloat = 30
+    private var internalPadding: CGFloat {
+        horizontalSizeClass == .compact
+            ? 24
+            : 32
+    }
             
     fileprivate struct BackgroundColor: View {
         
