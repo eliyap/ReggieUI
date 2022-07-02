@@ -40,7 +40,11 @@ extension TitledCardView {
             contents
                 .padding(insets)
         }
-            .padding(.bottom, intraCardSpacing)
+            .background {
+                CardBackground()
+                    .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
+                    .modifier(TitleShadow())
+            }
             .overlay {
                 /// - Note: The sticky header and placeholder header **must** have equal dimensions.
                 ///         Give them the same width and layout "treatments" i.e. padding, etc.
@@ -54,10 +58,8 @@ extension TitledCardView {
                         }
                     }
                 }
+                .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
             }
-            .background { CardBackground() }
-            .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
-            .modifier(TitleShadow())
     }
 }
 
