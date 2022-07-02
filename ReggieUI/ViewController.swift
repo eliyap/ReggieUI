@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -24,6 +25,19 @@ class ViewController: UIViewController {
 final internal class BuilderViewController: UIViewController { 
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        let host = UIHostingController(rootView: ColorView())
+        addChild(host)
+        view.addSubview(host.view)
+        host.didMove(toParent: self)
+        
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            host.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            host.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            host.view.topAnchor.constraint(equalTo: view.topAnchor),
+            host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,5 +51,11 @@ final internal class BuilderViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+struct ColorView: View {
+    var body: some View {
+        Color.red
     }
 }
