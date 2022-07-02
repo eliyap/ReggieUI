@@ -14,6 +14,7 @@ protocol TitledCardView: View {
     associatedtype Title:         View
     associatedtype Contents:      View
     associatedtype Symbol:        View
+    associatedtype Parameters:    RegexParameter
     
     /// Allows title to find location within the scroll region.
     var coordinateSpaceName: String      { get }
@@ -22,6 +23,7 @@ protocol TitledCardView: View {
     var title: Title                     { get }
     var contents: Contents               { get }
     var symbol: Symbol                   { get }
+    var params: Parameters               { get }
 }
 
 fileprivate let titleCornerRadius: CGFloat = 16
