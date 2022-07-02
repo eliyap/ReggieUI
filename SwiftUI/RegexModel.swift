@@ -22,8 +22,9 @@ final class _RegexModel: ObservableObject {
     
     static let example: [ComponentModel] = [
         .oneOrMore(.init(components: [
-            .string(.init(string: "lmao")),
-            .zeroOrMore(.init(components: [])),
+            .zeroOrMore(.init(components: [
+                .string(.init(string: "lmao")),
+            ])),
             .optionally(.init(components: [])),
             .repeat(.init(range: 1..<2, components: [])),
         ])),
