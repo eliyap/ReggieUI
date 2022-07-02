@@ -14,8 +14,6 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
     
-    let insets = cardInsets
-    
     var title: some View {
         DefaultTitle("String", symbol)
     }
@@ -32,8 +30,6 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let params: ZeroOrMoreParameter
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
-    
-    let insets = cardInsets
     
     var title: some View {
         DefaultTitle("Zero Or More", symbol)
@@ -61,8 +57,6 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
     
-    let insets = cardInsets
-    
     var title: some View {
         DefaultTitle("One Or More", symbol)
     }
@@ -88,8 +82,6 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     let params: OptionallyParameter
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
-    
-    let insets = cardInsets
     
     var title: some View {
         DefaultTitle("Optionally", symbol)
@@ -117,8 +109,6 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
     
-    let insets = cardInsets
-    
     var title: some View {
         DefaultTitle("Repeat", symbol)
     }
@@ -144,8 +134,6 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     let params: LookaheadParameter
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
-    
-    let insets = cardInsets
     
     var title: some View {
         DefaultTitle("Lookahead", symbol)
@@ -174,8 +162,6 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
     
-    let insets = cardInsets
-    
     var title: some View {
         DefaultTitle("Choice Of", symbol)
     }
@@ -201,8 +187,6 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     let params: AnchorParameter
     let coordinateSpaceName: String
     let parentTitles: () -> ParentTitles
-    
-    let insets = cardInsets
     
     var title: some View {
         DefaultTitle("Anchor", symbol)

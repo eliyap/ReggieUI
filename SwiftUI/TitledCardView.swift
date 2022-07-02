@@ -18,7 +18,6 @@ protocol TitledCardView: View {
     /// Allows title to find location within the scroll region.
     var coordinateSpaceName: String      { get }
     
-    var insets: EdgeInsets               { get }
     var parentTitles: () -> ParentTitles { get }
     var title: Title                     { get }
     var contents: Contents               { get }
