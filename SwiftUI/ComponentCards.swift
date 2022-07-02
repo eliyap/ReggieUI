@@ -40,7 +40,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -48,6 +48,8 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
@@ -66,7 +68,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -74,6 +76,8 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
@@ -92,7 +96,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -100,6 +104,8 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
@@ -118,7 +124,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -126,6 +132,8 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
@@ -144,7 +152,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -152,6 +160,8 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
@@ -171,7 +181,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     }
     
     var contents: some View {
-        VStack(spacing: interCardSpacing) {
+        VStack(alignment: .trailing, spacing: interCardSpacing) {
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -179,6 +189,8 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                
+                DropRegion()
             }
         }
     }
