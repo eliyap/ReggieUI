@@ -34,24 +34,6 @@ struct RegexView: View {
                 .padding(Self.internalPadding)
         }
             .coordinateSpace(name: coordinateSpaceName)
-            .onTapGesture {
-//                let path: ModelPath = .child(
-//                    index: 1,
-//                    subpath: .child(
-//                        index: 0, subpath: .target
-//                    )
-//                )
-//                withAnimation {
-//                    switch model.components[0][path] {
-//                    case .oneOrMore:
-//                        model.components[0][path] = .string(StringParameter(string: "LOL"))
-//                    case .string:
-//                        model.components[0][path] = .oneOrMore(OneOrMoreParameter(components: []))
-//                    }
-//                    model.components.remove(at: 0)
-//                    #error("TODO: test keypath with onCommit string Text Field")
-//                }
-            }
     }
     
     public static let internalPadding: CGFloat = 30
