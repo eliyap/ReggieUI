@@ -26,7 +26,7 @@ final internal class BuilderViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        let host = UIHostingController(rootView: ColorView())
+        let host = UIHostingController(rootView: StickyScrollView())
         addChild(host)
         view.addSubview(host.view)
         host.didMove(toParent: self)
@@ -51,11 +51,5 @@ final internal class BuilderViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-struct ColorView: View {
-    var body: some View {
-        Color.red
     }
 }
