@@ -80,6 +80,7 @@ struct DropRegion: View {
         Image(systemName: "plus.diamond.fill")
             .imageScale(.large)
             .symbolRenderingMode(.hierarchical)
+            .foregroundColor(.green)
             .background {
                 RoundedRectangle(cornerRadius: 4)
                     .modifier(TabBackground())
