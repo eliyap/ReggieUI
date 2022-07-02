@@ -28,6 +28,8 @@ final internal class BuilderViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        /// Create and present sheet.
         let picker = PickerViewController()
         picker.configureSheet()
         present(picker, animated: true)
