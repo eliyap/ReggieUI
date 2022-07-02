@@ -78,7 +78,7 @@ struct TitleShadow: ViewModifier {
     }
 }
 
-fileprivate struct CardBackground: View {
+internal struct CardBackground: View {
     
     @Environment(\.colorScheme) private var colorScheme
     

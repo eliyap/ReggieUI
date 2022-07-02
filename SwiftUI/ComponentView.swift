@@ -71,28 +71,30 @@ struct DropRegion: View {
     @ScaledMetric private var height: CGFloat = 30
     
     var body: some View {
-        RoundedRectangle(cornerRadius: radius)
-            .frame(height: height)
-            .foregroundColor(Color.purple.opacity(0.1))
-            .overlay {
-                RoundedRectangle(cornerRadius: radius)
-                    .strokeBorder(
-                        Color.purple.opacity(0.25),
-                        style: StrokeStyle(
-                            lineWidth: 2,
-                            lineCap: .round,
-                            lineJoin: .round,
-                            miterLimit: 0,
-                            dash: [10, 10]
-                        )
-                    )
-                    .frame(height: height)
+        ZeroSizeLayout {
+            Tab
+                .offset(x: cardInsets.trailing)
+        }
+    }
+    
+    private var Tab: some View {
+        Image(systemName: "plus.diamond.fill")
+            .imageScale(.large)
+            .symbolRenderingMode(.hierarchical)
+            .background {
+                RoundedRectangle(cornerRadius: 4)
+                    .modifier(TabBackground())
+                    .rotationEffect(Angle(degrees: 45))
             }
-            .overlay {
-                Image(systemName: "plus")
-                    .font(Font.system(.body, design: .rounded, weight: .black))
-                    .foregroundColor(Color.purple.opacity(0.25))
-                    .frame(height: height)
-            }
+    }
+}
+
+fileprivate struct TabBackground: ViewModifier {
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(CardBackground.color(colorScheme))
     }
 }
