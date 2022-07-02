@@ -37,6 +37,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -63,6 +64,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -89,6 +91,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -115,6 +118,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -141,6 +145,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
@@ -168,6 +173,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(alignment: .trailing, spacing: interCardSpacing) {
+            DropRegion()
             ForEach(params.components) { model in
                 ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
                     VStack(spacing: .zero) {
