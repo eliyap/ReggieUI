@@ -27,7 +27,6 @@ protocol TitledCardView: View {
 fileprivate let titleCornerRadius: CGFloat = 16
 fileprivate let intraCardSpacing: CGFloat = 10
 let interCardSpacing: CGFloat = 30
-internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8)
 
 extension TitledCardView {
     
@@ -37,7 +36,7 @@ extension TitledCardView {
             title
                 .opacity(0)
             contents
-                .padding(insets)
+                .modifier(CardInsets())
         }
             .background {
                 CardBackground()

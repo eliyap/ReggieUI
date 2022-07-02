@@ -67,13 +67,12 @@ struct ZeroSizeLayout: Layout {
 
 struct DropRegion: View {
     
-    @ScaledMetric private var radius: CGFloat = 10
-    @ScaledMetric private var height: CGFloat = 30
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     var body: some View {
         ZeroSizeLayout {
             Tab
-                .offset(x: cardInsets.trailing)
+                .offset(x: insets.trailing)
         }
     }
     
@@ -87,6 +86,12 @@ struct DropRegion: View {
                     .rotationEffect(Angle(degrees: 45))
             }
     }
+    
+    private var insets: EdgeInsets {
+        horizontalSizeClass == .compact
+            ? CardInsets.compactInsets
+            : CardInsets.regularInsets
+    }
 }
 
 fileprivate struct TabBackground: ViewModifier {
@@ -96,5 +101,22 @@ fileprivate struct TabBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(CardBackground.color(colorScheme))
+    }
+}
+
+internal struct CardInsets: ViewModifier {
+    
+    public static let compactInsets = EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+    public static let regularInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+    
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(
+                horizontalSizeClass == .compact
+                    ? Self.compactInsets
+                    : Self.regularInsets
+            )
     }
 }
