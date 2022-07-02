@@ -60,6 +60,9 @@ extension TitledCardView {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
             }
+            .onDrag {
+                NSItemProvider(object: params.id as NSString)
+            }
     }
 }
 
