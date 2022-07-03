@@ -21,6 +21,29 @@ final class _RegexModel: ObservableObject {
         components.regex()
     }
     
+    private func path(id: String) -> ModelPath? {
+        for (idx, component) in components.enumerated() {
+            guard let subPath = component.path(for: id) else { continue }
+            return .child(index: idx, subpath: subPath)
+        }
+        
+        return nil
+    }
+    
+    private func insert(_ component: ComponentModel, at path: ModelPath) -> Void {
+        /// Should always be handled by parents or grandparents, never the child directly.
+        guard case .child(let index, let subpath) = path else {
+            assert(false, "Illegal state")
+        }
+        
+        switch subpath {
+        case .target:
+            components.insert(component, at: index)
+        
+        case .child:
+            components[index].insert(component, at: subpath)
+        }
+    }
 extension _RegexModel {
     subscript(_ path: ModelPath) -> ComponentModel {
         get {
