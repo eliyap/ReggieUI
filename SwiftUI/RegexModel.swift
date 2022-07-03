@@ -5,6 +5,7 @@
 //  Created by Secret Asian Man Dev on 29/6/22.
 //
 
+import SwiftUI
 import Combine
 import RegexModel
 import Foundation
@@ -33,8 +34,10 @@ final class _RegexModel: ObservableObject {
             return
         }
         
-        insert(self[sourcePath], at: target)
-        delete(at: sourcePath.adjustedFor(insertionAt: target))
+        withAnimation {
+            insert(self[sourcePath], at: target)
+            delete(at: sourcePath.adjustedFor(insertionAt: target))
+        }
     }
     
     private func path(id: String) -> ModelPath? {
