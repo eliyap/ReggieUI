@@ -43,7 +43,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
@@ -74,7 +74,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
@@ -105,7 +105,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
@@ -136,7 +136,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
@@ -167,7 +167,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
@@ -199,7 +199,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,

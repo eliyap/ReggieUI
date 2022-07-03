@@ -27,7 +27,7 @@ struct RegexView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: interCardSpacing) {
-                ForEach(Array(model.components.enumerated()), id: \.element) { index, model in
+                ForEach(Array(model.components.enumerated()), id: \.element.id) { index, model in
                     ComponentView(
                         model: model,
                         coordinateSpaceName: coordinateSpaceName,
