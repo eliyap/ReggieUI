@@ -11,7 +11,7 @@ import RegexModel
 
 struct RegexView: View {
     
-    @StateObject private var model: _RegexModel = .init(components: _RegexModel.example)
+    @StateObject private var params: _RegexModel = .init(components: _RegexModel.example)
     
     /// In case of multiple instances, ensure this is instance specific.
     private let coordinateSpaceName = UUID().uuidString
@@ -28,8 +28,8 @@ struct RegexView: View {
     
     var body: some View {
         ScrollView {
-                ForEach(Array(model.components.enumerated()), id: \.element.id) { index, model in
             VStack(spacing: interCardSpacing) {
+                ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                     ComponentView(
                         model: model,
                         coordinateSpaceName: coordinateSpaceName,
@@ -60,7 +60,7 @@ struct RegexView: View {
             }
             .onReceive(dropConduit.$dropPath) { output in
                 guard let (id, path) = output else { return }
-                model.move(id: id, to: path)
+                params.move(id: id, to: path)
             }
     }
     
