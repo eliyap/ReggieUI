@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 import SwiftUI
+import RegexModel
 
 final internal class ComponentCollectionViewController: UICollectionViewController {
     
-    public typealias DataSource = UICollectionViewDiffableDataSource<ComponentSection, String>
-    public typealias Snapshot = NSDiffableDataSourceSnapshot<ComponentSection, String>
+    public typealias DataSource = UICollectionViewDiffableDataSource<ComponentModel.Section, ComponentModel.Proxy>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<ComponentModel.Section, ComponentModel.Proxy>
     private var dataSource: DataSource! = nil
     
     public typealias Cell = ComponentCell
@@ -37,11 +38,10 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         
         // PLACEHOLDER
         var snapshot = Snapshot()
-        snapshot.appendSections([.complex])
-        snapshot.appendItems([
-            "Potato",
-            "Tomato",
-        ], toSection: .complex)
+        snapshot.appendSections(ComponentModel.Section.allCases)
+        for section in ComponentModel.Section.allCases {
+            snapshot.appendItems(section.proxyItems, toSection: section)
+        }
         dataSource.apply(snapshot)
     }
     
