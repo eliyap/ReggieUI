@@ -18,10 +18,6 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
-    var title: some View {
-        DefaultTitle("String", symbol)
-    }
-    
     var contents: some View {
         Group {
             Text(params.string)
@@ -40,10 +36,6 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
-    
-    var title: some View {
-        DefaultTitle("Zero Or More", symbol)
-    }
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
@@ -85,10 +77,6 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
-    var title: some View {
-        DefaultTitle("One Or More", symbol)
-    }
-    
     var contents: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
@@ -127,10 +115,6 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
-    
-    var title: some View {
-        DefaultTitle("Optionally", symbol)
-    }
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
@@ -171,10 +155,6 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
-    var title: some View {
-        DefaultTitle("Repeat", symbol)
-    }
-    
     var contents: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
@@ -213,10 +193,6 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
-    
-    var title: some View {
-        DefaultTitle("Lookahead", symbol)
-    }
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
@@ -258,10 +234,6 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
-    var title: some View {
-        DefaultTitle("Choice Of", symbol)
-    }
-    
     var contents: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
@@ -298,10 +270,6 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
-    
-    var title: some View {
-        DefaultTitle("Anchor", symbol)
-    }
     
     #warning("temporary")
     var contents: some View {

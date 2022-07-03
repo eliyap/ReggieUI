@@ -36,6 +36,10 @@ internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8
 
 extension TitledCardView {
     
+    var title: some View {
+        DefaultTitle(params.proxy.displayTitle, symbol)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             /// Placeholder to push contents down.
