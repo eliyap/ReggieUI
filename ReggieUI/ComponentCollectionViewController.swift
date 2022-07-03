@@ -24,6 +24,18 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         /// Defuse implicitly unwrapped nil.
         dataSource = .init(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, itemIdentifier) in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath)
+            
+            /// Get section and row.
+            guard let section = ComponentModel.Section(rawValue: indexPath.section) else {
+                assert(false, "Could not initialize section from section number \(indexPath.section)")
+                return cell
+            }
+            guard section.proxyItems.indices ~= indexPath.row else {
+                assert(false, "Section does not have item at row \(indexPath.row)")
+                return cell
+            }
+            let proxy = section.proxyItems[indexPath.row]
+            
             cell.contentConfiguration = UIHostingConfiguration {
                 Text("Hello World")
             }
