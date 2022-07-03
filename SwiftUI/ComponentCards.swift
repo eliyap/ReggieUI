@@ -47,7 +47,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -63,7 +63,6 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom
@@ -93,7 +92,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -109,7 +108,6 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom
@@ -138,7 +136,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -154,7 +152,6 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom
@@ -183,7 +180,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -199,7 +196,6 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom
@@ -228,7 +224,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -244,7 +240,6 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom
@@ -274,7 +269,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -290,7 +285,6 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
                 DropRegion(
                     cardHovered: $cardHovered,
                     coordinateSpaceName: coordinateSpaceName,
-                    id: params.id,
                     path: path.appending(.child(index: index + 1, subpath: .target)),
                     relativeLocation: model.id == params.components.last?.id
                         ? .bottom

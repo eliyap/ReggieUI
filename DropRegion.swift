@@ -15,7 +15,6 @@ struct DropRegion: View {
     
     @Binding public var cardHovered: RelativeLocation?
     public let coordinateSpaceName: String
-    public let id: String
     public let path: ModelPath
     public var relativeLocation: RelativeLocation
     
