@@ -32,4 +32,8 @@ final class _RegexModel: ObservableObject {
             .anchor(.init(boundary: .wordBoundary))
         ]))
     ]
+    
+    func move(id: String, to path: ModelPath) -> Void {
+        
+    }
 }

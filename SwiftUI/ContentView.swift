@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import RegexModel
 
 struct RegexView: View {
     
@@ -53,6 +54,10 @@ struct RegexView: View {
             .background {
                 BackgroundColor()
                     .ignoresSafeArea()
+            }
+            .onReceive(dropConduit.$dropPath) { output in
+                guard let (id, path) = output else { return }
+                model.move(id: id, to: path)
             }
     }
     
@@ -125,9 +130,15 @@ internal final class DropConduit: ObservableObject {
     public static let scrollCoordinateSpace: String = "DropConduitScrollCoordinateSpaceName"
     
     public enum Event {
+        /// Corresponds to `dropUpdated`, when the user is still holding the item.
         case hover
+        
+        /// Corresponds `performDrop`, when the user drops the item.
         case drop(String)
     }
     
+    /// Publishes locations & events passed from `DropDelegate`.
     @Published var dropLocation: (CGPoint?, Event?) = (nil, nil)
+    
+    @Published var dropPath: (id: String, ModelPath)? = nil
 }
