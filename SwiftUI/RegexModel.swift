@@ -7,6 +7,7 @@
 
 import Combine
 import RegexModel
+import Foundation
 
 final class _RegexModel: ObservableObject {
     
@@ -20,6 +21,22 @@ final class _RegexModel: ObservableObject {
         components.regex()
     }
     
+extension _RegexModel {
+    subscript(_ path: ModelPath) -> ComponentModel {
+        get {
+            guard case .child(let index, let subpath) = path else {
+                fatalError("Cannot target model directly")
+            }
+            return components[index][subpath]
+        }
+        set {
+            guard case .child(let index, let subpath) = path else {
+                fatalError("Cannot target model directly")
+            }
+            return components[index][subpath] = newValue
+        }
+    }
+}
     static let example: [ComponentModel] = [
         .oneOrMore(.init(components: [
             .zeroOrMore(.init(components: [
