@@ -31,6 +31,8 @@ struct StringCard<ParentTitles: View>: TitledCardView {
 
 struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    
     let params: ZeroOrMoreParameter
     let coordinateSpaceName: String
     let path: ModelPath
@@ -45,6 +47,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -57,6 +60,15 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
@@ -64,11 +76,14 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    
     let params: OneOrMoreParameter
     let coordinateSpaceName: String
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
+    
     
     let insets = cardInsets
     
@@ -78,6 +93,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -90,12 +106,23 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
 }
 
 struct OptionallyCard<ParentTitles: View>: TitledCardView {
+    
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OptionallyParameter
     let coordinateSpaceName: String
@@ -111,6 +138,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -123,12 +151,23 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
 }
 
 struct RepeatCard<ParentTitles: View>: TitledCardView {
+    
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: RepeatParameter
     let coordinateSpaceName: String
@@ -144,6 +183,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -156,12 +196,23 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
 }
 
 struct LookaheadCard<ParentTitles: View>: TitledCardView {
+    
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: LookaheadParameter
     let coordinateSpaceName: String
@@ -177,6 +228,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -189,6 +241,15 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
@@ -196,6 +257,8 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
 
 struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 /// Pick a card, any card...
+    
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ChoiceOfParameter
     let coordinateSpaceName: String
@@ -211,6 +274,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, id: params.id, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
@@ -223,6 +287,15 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
                         title
                     }
                 })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    coordinateSpaceName: coordinateSpaceName,
+                    id: params.id,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
             }
         }
     }
