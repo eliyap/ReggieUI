@@ -21,6 +21,23 @@ final class _RegexModel: ObservableObject {
         components.regex()
     }
     
+    public func move(id: String, to target: ModelPath) -> Void {
+        guard let sourcePath = path(id: id) else {
+            Swift.debugPrint("Could not find path for ID \(id)")
+            if UUID(uuidString: id) != nil { assert(false) }
+            return
+        }
+        
+        guard target.isSubpathOf(sourcePath) == false else {
+            Swift.debugPrint("Cannot drop item into itself")
+            return
+        }
+        
+        print("TODO: move \(sourcePath) to \(target)")
+        insert(self[sourcePath], at: target)
+        
+    }
+    
     private func path(id: String) -> ModelPath? {
         for (idx, component) in components.enumerated() {
             guard let subPath = component.path(for: id) else { continue }
@@ -44,6 +61,9 @@ final class _RegexModel: ObservableObject {
             components[index].insert(component, at: subpath)
         }
     }
+    
+}
+
 extension _RegexModel {
     subscript(_ path: ModelPath) -> ComponentModel {
         get {
@@ -60,6 +80,8 @@ extension _RegexModel {
         }
     }
 }
+
+extension _RegexModel {
     static let example: [ComponentModel] = [
         .oneOrMore(.init(components: [
             .zeroOrMore(.init(components: [
@@ -73,8 +95,4 @@ extension _RegexModel {
             .anchor(.init(boundary: .wordBoundary))
         ]))
     ]
-    
-    func move(id: String, to path: ModelPath) -> Void {
-        
-    }
 }
