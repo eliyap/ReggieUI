@@ -12,8 +12,8 @@ import RegexModel
 struct ComponentView<ParentHeader: View>: View {
     
     public let model: ComponentModel
-    let coordinateSpaceName: String
-    let parentHeaders: () -> ParentHeader
+    public let coordinateSpaceName: String
+    public let parentHeaders: () -> ParentHeader
     
     var body: some View {
         switch model {
