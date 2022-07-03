@@ -33,9 +33,8 @@ final class _RegexModel: ObservableObject {
             return
         }
         
-        print("TODO: move \(sourcePath) to \(target)")
         insert(self[sourcePath], at: target)
-        
+        delete(at: sourcePath.adjustedFor(insertionAt: target))
     }
     
     private func path(id: String) -> ModelPath? {
@@ -59,6 +58,20 @@ final class _RegexModel: ObservableObject {
         
         case .child:
             components[index].insert(component, at: subpath)
+        }
+    }
+    
+    private func delete(at path: ModelPath) -> Void {
+        guard case .child(let index, let subpath) = path else {
+            assert(false, "Should be handled by parent")
+            return
+        }
+
+        switch subpath {
+        case .target:
+            components.remove(at: index)
+        case .child:
+            components[index].delete(at: subpath)
         }
     }
     
