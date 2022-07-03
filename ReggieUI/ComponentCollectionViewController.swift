@@ -25,19 +25,13 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         dataSource = .init(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, itemIdentifier) in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath)
             
-            /// Get section and row.
-            guard let section = ComponentModel.Section(rawValue: indexPath.section) else {
-                assert(false, "Could not initialize section from section number \(indexPath.section)")
+            guard let proxy = Self.proxy(at: indexPath) else {
+                assert(false, "Could not get resolve proxy at path \(indexPath)")
                 return cell
             }
-            guard section.proxyItems.indices ~= indexPath.row else {
-                assert(false, "Section does not have item at row \(indexPath.row)")
-                return cell
-            }
-            let proxy = section.proxyItems[indexPath.row]
             
             cell.contentConfiguration = UIHostingConfiguration {
-                Text("Hello World")
+                Text(proxy.displayTitle)
             }
             return cell
         })
@@ -55,6 +49,19 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
             snapshot.appendItems(section.proxyItems, toSection: section)
         }
         dataSource.apply(snapshot)
+    }
+    
+    private static func proxy(at indexPath: IndexPath) -> ComponentModel.Proxy? {
+        /// Get section and row.
+        guard let section = ComponentModel.Section(rawValue: indexPath.section) else {
+            assert(false, "Could not initialize section from section number \(indexPath.section)")
+            return nil
+        }
+        guard section.proxyItems.indices ~= indexPath.row else {
+            assert(false, "Section does not have item at row \(indexPath.row)")
+            return nil
+        }
+        return section.proxyItems[indexPath.row]
     }
     
     required init?(coder aDecoder: NSCoder) {
