@@ -20,6 +20,8 @@ struct RegexView: View {
     
     @StateObject private var dropConduit: DropConduit = .init()
     
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    
     @Namespace private var mgeNamespace
     
     init(sheetInsetConduit: SheetInsetConduit) {
@@ -29,6 +31,9 @@ struct RegexView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: interCardSpacing) {
+                DropRegion(cardHovered: $cardHovered, coordinateSpaceName: coordinateSpaceName, path: .child(index: 0, subpath: .target), relativeLocation: .top)
+                    /// - Note: giving an "invisible" border fixes an issue where these were not selectable.
+                    .border(Color(uiColor: .systemBackground).opacity(0.01))
                 ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                     ComponentView(
                         model: model,
@@ -37,6 +42,16 @@ struct RegexView: View {
                         mgeNamespace: mgeNamespace,
                         parentHeaders: EmptyView.init
                     )
+                    DropRegion(
+                        cardHovered: $cardHovered,
+                        coordinateSpaceName: coordinateSpaceName,
+                        path: .child(index: index + 1, subpath: .target),
+                        relativeLocation: model.id == params.components.last?.id
+                            ? .bottom
+                            : .middle
+                    )
+                        /// - Note: giving an "invisible" border fixes an issue where these were not selectable.
+                        .border(Color(uiColor: .systemBackground).opacity(0.01))
                 }
             }
                 .environmentObject(dropConduit)
