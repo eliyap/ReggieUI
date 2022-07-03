@@ -46,11 +46,17 @@ struct DropRegion: View {
         /// Check whether location is within region.
         guard let location else {
             withAnimation(animation) {
-                /// Trigger variable changes simultaneously, as `.onChanged` has a slight delay.
-                if hovered == true {
+                if case .drop = event {
+                    /// Clear UI on drop.
+                    hovered = false
                     cardHovered = nil
+                } else {
+                    /// Trigger variable changes simultaneously, as `.onChanged` has a slight delay.
+                    if hovered == true {
+                        cardHovered = nil
+                    }
+                    hovered = false
                 }
-                hovered = false
             }
             return
         }
