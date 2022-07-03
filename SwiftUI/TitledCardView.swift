@@ -13,7 +13,6 @@ protocol TitledCardView: View {
     associatedtype ParentTitles:  View
     associatedtype Title:         View
     associatedtype Contents:      View
-    associatedtype Symbol:        View
     associatedtype Parameters:    RegexParameter
     
     /// Allows title to find location within the scroll region.
@@ -23,7 +22,6 @@ protocol TitledCardView: View {
     var parentTitles: () -> ParentTitles { get }
     var title: Title                     { get }
     var contents: Contents               { get }
-    var symbol: Symbol                   { get }
     
     var params: Parameters               { get }
     var path: ModelPath                  { get }
@@ -37,7 +35,7 @@ internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8
 extension TitledCardView {
     
     var title: some View {
-        DefaultTitle(params.proxy.displayTitle, symbol)
+        DefaultTitle(params.proxy.displayTitle, params.proxy.symbol)
     }
     
     var body: some View {

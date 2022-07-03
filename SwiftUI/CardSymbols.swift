@@ -8,82 +8,66 @@
 import SwiftUI
 import RegexModel
 
-extension StringCard {
+extension ComponentModel.Proxy {
+    @ViewBuilder
     var symbol: some View {
-        Image("abc.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.text)
-            .imageScale(.large)
-    }
-}
-
-extension ZeroOrMoreCard {
-    var symbol: some View {
-        Image("asterisk.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.quantifier)
-            .imageScale(.large)
-    }
-}
-
-extension OneOrMoreCard {
-    var symbol: some View {
-        Image(systemName: "plus.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.quantifier)
-            .imageScale(.large)
-    }
-}
-
-extension OptionallyCard {
-    var symbol: some View {
-        Image(systemName: "questionmark.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.quantifier)
-            .imageScale(.large)
-    }
-}
-
-extension RepeatCard {
-    var symbol: some View {
-        Image("curlybraces.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.quantifier)
-            .imageScale(.large)
-    }
-}
-
-extension LookaheadCard {
-    var symbol: some View {
-        Image("lookahead.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.other)
-            .imageScale(.large)
-    }
-}
-
-extension ChoiceOfCard {
-    var symbol: some View {
-        Image("choiceof.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .black))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.other)
-            .imageScale(.large)
-    }
-}
-
-extension AnchorCard {
-    var symbol: some View {
-        Image("anchor.app.fill")
-            .font(Font.system(.body, design: .rounded, weight: .bold))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.text)
-            .imageScale(.large)
+        switch self {
+        case .string:
+            Image("abc.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.text)
+                .imageScale(.large)
+        
+        case .anchor:
+            Image("anchor.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .bold))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.text)
+                .imageScale(.large)
+        
+        case .zeroOrMore:
+            Image("asterisk.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.quantifier)
+                .imageScale(.large)
+        
+        case .oneOrMore:
+            Image(systemName: "plus.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.quantifier)
+                .imageScale(.large)
+        
+        case .optionally:
+            Image(systemName: "questionmark.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.quantifier)
+                .imageScale(.large)
+            
+        
+        case .repeat:
+            Image("curlybraces.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.quantifier)
+                .imageScale(.large)
+        
+        case .lookahead:
+            Image("lookahead.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.other)
+                .imageScale(.large)
+            
+        case .choiceOf:
+            Image("choiceof.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.other)
+                .imageScale(.large)
+        }
     }
 }
