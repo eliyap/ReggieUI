@@ -26,10 +26,11 @@ struct RegexView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: interCardSpacing) {
-                ForEach(model.components) { component in
+                ForEach(Array(model.components.enumerated()), id: \.element) { index, model in
                     ComponentView(
-                        model: component,
+                        model: model,
                         coordinateSpaceName: coordinateSpaceName,
+                        path: .child(index: index, subpath: .target),
                         parentHeaders: EmptyView.init
                     )
                 }

@@ -12,6 +12,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     
     let params: StringParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -31,6 +32,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     let params: ZeroOrMoreParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -41,8 +43,12 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -57,6 +63,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     let params: OneOrMoreParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -67,8 +74,12 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -83,6 +94,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     let params: OptionallyParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -93,8 +105,12 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -109,6 +125,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     let params: RepeatParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -119,8 +136,12 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -135,6 +156,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     let params: LookaheadParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -145,8 +167,12 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -162,6 +188,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     let params: ChoiceOfParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -172,8 +199,12 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: interCardSpacing) {
-            ForEach(params.components) { model in
-                ComponentView(model: model, coordinateSpaceName: coordinateSpaceName, parentHeaders: {
+            ForEach(Array(params.components.enumerated()), id: \.element) { index, model in
+                ComponentView(
+                    model: model,
+                    coordinateSpaceName: coordinateSpaceName,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
                         title
@@ -188,6 +219,7 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     
     let params: AnchorParameter
     let coordinateSpaceName: String
+    let path: ModelPath
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets

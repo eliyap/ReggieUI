@@ -13,33 +13,34 @@ struct ComponentView<ParentHeader: View>: View {
     
     public let model: ComponentModel
     public let coordinateSpaceName: String
+    public let path: ModelPath
     public let parentHeaders: () -> ParentHeader
     
     var body: some View {
         switch model {
         case .string(let params):
-            StringCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            StringCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
         
         case .zeroOrMore(let params):
-            ZeroOrMoreCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            ZeroOrMoreCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
         
         case .oneOrMore(let params):
-            OneOrMoreCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            OneOrMoreCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
 
         case .optionally(let params):
-            OptionallyCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            OptionallyCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
 
         case .repeat(let params):
-            RepeatCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            RepeatCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
 
         case .lookahead(let params):
-            LookaheadCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            LookaheadCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
             
         case .choiceOf(let params):
-            ChoiceOfCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            ChoiceOfCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
             
         case .anchor(let params):
-            AnchorCard(params: params, coordinateSpaceName: coordinateSpaceName, parentTitles: parentHeaders)
+            AnchorCard(params: params, coordinateSpaceName: coordinateSpaceName, path: path, parentTitles: parentHeaders)
         }
     }
 }

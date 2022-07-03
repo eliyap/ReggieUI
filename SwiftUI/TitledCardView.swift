@@ -26,6 +26,7 @@ protocol TitledCardView: View {
     var symbol: Symbol                   { get }
     
     var params: Parameters               { get }
+    var path: ModelPath                  { get }
 }
 
 fileprivate let titleCornerRadius: CGFloat = 16
