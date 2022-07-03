@@ -59,7 +59,15 @@ struct RegexView: View {
 }
 
 extension RegexView: DropDelegate {
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        dropConduit.dropLocation = info.location
+        return DropProposal(operation: .move)
+    }
+    
     func performDrop(info: DropInfo) -> Bool {
+        dropConduit.dropLocation = nil
+        
         let providers = info.itemProviders(for: [.plainText])
         guard providers.count == 1 else {
             Swift.debugPrint("Wrong item count \(providers.count)")
