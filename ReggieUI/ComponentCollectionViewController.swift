@@ -98,9 +98,3 @@ final internal class ComponentCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-internal enum ComponentSection: Int {
-    /// Placeholders, obviously.
-    case simple
-    case complex
-}
