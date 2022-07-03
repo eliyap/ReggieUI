@@ -71,9 +71,13 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
 
 extension ComponentCollectionViewController: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return [
-            UIDragItem(itemProvider: NSItemProvider(object: "" as NSString)),
-        ]
+        guard let proxy = Self.proxy(at: indexPath) else {
+            assert(false, "Could not get resolve proxy at path \(indexPath)")
+            return []
+        }
+        
+        let itemProvider = NSItemProvider(object: proxy.rawValue as NSString)
+        return [UIDragItem(itemProvider: itemProvider)]
     }
 }
 
