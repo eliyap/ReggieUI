@@ -6,22 +6,7 @@
 //
 
 import SwiftUI
-
-fileprivate extension Color {
-    /// Color for blocks representing "textual" elements,
-    /// including `String`, `Character`, `CharacterClass`, and `Anchor`.
-    static var text: Color { .orange }
-    
-    /// Color for blocks representing "counting" behaviors,
-    /// including `ZeroOrMore`, `OneOrMore`, `Optionally`, `Repeat`, and `One`.
-    static var quantifier: Color { .purple }
-    
-    /// Color for blocks representing or affecting "capturing" behaviors,
-    static var capture: Color { .green }
-    
-    /// Color for blocks representing other behaviours.
-    static var other: Color { .blue}
-}
+import RegexModel
 
 extension StringCard {
     var symbol: some View {
