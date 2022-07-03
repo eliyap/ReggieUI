@@ -51,35 +51,3 @@ struct ComponentView<ParentHeader: View>: View {
         }
     }
 }
-
-struct DropRegion: View {
-    
-    @ScaledMetric private var radius: CGFloat = 10
-    @ScaledMetric private var height: CGFloat = 30
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: radius)
-            .frame(height: height)
-            .foregroundColor(Color.purple.opacity(0.1))
-            .overlay {
-                RoundedRectangle(cornerRadius: radius)
-                    .strokeBorder(
-                        Color.purple.opacity(0.25),
-                        style: StrokeStyle(
-                            lineWidth: 2,
-                            lineCap: .round,
-                            lineJoin: .round,
-                            miterLimit: 0,
-                            dash: [10, 10]
-                        )
-                    )
-                    .frame(height: height)
-            }
-            .overlay {
-                Image(systemName: "plus")
-                    .font(Font.system(.body, design: .rounded, weight: .black))
-                    .foregroundColor(Color.purple.opacity(0.25))
-                    .frame(height: height)
-            }
-    }
-}

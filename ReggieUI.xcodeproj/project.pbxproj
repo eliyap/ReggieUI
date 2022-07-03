@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
 		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		22E3ECAC2868D0E4003B6F55 = {
 			isa = PBXGroup;
 			children = (
+				220229B328721EF200EAF840 /* DropRegion.swift */,
 				22D9E5B528709D5900E64BAA /* Packages */,
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
@@ -209,6 +212,7 @@
 				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
 				22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */,
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
+				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
 				22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */,
 				22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */,
