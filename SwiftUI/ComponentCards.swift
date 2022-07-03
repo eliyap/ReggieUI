@@ -13,6 +13,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     let params: StringParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -33,6 +34,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let params: ZeroOrMoreParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -48,6 +50,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -64,6 +67,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     let params: OneOrMoreParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -79,6 +83,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -95,6 +100,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     let params: OptionallyParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -110,6 +116,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -126,6 +133,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     let params: RepeatParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -141,6 +149,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -157,6 +166,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     let params: LookaheadParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -172,6 +182,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -189,6 +200,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     let params: ChoiceOfParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets
@@ -204,6 +216,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
                     model: model,
                     coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
                     parentHeaders: {
                     VStack(spacing: .zero) {
                         parentTitles()
@@ -220,6 +233,7 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     let params: AnchorParameter
     let coordinateSpaceName: String
     let path: ModelPath
+    let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
     
     let insets = cardInsets

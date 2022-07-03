@@ -20,6 +20,8 @@ struct RegexView: View {
     
     @StateObject private var dropConduit: DropConduit = .init()
     
+    @Namespace private var mgeNamespace
+    
     init(sheetInsetConduit: SheetInsetConduit) {
         self.sheetInsetConduit = sheetInsetConduit
     }
@@ -32,6 +34,7 @@ struct RegexView: View {
                         model: model,
                         coordinateSpaceName: coordinateSpaceName,
                         path: .child(index: index, subpath: .target),
+                        mgeNamespace: mgeNamespace,
                         parentHeaders: EmptyView.init
                     )
                 }
