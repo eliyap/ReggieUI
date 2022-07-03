@@ -34,7 +34,7 @@ final class _RegexModel: ObservableObject {
             return
         }
         
-        withAnimation {
+        withAnimation(Animation.jelly) {
             insert(self[sourcePath], at: target)
             delete(at: sourcePath.adjustedFor(insertionAt: target))
         }
@@ -77,7 +77,12 @@ final class _RegexModel: ObservableObject {
             components[index].delete(at: subpath)
         }
     }
-    
+}
+
+fileprivate extension Animation {
+    /// A spring that produces a slight jelly wobble when landing.
+    /// Overshoots about once, then returns.
+    static let jelly: Animation = .spring(response: 0.3, dampingFraction: 0.7)
 }
 
 extension _RegexModel {
