@@ -17,6 +17,8 @@ struct RegexView: View {
     
     @ObservedObject private var sheetInsetConduit: SheetInsetConduit
     
+    @StateObject private var dropConduit: DropConduit = .init()
+    
     init(sheetInsetConduit: SheetInsetConduit) {
         self.sheetInsetConduit = sheetInsetConduit
     }
@@ -32,6 +34,7 @@ struct RegexView: View {
                     )
                 }
             }
+                .environmentObject(dropConduit)
                 .padding(Self.internalPadding)
                 .onDrop(of: [.plainText], delegate: self)
         }
@@ -102,4 +105,8 @@ extension RegexView {
             }
         }
     }
+}
+
+internal final class DropConduit: ObservableObject {
+    @Published var dropLocation: CGPoint? = nil
 }
