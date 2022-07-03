@@ -74,7 +74,7 @@ struct RegexView: View {
             }
             .onReceive(dropConduit.$dropPath) { output in
                 guard let (id, path) = output else { return }
-                params.move(id: id, to: path)
+                params.move(id, to: path)
             }
     }
     

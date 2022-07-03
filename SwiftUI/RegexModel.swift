@@ -22,21 +22,25 @@ final class _RegexModel: ObservableObject {
         components.regex()
     }
     
-    public func move(id: String, to target: ModelPath) -> Void {
-        guard let sourcePath = path(id: id) else {
-            Swift.debugPrint("Could not find path for ID \(id)")
-            if UUID(uuidString: id) != nil { assert(false) }
+    public func move(_ string: String, to target: ModelPath) -> Void {
+        if let sourcePath = path(id: string) {
+            guard target.isSubpathOf(sourcePath) == false else {
+                Swift.debugPrint("Cannot drop item into itself")
+                return
+            }
+            
+            withAnimation(Animation.jelly) {
+                insert(self[sourcePath], at: target)
+                delete(at: sourcePath.adjustedFor(insertionAt: target))
+            }
+        } else if let proxy = ComponentModel.Proxy(rawValue: string) {
+            withAnimation(Animation.jelly) {
+                insert(proxy.createNew(), at: target)
+            }
+        } else {
+            Swift.debugPrint("Could not resolve \(string)")
+            if UUID(uuidString: string) != nil { assert(false) }
             return
-        }
-        
-        guard target.isSubpathOf(sourcePath) == false else {
-            Swift.debugPrint("Cannot drop item into itself")
-            return
-        }
-        
-        withAnimation(Animation.jelly) {
-            insert(self[sourcePath], at: target)
-            delete(at: sourcePath.adjustedFor(insertionAt: target))
         }
     }
     
