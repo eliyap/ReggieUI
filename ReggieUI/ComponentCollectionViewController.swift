@@ -31,7 +31,7 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
             }
             
             cell.contentConfiguration = UIHostingConfiguration {
-                Text(proxy.displayTitle)
+                MenuTitle(proxy)
             }
             return cell
         })
@@ -40,7 +40,7 @@ final internal class ComponentCollectionViewController: UICollectionViewControll
         collectionView.dragDelegate = self
         
         // DEBUG
-        collectionView.backgroundColor = .purple
+        collectionView.backgroundColor = .secondarySystemBackground
         
         // PLACEHOLDER
         var snapshot = Snapshot()
@@ -87,11 +87,15 @@ final internal class ComponentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .blue
+     
+        /// Enable rounded corners when dragging cell.
+        layer.masksToBounds = true
+        layer.cornerRadius = titleCornerRadius
         
         // DEBUG
-        layer.borderWidth = 4
-        layer.borderColor = UIColor.black.cgColor
+//        self.backgroundColor = .blue
+//        layer.borderWidth = 4
+//        layer.borderColor = UIColor.black.cgColor
     }
     
     required init?(coder aDecoder: NSCoder) {

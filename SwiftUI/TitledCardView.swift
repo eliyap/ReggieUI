@@ -128,6 +128,19 @@ func DefaultTitle(_ string: String, _ symbol: some View) -> some View {
         }
 }
 
+/// Custom title variant for the sheet menu.
+func MenuTitle(_ proxy: ComponentModel.Proxy) -> some View {
+    HStack(spacing: titlePadding / 2) {
+        proxy.symbol
+        Text(proxy.displayTitle)
+        Spacer()
+    }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(titlePadding)
+        .background(CardBackground())
+        .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
+}
+
 fileprivate struct DividerForeground: ViewModifier {
     
     @Environment(\.colorScheme) private var colorScheme
