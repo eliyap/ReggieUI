@@ -14,7 +14,6 @@ struct DropRegion: View {
     @State private var hovered = false
     
     @Binding public var cardHovered: RelativeLocation?
-    public let coordinateSpaceName: String
     public let path: ModelPath
     public var relativeLocation: RelativeLocation
     
