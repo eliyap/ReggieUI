@@ -30,22 +30,20 @@ protocol TitledCardView: View {
     var mgeNamespace: Namespace.ID       { get }
 }
 
-fileprivate let titleCornerRadius: CGFloat = 16
-fileprivate let intraCardSpacing: CGFloat = 10
-let interCardSpacing: CGFloat = 30
+internal let titleCornerRadius: CGFloat = 16
+internal let interCardSpacing: CGFloat = 0
 internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8)
 
 extension TitledCardView {
     
     var body: some View {
-        VStack(spacing: intraCardSpacing) {
+        VStack(spacing: 0) {
             /// Placeholder to push contents down.
             title
                 .opacity(0)
             contents
                 .padding(insets)
         }
-            .padding(.bottom, intraCardSpacing)
             .overlay {
                 /// - Note: The sticky header and placeholder header **must** have equal dimensions.
                 ///         Give them the same width and layout "treatments" i.e. padding, etc.
