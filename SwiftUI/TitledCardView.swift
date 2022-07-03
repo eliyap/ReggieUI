@@ -35,7 +35,7 @@ internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8
 extension TitledCardView {
     
     var title: some View {
-        DefaultTitle(params.proxy.displayTitle, params.proxy.symbol)
+        DefaultTitle(params.proxy)
     }
     
     var body: some View {
@@ -107,6 +107,10 @@ fileprivate struct CardBackground: View {
 }
 
 fileprivate let titlePadding: CGFloat = 12
+
+func DefaultTitle(_ proxy: ComponentModel.Proxy) -> some View {
+    DefaultTitle(proxy.displayTitle, proxy.symbol)
+}
 
 func DefaultTitle(_ string: String, _ symbol: some View) -> some View {
     HStack(spacing: titlePadding / 2) {
