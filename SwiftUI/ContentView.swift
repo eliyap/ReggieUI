@@ -37,6 +37,7 @@ struct RegexView: View {
                 .environmentObject(dropConduit)
                 .padding(Self.internalPadding)
                 .onDrop(of: [.plainText], delegate: self)
+                .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
         }
             /// - Warning:
            /// When reducing sheet detent, scroll view does **NOT** move down if at bottom.
@@ -108,5 +109,9 @@ extension RegexView {
 }
 
 internal final class DropConduit: ObservableObject {
+    
+    /// Identifier for named `CoordinateSpace`.
+    public static let scrollCoordinateSpace: String = "DropConduitScrollCoordinateSpaceName"
+    
     @Published var dropLocation: CGPoint? = nil
 }
