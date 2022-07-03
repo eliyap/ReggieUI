@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 class ViewController: UIViewController {
 
@@ -23,10 +24,13 @@ class ViewController: UIViewController {
 }
 
 final internal class BuilderViewController: UIViewController { 
+    
+    private let sheetInsetConduit: SheetInsetConduit = .init()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        let host = UIHostingController(rootView: ColorView())
+        let host = UIHostingController(rootView: RegexView(sheetInsetConduit: sheetInsetConduit))
         addChild(host)
         view.addSubview(host.view)
         host.didMove(toParent: self)
@@ -44,7 +48,7 @@ final internal class BuilderViewController: UIViewController {
         super.viewDidAppear(animated)
         
         /// Create and present sheet.
-        let picker = PickerViewController()
+        let picker = PickerViewController(sheetInsetConduit: sheetInsetConduit)
         picker.configureSheet()
         present(picker, animated: true)
     }
@@ -54,8 +58,8 @@ final internal class BuilderViewController: UIViewController {
     }
 }
 
-struct ColorView: View {
-    var body: some View {
-        Color.red
-    }
+/// App's `Combine` based nervous system for event passing.
+final class SheetInsetConduit: ObservableObject {
+    /// The amount of height that the sheet is obscuring of the view behind.
+    @Published public var sheetObscuringHeight: CGFloat = .zero
 }

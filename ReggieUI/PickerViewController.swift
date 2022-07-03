@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import SwiftUI
 
 final internal class PickerViewController: UIViewController {
-    init() {
+    
+    private let sheetInsetConduit: SheetInsetConduit
+    
+    init(sheetInsetConduit: SheetInsetConduit) {
+        self.sheetInsetConduit = sheetInsetConduit
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .red
         
@@ -64,6 +69,13 @@ final internal class PickerViewController: UIViewController {
             sheet.preferredCornerRadius = 15
         } else {
             Swift.debugPrint("Sheet controller not available!")
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        withAnimation(.default) {
+            sheetInsetConduit.sheetObscuringHeight = view.frame.height
         }
     }
 
