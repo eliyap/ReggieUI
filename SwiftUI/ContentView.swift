@@ -61,12 +61,11 @@ struct RegexView: View {
 extension RegexView: DropDelegate {
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        dropConduit.dropLocation = info.location
+        dropConduit.dropLocation = (info.location, .hover)
         return DropProposal(operation: .move)
     }
     
     func performDrop(info: DropInfo) -> Bool {
-        dropConduit.dropLocation = nil
         
         let providers = info.itemProviders(for: [.plainText])
         guard providers.count == 1 else {
@@ -91,7 +90,10 @@ extension RegexView: DropDelegate {
                 return
             }
             
-            print("id", string)
+            DispatchQueue.main.async {
+                dropConduit.dropLocation = (info.location, .drop(string as String))
+                dropConduit.dropLocation = (nil, nil)
+            }
         }
         
         return true
@@ -121,5 +123,10 @@ internal final class DropConduit: ObservableObject {
     /// Identifier for named `CoordinateSpace`.
     public static let scrollCoordinateSpace: String = "DropConduitScrollCoordinateSpaceName"
     
-    @Published var dropLocation: CGPoint? = nil
+    public enum Event {
+        case hover
+        case drop(String)
+    }
+    
+    @Published var dropLocation: (CGPoint?, Event?) = (nil, nil)
 }
