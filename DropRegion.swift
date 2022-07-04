@@ -78,38 +78,38 @@ struct DropRegion: View {
     }
     
     // MARK: - Height Calculation
-    let baseHeight: CGFloat = 20
+    public static let baseHeight: CGFloat = 20
     let heightAdjustment: CGFloat = 20
     
     var height: CGFloat {
         if hovered {
-            return baseHeight + heightAdjustment
+            return Self.baseHeight + heightAdjustment
         }
         
         switch cardHovered {
         case .middle:
             switch relativeLocation {
             case .bottom, .top:
-                return baseHeight - heightAdjustment / 2
+                return Self.baseHeight - heightAdjustment / 2
             default:
                 break
             }
         
         case .top:
             if case .bottom = relativeLocation {
-                return baseHeight - heightAdjustment
+                return Self.baseHeight - heightAdjustment
             }
             
         case .bottom:
             if case .top = relativeLocation {
-                return baseHeight - heightAdjustment
+                return Self.baseHeight - heightAdjustment
             }
         
         case .none:
             break
         }
         
-        return baseHeight
+        return Self.baseHeight
     }
 }
 

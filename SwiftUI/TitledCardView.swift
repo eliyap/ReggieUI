@@ -43,6 +43,11 @@ extension TitledCardView {
             /// Placeholder to push contents down.
             title
                 .opacity(0)
+            
+            /// Temporary spacing hack.
+            Color.clear
+                .frame(height: DropRegion.baseHeight / 2)
+            
             contents
                 .padding(insets)
         }

@@ -61,7 +61,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Grid {
                 ParamBehavior
             }
@@ -131,7 +131,10 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        VStack {
+        VStack(spacing: .zero) {
+            Grid {
+                ParamBehavior
+            }
             ComponentsView
         }
     }
@@ -197,7 +200,10 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        VStack {
+        VStack(spacing: .zero) {
+            Grid {
+                ParamBehavior
+            }
             ComponentsView
         }
     }
@@ -264,7 +270,10 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     #warning("TODO: implement repeat range count UI")
     var contents: some View {
-        VStack {
+        VStack(spacing: .zero) {
+            Grid {
+                ParamBehavior
+            }
             ComponentsView
         }
     }
