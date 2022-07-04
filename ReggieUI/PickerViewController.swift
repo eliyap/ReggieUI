@@ -17,7 +17,7 @@ final internal class PickerViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         #warning("todo: fix padding and background")
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
         
         let stackView = UIStackView()
         view.addSubview(stackView)
@@ -30,14 +30,34 @@ final internal class PickerViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
-        let searchBar = UISearchBar()
-        stackView.addArrangedSubview(searchBar)
+        addSearchBar(to: stackView)
 
         let cvc = ComponentCollectionViewController()
         addChild(cvc)
         cvc.didMove(toParent: self)
         
         stackView.addArrangedSubview(cvc.view)
+    }
+    
+    private func addSearchBar(to stackView: UIStackView) -> Void {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.isTranslucent = true
+        searchBar.placeholder = "Search for Regular Expression parts"
+        
+        /// Experimentally determined.
+        /// Goal is to have equal spacing between the top of the sheet and the grab handle, and the bottom of the grab handle and top of the saerch bar.
+        let barInsets: CGFloat = 6
+        let barContainer = UIView()
+        barContainer.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: barContainer.topAnchor, constant: barInsets),
+            searchBar.bottomAnchor.constraint(equalTo: barContainer.bottomAnchor, constant: -barInsets),
+            searchBar.leadingAnchor.constraint(equalTo: barContainer.leadingAnchor, constant: barInsets),
+            searchBar.trailingAnchor.constraint(equalTo: barContainer.trailingAnchor, constant: -barInsets),
+        ])
+        stackView.addArrangedSubview(barContainer)
     }
     
     public func configureSheet() {
