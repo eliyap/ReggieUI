@@ -35,7 +35,11 @@ final internal class BuilderViewController: UIViewController {
         picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)
         
-        let hostedView = RegexView(sheetInsetConduit: sheetInsetConduit, modalConduit: modalConduit)
+        let hostedView = RegexView(
+            sheetInsetConduit: sheetInsetConduit,
+            params: model,
+            modalConduit: modalConduit
+        )
         let host = UIHostingController(rootView: hostedView)
         addChild(host)
         view.addSubview(host.view)

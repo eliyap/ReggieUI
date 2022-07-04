@@ -14,13 +14,13 @@ struct RegexView: View {
     /// In case of multiple instances, ensure this is instance specific.
     private let scrollCoordinateSpaceName = UUID().uuidString
     
-    @StateObject private var params: _RegexModel = .init(components: _RegexModel.example)
     @StateObject private var dropConduit: DropConduit = .init()
     @StateObject private var parameterConduit: ParameterConduit = .init()
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     @Namespace private var mgeNamespace
     
     @ObservedObject public var sheetInsetConduit: SheetInsetConduit
+    @ObservedObject public var params: _RegexModel
     public let modalConduit: ModalConduit
     
     var body: some View {
