@@ -79,6 +79,10 @@ struct RegexView: View {
                 guard let (id, path) = output else { return }
                 params.move(id, to: path)
             }
+            .onReceive(parameterConduit.componentQueue, perform: { output in
+                let (path, component) = output
+                params[path] = component
+            })
     }
     
     public static let internalPadding: CGFloat = 30
