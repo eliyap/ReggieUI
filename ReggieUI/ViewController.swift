@@ -28,6 +28,7 @@ final internal class BuilderViewController: UIViewController {
     private let sheetInsetConduit: SheetInsetConduit = .init()
     private let modalConduit: ModalConduit = .init()
     private let picker: PickerViewController
+    private var observers: Set<AnyCancellable> = []
     
     init() {
         picker = .init(sheetInsetConduit: sheetInsetConduit)
@@ -46,6 +47,18 @@ final internal class BuilderViewController: UIViewController {
             host.view.topAnchor.constraint(equalTo: view.topAnchor),
             host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+        
+        modalConduit.hostIsPresenting
+            .sink { [weak self] isPresenting in
+                guard let self = self else { return }
+                if isPresenting {
+                    self.picker.dismiss(animated: false)
+                } else {
+                    self.picker.configureSheet()
+                    self.present(self.picker, animated: true)
+                }
+            }
+            .store(in: &observers)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +71,12 @@ final internal class BuilderViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        for observer in observers {
+            observer.cancel()
+        }
     }
 }
 
