@@ -26,7 +26,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
             ParamString
         }
             /// Add padding since there aren't any component `DropRegion`s.
-            .padding(.bottom, DropRegion.baseHeight / 2)
+            .padding(.vertical, DropRegion.baseHeight / 2)
     }
     
     @State private var param_string: String = ""
@@ -68,6 +68,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
             Grid {
                 ParamBehavior
             }
+                .padding(.top, DropRegion.baseHeight / 2)
             ComponentsView
         }
     }
