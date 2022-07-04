@@ -10,6 +10,8 @@ import RegexModel
 
 struct StringCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
+    
     let params: StringParameter
     let coordinateSpaceName: String
     let path: ModelPath
@@ -19,8 +21,27 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        Group {
-            Text(params.string)
+        Grid {
+            ParamString
+        }
+    }
+    
+    @State private var param_string: String = ""
+    let param_string_name = "Matched Text"
+    var ParamString: some View {
+        GridRow {
+            Text(param_string_name + ": ")
+            TextField("", text: $param_string, prompt: Text("text to match"))
+                .onAppear {
+                    param_string = params.string
+                }
+                .onSubmit {
+                    var params = params
+                    params.string = param_string
+                    parameterConduit.componentQueue.send((path, .string(params)))
+                }
+                .accessibilityLabel(param_string_name)
+                .textFieldStyle(.roundedBorder)
         }
     }
 }
