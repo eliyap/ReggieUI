@@ -130,6 +130,12 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
+        VStack {
+            ComponentsView
+        }
+    }
+    
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
@@ -169,6 +175,12 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
+        VStack {
+            ComponentsView
+        }
+    }
+    
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
@@ -208,6 +220,12 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
+        VStack {
+            ComponentsView
+        }
+    }
+    
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
@@ -246,7 +264,12 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
-    var contents: some View {
+    var contents: some View {VStack {
+            ComponentsView
+        }
+    }
+
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
@@ -287,6 +310,12 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
+        VStack {
+            ComponentsView
+        }
+    }
+    
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
