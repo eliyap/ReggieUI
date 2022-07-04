@@ -484,6 +484,9 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 
 struct AnchorCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
+    
     let params: AnchorParameter
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
@@ -494,8 +497,47 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     
     #warning("temporary")
     var contents: some View {
-        Group {
-            Text("params.boundary")
+        VStack {
+            ParamBoundary
+                .padding(.trailing, cardInsets.trailing)
+        }
+            /// Add padding since there aren't any component `DropRegion`s.
+            .padding(.vertical, DropRegion.baseHeight / 2)
+    }
+    
+    @State private var param_boundary: AnchorParameter.Boundary = .default
+    @State private var showBoundaryMenu: Bool = false
+    private let param_boundary_name = "Boundary"
+    private var ParamBoundary: some View {
+        HStack {
+            Text(param_boundary_name)
+                .fontWeight(.medium)
+            Spacer()
+            Button(param_boundary.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showBoundaryMenu = true
+            }
+                .onAppear {
+                    param_boundary = params.boundary
+                }
+                .confirmationDialog(param_boundary_name, isPresented: $showBoundaryMenu, titleVisibility: .visible) {
+                    ForEach(AnchorParameter.Boundary.allCases, id: \.self) { boundary in
+                        Button(boundary.displayTitle) {
+                            var params = params
+                            params.boundary = boundary
+                            parameterConduit.componentQueue.send((path, .anchor(params)))
+                            
+                            param_boundary = boundary
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showBoundaryMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
+                }
         }
     }
 }
