@@ -31,7 +31,9 @@ final internal class PickerViewController: UIViewController {
         ])
         
         addSearchBar(to: stackView)
-
+        addSwitcher(to: stackView)
+        addDivider(to: stackView)
+        
         let cvc = ComponentCollectionViewController()
         addChild(cvc)
         cvc.didMove(toParent: self)
@@ -52,12 +54,40 @@ final internal class PickerViewController: UIViewController {
         barContainer.addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: barContainer.topAnchor, constant: barInsets),
+            searchBar.topAnchor.constraint(equalTo: barContainer.topAnchor, constant: +barInsets),
             searchBar.bottomAnchor.constraint(equalTo: barContainer.bottomAnchor, constant: -barInsets),
-            searchBar.leadingAnchor.constraint(equalTo: barContainer.leadingAnchor, constant: barInsets),
+            searchBar.leadingAnchor.constraint(equalTo: barContainer.leadingAnchor, constant: +barInsets),
             searchBar.trailingAnchor.constraint(equalTo: barContainer.trailingAnchor, constant: -barInsets),
         ])
         stackView.addArrangedSubview(barContainer)
+    }
+    
+    private func addSwitcher(to stackView: UIStackView) -> Void {
+        let switcher = UISegmentedControl(items: ["Parts", "Tests"])
+        switcher.selectedSegmentIndex = 0
+        
+        /// Picked to line up with the search bar.
+        let horizontalInsets: CGFloat = 14
+        let bottomInset: CGFloat = 14
+        let switcherContainer = UIView()
+        switcherContainer.addSubview(switcher)
+        switcher.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            switcher.topAnchor.constraint(equalTo: switcherContainer.topAnchor, constant: 0),
+            switcher.bottomAnchor.constraint(equalTo: switcherContainer.bottomAnchor, constant: -bottomInset),
+            switcher.leadingAnchor.constraint(equalTo: switcherContainer.leadingAnchor, constant: +horizontalInsets),
+            switcher.trailingAnchor.constraint(equalTo: switcherContainer.trailingAnchor, constant: -horizontalInsets),
+        ])
+
+        stackView.addArrangedSubview(switcherContainer)
+    }
+    
+    private func addDivider(to stackView: UIStackView) -> Void {
+        let divider = UIView()
+        divider.backgroundColor = .separator
+        NSLayoutConstraint.activate([divider.heightAnchor.constraint(equalToConstant: 1.0)])
+        
+        stackView.addArrangedSubview(divider)
     }
     
     public func configureSheet() {
