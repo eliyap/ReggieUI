@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
+		222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
 		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
+		222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRepetitionBehavior.displayTitle.swift; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		222E503E2872F65400D89CEE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		22D9E5B528709D5900E64BAA /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 				22D9E5B528709D5900E64BAA /* Packages */,
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
+				222E503E2872F65400D89CEE /* Extensions */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
 				22D9E5B728709D6B00E64BAA /* Frameworks */,
 			);
@@ -214,6 +225,7 @@
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
 				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
+				222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */,
 				22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */,
 				22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */,
 			);

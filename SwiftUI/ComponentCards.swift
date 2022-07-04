@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RegexBuilder
 import RegexModel
 
 struct StringCard<ParentTitles: View>: TitledCardView {
@@ -27,8 +28,8 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_string: String = ""
-    let param_string_name = "Matched Text"
-    var ParamString: some View {
+    private let param_string_name = "Matched Text"
+    private var ParamString: some View {
         GridRow {
             Text(param_string_name + ": ")
             TextField("", text: $param_string, prompt: Text("text to match"))
@@ -48,6 +49,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
 
 struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ZeroOrMoreParameter
@@ -59,6 +61,15 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
+        VStack {
+            Grid {
+                ParamBehavior
+            }
+            ComponentsView
+        }
+    }
+    
+    private var ComponentsView: some View {
         VStack(spacing: interCardSpacing) {
             DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
@@ -81,6 +92,26 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                         : .middle
                 )
             }
+        }
+    }
+    
+    @State private var param_behavior: RegexRepetitionBehavior = .default
+    private let param_behavior_name = "Repetition"
+    private var ParamBehavior: some View {
+        GridRow {
+            Text(param_behavior_name + ": ")
+            Picker("", selection: $param_behavior) {
+                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    Text(behavior.displayTitle)
+                }
+            }
+                .pickerStyle(.segmented)
+                .accessibilityLabel(param_behavior_name)
+                .onChange(of: param_behavior, perform: { behavior in
+                    var params = params
+                    params.behaviour = behavior
+                    parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
+                })
         }
     }
 }
