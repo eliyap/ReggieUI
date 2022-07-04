@@ -27,8 +27,10 @@ final internal class BuilderViewController: UIViewController {
     
     private let sheetInsetConduit: SheetInsetConduit = .init()
     private let modalConduit: ModalConduit = .init()
+    private let picker: PickerViewController
     
     init() {
+        picker = .init(sheetInsetConduit: sheetInsetConduit)
         super.init(nibName: nil, bundle: nil)
         
         let hostedView = RegexView(sheetInsetConduit: sheetInsetConduit, modalConduit: modalConduit)
@@ -49,8 +51,7 @@ final internal class BuilderViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        /// Create and present sheet.
-        let picker = PickerViewController(sheetInsetConduit: sheetInsetConduit)
+        /// Configure and present sheet.
         picker.configureSheet()
         present(picker, animated: true)
     }
