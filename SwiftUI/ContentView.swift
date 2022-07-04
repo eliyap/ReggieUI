@@ -11,24 +11,17 @@ import RegexModel
 
 struct RegexView: View {
     
-    @StateObject private var params: _RegexModel = .init(components: _RegexModel.example)
-    
     /// In case of multiple instances, ensure this is instance specific.
     private let coordinateSpaceName = UUID().uuidString
     
-    @ObservedObject private var sheetInsetConduit: SheetInsetConduit
-    
+    @StateObject private var params: _RegexModel = .init(components: _RegexModel.example)
     @StateObject private var dropConduit: DropConduit = .init()
-    
     @StateObject private var parameterConduit: ParameterConduit = .init()
-    
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
-    
     @Namespace private var mgeNamespace
     
-    init(sheetInsetConduit: SheetInsetConduit) {
-        self.sheetInsetConduit = sheetInsetConduit
-    }
+    @ObservedObject public var sheetInsetConduit: SheetInsetConduit
+    public let modalConduit: ModalConduit
     
     var body: some View {
         ScrollView {
@@ -57,6 +50,7 @@ struct RegexView: View {
             }
                 .environmentObject(dropConduit)
                 .environmentObject(parameterConduit)
+                .environmentObject(modalConduit)
                 .padding(Self.internalPadding)
                 .onDrop(of: [.plainText], delegate: self)
                 .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
