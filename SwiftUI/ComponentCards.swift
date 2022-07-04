@@ -12,9 +12,9 @@ import RegexModel
 struct StringCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: StringParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -56,10 +56,10 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ZeroOrMoreParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -141,10 +141,10 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OneOrMoreParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -227,10 +227,10 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OptionallyParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -312,10 +312,10 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: RepeatParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -396,10 +396,10 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
 
 struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: LookaheadParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -440,10 +440,10 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
 struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 /// Pick a card, any card...
     
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ChoiceOfParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -486,9 +486,9 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: AnchorParameter
-    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
