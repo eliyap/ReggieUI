@@ -34,11 +34,11 @@ final internal class PickerViewController: UIViewController {
         addSwitcher(to: stackView)
         addDivider(to: stackView)
         
-        let cvc = ComponentCollectionViewController()
-        addChild(cvc)
-        cvc.didMove(toParent: self)
+        let svc = SwitchedViewController()
+        addChild(svc)
+        svc.didMove(toParent: self)
         
-        stackView.addArrangedSubview(cvc.view)
+        stackView.addArrangedSubview(svc.view)
     }
     
     private func addSearchBar(to stackView: UIStackView) -> Void {

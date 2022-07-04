@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
 		222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */; };
+		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
 		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
 		222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRepetitionBehavior.displayTitle.swift; sourceTree = "<group>"; };
+		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */,
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
 				22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */,
+				222E50432873910800D89CEE /* SwitchedViewController.swift */,
 				22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */,
 				22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */,
 				22E3ECBE2868D0E5003B6F55 /* Main.storyboard */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */,
+				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
 				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
