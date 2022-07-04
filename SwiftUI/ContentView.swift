@@ -20,6 +20,8 @@ struct RegexView: View {
     
     @StateObject private var dropConduit: DropConduit = .init()
     
+    @StateObject private var parameterConduit: ParameterConduit = .init()
+    
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     @Namespace private var mgeNamespace
@@ -54,6 +56,7 @@ struct RegexView: View {
                 }
             }
                 .environmentObject(dropConduit)
+                .environmentObject(parameterConduit)
                 .padding(Self.internalPadding)
                 .onDrop(of: [.plainText], delegate: self)
                 .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
@@ -158,4 +161,12 @@ internal final class DropConduit: ObservableObject {
     @Published var dropLocation: (CGPoint?, Event?) = (nil, nil)
     
     @Published var dropPath: (id: String, ModelPath)? = nil
+}
+
+/// - Note: `ObservableObject` conformance lets us inject this as an `@EnvironmentObject`,
+///         but this should not have `@Published` properties to avoid heavy view updates!
+internal final class ParameterConduit: ObservableObject {
+    
+    /// Pipeline for requesting changes to the model.
+    public let componentQueue: PassthroughSubject<(ModelPath, ComponentModel), Never> = .init()
 }
