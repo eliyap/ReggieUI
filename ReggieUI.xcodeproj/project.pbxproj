@@ -97,6 +97,7 @@
 				22D9E5BD28709DD200E64BAA /* RegexModel.swift */,
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
+				220229B328721EF200EAF840 /* DropRegion.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -104,7 +105,6 @@
 		22E3ECAC2868D0E4003B6F55 = {
 			isa = PBXGroup;
 			children = (
-				220229B328721EF200EAF840 /* DropRegion.swift */,
 				22D9E5B528709D5900E64BAA /* Packages */,
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
