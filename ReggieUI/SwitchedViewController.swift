@@ -58,16 +58,3 @@ final internal class SwitchedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-final internal class TestsViewController: UIViewController {
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        // DEBUG
-        view.backgroundColor = .red
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
