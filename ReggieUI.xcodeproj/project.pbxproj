@@ -109,7 +109,6 @@
 		22E3ECAC2868D0E4003B6F55 = {
 			isa = PBXGroup;
 			children = (
-				222E50452873AD9900D89CEE /* TestsViewController.swift */,
 				22D9E5B528709D5900E64BAA /* Packages */,
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
@@ -135,6 +134,7 @@
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
 				22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */,
 				222E50432873910800D89CEE /* SwitchedViewController.swift */,
+				222E50452873AD9900D89CEE /* TestsViewController.swift */,
 				22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */,
 				22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */,
 				22E3ECBE2868D0E5003B6F55 /* Main.storyboard */,
