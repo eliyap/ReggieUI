@@ -22,8 +22,9 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        Grid {
+        VStack {
             ParamString
+                .padding(.trailing, cardInsets.trailing)
         }
             /// Add padding since there aren't any component `DropRegion`s.
             .padding(.vertical, DropRegion.baseHeight / 2)
@@ -32,9 +33,12 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     @State private var param_string: String = ""
     private let param_string_name = "Matched Text"
     private var ParamString: some View {
-        GridRow {
-            Text(param_string_name + ": ")
-            TextField("", text: $param_string, prompt: Text("text to match"))
+        HStack {
+            Text(param_string_name)
+                .fontWeight(.medium)
+            Spacer()
+            TextField("", text: $param_string, prompt: Text("text"))
+                .multilineTextAlignment(.trailing)
                 .onAppear {
                     param_string = params.string
                 }
@@ -44,7 +48,6 @@ struct StringCard<ParentTitles: View>: TitledCardView {
                     parameterConduit.componentQueue.send((path, .string(params)))
                 }
                 .accessibilityLabel(param_string_name)
-                .textFieldStyle(.roundedBorder)
         }
     }
 }
@@ -64,13 +67,12 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        VStack(alignment: .leading, spacing: .zero) {
-            Grid {
-                ParamBehavior
-            }
-                .padding(.top, DropRegion.baseHeight / 2)
+        VStack(spacing: .zero) {
+            ParamBehavior
+                .padding(.trailing, cardInsets.trailing)
             ComponentsView
         }
+            .padding(.top, DropRegion.baseHeight / 2)
     }
     
     private var ComponentsView: some View {
@@ -103,8 +105,10 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
-        GridRow {
-            Text(param_behavior_name + ": ")
+        HStack {
+            Text(param_behavior_name)
+                .fontWeight(.medium)
+            Spacer()
             Button(param_behavior.displayTitle) {
                 modalConduit.hostIsPresenting.send(true)
                 showBehaviorMenu = true
@@ -137,6 +141,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
 struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OneOrMoreParameter
@@ -150,11 +155,11 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: .zero) {
-            Grid {
-                ParamBehavior
-            }
+            ParamBehavior
+                .padding(.trailing, cardInsets.trailing)
             ComponentsView
         }
+            .padding(.top, DropRegion.baseHeight / 2)
     }
     
     private var ComponentsView: some View {
@@ -184,22 +189,38 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
-        GridRow {
-            Text(param_behavior_name + ": ")
-            Picker("", selection: $param_behavior) {
-                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
-                    Text(behavior.displayTitle)
-                }
+        HStack {
+            Text(param_behavior_name)
+                .fontWeight(.medium)
+            Spacer()
+            Button(param_behavior.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showBehaviorMenu = true
             }
-                .pickerStyle(.segmented)
-                .accessibilityLabel(param_behavior_name)
-                .onChange(of: param_behavior, perform: { behavior in
-                    var params = params
-                    params.behaviour = behavior
-                    parameterConduit.componentQueue.send((path, .oneOrMore(params)))
-                })
+                .onAppear {
+                    param_behavior = params.behaviour
+                }
+                .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                        Button(behavior.displayTitle) {
+                            var params = params
+                            params.behaviour = behavior
+                            parameterConduit.componentQueue.send((path, .oneOrMore(params)))
+                            
+                            param_behavior = behavior
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showBehaviorMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
+                }
         }
     }
 }
@@ -207,6 +228,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
 struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OptionallyParameter
@@ -219,11 +241,11 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
     var contents: some View {
         VStack(spacing: .zero) {
-            Grid {
-                ParamBehavior
-            }
+            ParamBehavior
+                .padding(.trailing, cardInsets.trailing)
             ComponentsView
         }
+            .padding(.top, DropRegion.baseHeight / 2)
     }
     
     private var ComponentsView: some View {
@@ -253,22 +275,38 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
-        GridRow {
-            Text(param_behavior_name + ": ")
-            Picker("", selection: $param_behavior) {
-                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
-                    Text(behavior.displayTitle)
-                }
+        HStack {
+            Text(param_behavior_name)
+                .fontWeight(.medium)
+            Spacer()
+            Button(param_behavior.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showBehaviorMenu = true
             }
-                .pickerStyle(.segmented)
-                .accessibilityLabel(param_behavior_name)
-                .onChange(of: param_behavior, perform: { behavior in
-                    var params = params
-                    params.behaviour = behavior
-                    parameterConduit.componentQueue.send((path, .optionally(params)))
-                })
+                .onAppear {
+                    param_behavior = params.behaviour
+                }
+                .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                        Button(behavior.displayTitle) {
+                            var params = params
+                            params.behaviour = behavior
+                            parameterConduit.componentQueue.send((path, .optionally(params)))
+                            
+                            param_behavior = behavior
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showBehaviorMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
+                }
         }
     }
 }
@@ -276,6 +314,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
 struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: RepeatParameter
@@ -289,11 +328,11 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     #warning("TODO: implement repeat range count UI")
     var contents: some View {
         VStack(spacing: .zero) {
-            Grid {
-                ParamBehavior
-            }
+            ParamBehavior
+                .padding(.trailing, cardInsets.trailing)
             ComponentsView
         }
+            .padding(.top, DropRegion.baseHeight / 2)
     }
     
     private var ComponentsView: some View {
@@ -323,22 +362,38 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
-        GridRow {
-            Text(param_behavior_name + ": ")
-            Picker("", selection: $param_behavior) {
-                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
-                    Text(behavior.displayTitle)
-                }
+        HStack {
+            Text(param_behavior_name)
+                .fontWeight(.medium)
+            Spacer()
+            Button(param_behavior.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showBehaviorMenu = true
             }
-                .pickerStyle(.segmented)
-                .accessibilityLabel(param_behavior_name)
-                .onChange(of: param_behavior, perform: { behavior in
-                    var params = params
-                    params.behaviour = behavior
-                    parameterConduit.componentQueue.send((path, .repeat(params)))
-                })
+                .onAppear {
+                    param_behavior = params.behaviour
+                }
+                .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                        Button(behavior.displayTitle) {
+                            var params = params
+                            params.behaviour = behavior
+                            parameterConduit.componentQueue.send((path, .repeat(params)))
+                            
+                            param_behavior = behavior
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showBehaviorMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
+                }
         }
     }
 }
