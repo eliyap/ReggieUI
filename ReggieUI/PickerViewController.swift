@@ -47,8 +47,11 @@ final internal class PickerViewController: UIViewController {
             self.isModalInPresentation = true
             
             sheet.detents = [
+                /// - Note: disabled, because adding this would require custom code to "duck" the sheet when dragging out out large
+                ///         detent, similar to Shortcuts.
+                //.large(),
+                
                 .medium(),
-                .large(),
                 .custom(identifier: .small, resolver: { context in
                     #warning("TODO: adapt to dynamic type!")
                     return 100
