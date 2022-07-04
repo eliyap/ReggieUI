@@ -26,11 +26,13 @@ class ViewController: UIViewController {
 final internal class BuilderViewController: UIViewController { 
     
     private let sheetInsetConduit: SheetInsetConduit = .init()
+    private let modalConduit: ModalConduit = .init()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        let host = UIHostingController(rootView: RegexView(sheetInsetConduit: sheetInsetConduit))
+        let hostedView = RegexView(sheetInsetConduit: sheetInsetConduit, modalConduit: modalConduit)
+        let host = UIHostingController(rootView: hostedView)
         addChild(host)
         view.addSubview(host.view)
         host.didMove(toParent: self)
