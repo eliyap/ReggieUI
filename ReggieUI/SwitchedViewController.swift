@@ -10,9 +10,10 @@ import UIKit
 final internal class SwitchedViewController: UIViewController {
     
     public let componentsViewController = ComponentCollectionViewController()
-    public let testsViewController = TestsViewController()
+    public let testsViewController: TestsViewController
     
-    init() {
+    init(model: _RegexModel) {
+        self.testsViewController = .init(model: model)
         super.init(nibName: nil, bundle: nil)
 
         /// TestsViewController

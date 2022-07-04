@@ -28,7 +28,7 @@ final internal class TestsViewController: UICollectionViewController {
     
     public typealias Cell = ComponentCell
     
-    init() {
+    init(model: _RegexModel) {
         let layout = createListLayout()
         super.init(collectionViewLayout: layout)
         /// Defuse implicitly unwrapped nil.

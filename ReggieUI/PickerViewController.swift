@@ -11,10 +11,14 @@ import SwiftUI
 final internal class PickerViewController: UIViewController {
     
     private let sheetInsetConduit: SheetInsetConduit
-    private let switchedViewController = SwitchedViewController()
+    private let switchedViewController: SwitchedViewController
     
-    init(sheetInsetConduit: SheetInsetConduit) {
+    init(
+        sheetInsetConduit: SheetInsetConduit,
+        model: _RegexModel
+    ) {
         self.sheetInsetConduit = sheetInsetConduit
+        self.switchedViewController = .init(model: model)
         super.init(nibName: nil, bundle: nil)
         
         #warning("todo: fix padding and background")
