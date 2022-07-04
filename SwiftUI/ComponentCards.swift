@@ -52,6 +52,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
 struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ZeroOrMoreParameter
@@ -63,7 +64,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     let insets = cardInsets
     
     var contents: some View {
-        VStack(spacing: .zero) {
+        VStack(alignment: .leading, spacing: .zero) {
             Grid {
                 ParamBehavior
             }
@@ -98,22 +99,30 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
         GridRow {
             Text(param_behavior_name + ": ")
-            Picker("", selection: $param_behavior) {
-                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
-                    Text(behavior.displayTitle)
-                }
+            Button(param_behavior.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showBehaviorMenu = true
             }
-                .pickerStyle(.segmented)
-                .accessibilityLabel(param_behavior_name)
-                .onChange(of: param_behavior, perform: { behavior in
-                    var params = params
-                    params.behaviour = behavior
-                    parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
-                })
+                .onAppear {
+                    param_behavior = params.behaviour
+                }
+                .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                        Button(behavior.displayTitle) {
+                            var params = params
+                            params.behaviour = behavior
+                            parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
+                            
+                            param_behavior = behavior
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                }
         }
     }
 }
