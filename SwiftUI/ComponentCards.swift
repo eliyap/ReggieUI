@@ -122,6 +122,12 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                             modalConduit.hostIsPresenting.send(false)
                         }
                     }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showBehaviorMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
                 }
         }
     }
