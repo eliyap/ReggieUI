@@ -11,6 +11,7 @@ import SwiftUI
 final internal class PickerViewController: UIViewController {
     
     private let sheetInsetConduit: SheetInsetConduit
+    private let switchedViewController = SwitchedViewController()
     
     init(sheetInsetConduit: SheetInsetConduit) {
         self.sheetInsetConduit = sheetInsetConduit
@@ -34,11 +35,9 @@ final internal class PickerViewController: UIViewController {
         addSwitcher(to: stackView)
         addDivider(to: stackView)
         
-        let svc = SwitchedViewController()
-        addChild(svc)
-        svc.didMove(toParent: self)
-        
-        stackView.addArrangedSubview(svc.view)
+        addChild(switchedViewController)
+        switchedViewController.didMove(toParent: self)
+        stackView.addArrangedSubview(switchedViewController.view)
     }
     
     private func addSearchBar(to stackView: UIStackView) -> Void {
@@ -65,6 +64,7 @@ final internal class PickerViewController: UIViewController {
     private func addSwitcher(to stackView: UIStackView) -> Void {
         let switcher = UISegmentedControl(items: ["Parts", "Tests"])
         switcher.selectedSegmentIndex = 0
+        switcher.addTarget(self, action: #selector(switcherDidChange), for: .valueChanged)
         
         /// Picked to line up with the search bar.
         let horizontalInsets: CGFloat = 14
@@ -80,6 +80,10 @@ final internal class PickerViewController: UIViewController {
         ])
 
         stackView.addArrangedSubview(switcherContainer)
+    }
+    
+    @objc private func switcherDidChange(_ sender: UISegmentedControl) -> Void {
+        switchedViewController.bringToFront(sender.selectedSegmentIndex)
     }
     
     private func addDivider(to stackView: UIStackView) -> Void {
