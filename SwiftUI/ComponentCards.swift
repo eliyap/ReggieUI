@@ -14,7 +14,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     @EnvironmentObject private var parameterConduit: ParameterConduit
     
     let params: StringParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -59,7 +59,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ZeroOrMoreParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -81,7 +81,6 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -145,7 +144,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OneOrMoreParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -168,7 +167,6 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -232,7 +230,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OptionallyParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -254,7 +252,6 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -318,7 +315,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: RepeatParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -341,7 +338,6 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -403,7 +399,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: LookaheadParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -421,7 +417,6 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -448,7 +443,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: ChoiceOfParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles
@@ -467,7 +462,6 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
             ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                 ComponentView(
                     model: model,
-                    coordinateSpaceName: coordinateSpaceName,
                     path: path.appending(.child(index: index, subpath: .target)),
                     mgeNamespace: mgeNamespace,
                     parentHeaders: {
@@ -491,7 +485,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 struct AnchorCard<ParentTitles: View>: TitledCardView {
     
     let params: AnchorParameter
-    let coordinateSpaceName: String
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     let path: ModelPath
     let mgeNamespace: Namespace.ID
     let parentTitles: () -> ParentTitles

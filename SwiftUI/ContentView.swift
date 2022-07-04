@@ -32,7 +32,6 @@ struct RegexView: View {
                 ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                     ComponentView(
                         model: model,
-                        coordinateSpaceName: scrollCoordinateSpaceName,
                         path: .child(index: index, subpath: .target),
                         mgeNamespace: mgeNamespace,
                         parentHeaders: EmptyView.init
