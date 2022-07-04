@@ -118,6 +118,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OneOrMoreParameter
@@ -160,10 +161,31 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
             }
         }
     }
+    
+    @State private var param_behavior: RegexRepetitionBehavior = .default
+    private let param_behavior_name = "Repetition"
+    private var ParamBehavior: some View {
+        GridRow {
+            Text(param_behavior_name + ": ")
+            Picker("", selection: $param_behavior) {
+                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    Text(behavior.displayTitle)
+                }
+            }
+                .pickerStyle(.segmented)
+                .accessibilityLabel(param_behavior_name)
+                .onChange(of: param_behavior, perform: { behavior in
+                    var params = params
+                    params.behaviour = behavior
+                    parameterConduit.componentQueue.send((path, .oneOrMore(params)))
+                })
+        }
+    }
 }
 
 struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: OptionallyParameter
@@ -205,10 +227,31 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
             }
         }
     }
+    
+    @State private var param_behavior: RegexRepetitionBehavior = .default
+    private let param_behavior_name = "Repetition"
+    private var ParamBehavior: some View {
+        GridRow {
+            Text(param_behavior_name + ": ")
+            Picker("", selection: $param_behavior) {
+                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    Text(behavior.displayTitle)
+                }
+            }
+                .pickerStyle(.segmented)
+                .accessibilityLabel(param_behavior_name)
+                .onChange(of: param_behavior, perform: { behavior in
+                    var params = params
+                    params.behaviour = behavior
+                    parameterConduit.componentQueue.send((path, .optionally(params)))
+                })
+        }
+    }
 }
 
 struct RepeatCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject private var parameterConduit: ParameterConduit
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
     let params: RepeatParameter
@@ -219,6 +262,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
     
     let insets = cardInsets
     
+    #warning("TODO: implement repeat range count UI")
     var contents: some View {
         VStack {
             ComponentsView
@@ -248,6 +292,26 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                         : .middle
                 )
             }
+        }
+    }
+    
+    @State private var param_behavior: RegexRepetitionBehavior = .default
+    private let param_behavior_name = "Repetition"
+    private var ParamBehavior: some View {
+        GridRow {
+            Text(param_behavior_name + ": ")
+            Picker("", selection: $param_behavior) {
+                ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    Text(behavior.displayTitle)
+                }
+            }
+                .pickerStyle(.segmented)
+                .accessibilityLabel(param_behavior_name)
+                .onChange(of: param_behavior, perform: { behavior in
+                    var params = params
+                    params.behaviour = behavior
+                    parameterConduit.componentQueue.send((path, .repeat(params)))
+                })
         }
     }
 }
