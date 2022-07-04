@@ -12,7 +12,7 @@ import RegexModel
 struct RegexView: View {
     
     /// In case of multiple instances, ensure this is instance specific.
-    private let coordinateSpaceName = UUID().uuidString
+    private let scrollCoordinateSpaceName = UUID().uuidString
     
     @StateObject private var params: _RegexModel = .init(components: _RegexModel.example)
     @StateObject private var dropConduit: DropConduit = .init()
@@ -32,7 +32,7 @@ struct RegexView: View {
                 ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
                     ComponentView(
                         model: model,
-                        coordinateSpaceName: coordinateSpaceName,
+                        coordinateSpaceName: scrollCoordinateSpaceName,
                         path: .child(index: index, subpath: .target),
                         mgeNamespace: mgeNamespace,
                         parentHeaders: EmptyView.init
@@ -64,7 +64,8 @@ struct RegexView: View {
                Color.clear
                    .frame(height: sheetInsetConduit.sheetObscuringHeight)
            })
-            .coordinateSpace(name: coordinateSpaceName)
+            .coordinateSpace(name: scrollCoordinateSpaceName)
+            .scrollCoordinateSpaceName(scrollCoordinateSpaceName)
             .background {
                 BackgroundColor()
                     .ignoresSafeArea()

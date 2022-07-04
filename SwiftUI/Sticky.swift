@@ -66,3 +66,22 @@ struct StickyLayout: Layout {
         }
     }
 }
+
+// MARK: - GeometryReader Helper
+/// String for coordinating `.coordinateSpace` and `GeometryReader` within a scroll view.
+internal struct ScrollCoordinateSpaceName: EnvironmentKey {
+    static let defaultValue: String = UUID().uuidString
+}
+
+extension EnvironmentValues {
+    var scrollCoordinateSpaceName: String {
+        get { self[ScrollCoordinateSpaceName.self] }
+        set { self[ScrollCoordinateSpaceName.self] = newValue }
+    }
+}
+
+extension View {
+    func scrollCoordinateSpaceName(_ scrollCoordinateSpaceName: String) -> some View {
+        environment(\.scrollCoordinateSpaceName, scrollCoordinateSpaceName)
+    }
+}
