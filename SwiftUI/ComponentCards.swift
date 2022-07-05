@@ -31,6 +31,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     }
     
     @State private var param_string: String = ""
+    @FocusState private var string_focused: Bool
     private let param_string_name = "Matched Text"
     private var ParamString: some View {
         HStack {
@@ -39,16 +40,23 @@ struct StringCard<ParentTitles: View>: TitledCardView {
             Spacer()
             TextField("", text: $param_string, prompt: Text("text"))
                 .multilineTextAlignment(.trailing)
+                .focused($string_focused)
                 .onAppear {
                     param_string = params.string
                 }
-                .onSubmit {
-                    var params = params
-                    params.string = param_string
-                    parameterConduit.componentQueue.send((path, .string(params)))
-                }
+                .onChange(of: string_focused, perform: { isFocused in
+                    if isFocused == false {
+                        commit_string()
+                    }
+                })
+                .onSubmit(commit_string)
                 .accessibilityLabel(param_string_name)
         }
+    }
+    private func commit_string() -> Void {
+        var params = params
+        params.string = param_string
+        parameterConduit.componentQueue.send((path, .string(params)))
     }
 }
 
