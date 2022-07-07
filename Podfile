@@ -6,5 +6,6 @@ target 'ReggieUI' do
   use_frameworks!
 
   # Pods for ReggieUI
+  pod 'RealmSwift', '~>10'
 
 end
