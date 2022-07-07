@@ -26,7 +26,7 @@ final internal class TestsViewController: UICollectionViewController {
     public typealias Snapshot = NSDiffableDataSourceSnapshot<TestsSection, TestModel>
     private var dataSource: DataSource! = nil
     
-    public typealias Cell = ComponentCell
+    public typealias Cell = _TestsCell
     
     init(model: _RegexModel) {
         let layout = createListLayout()
@@ -36,7 +36,7 @@ final internal class TestsViewController: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath)
             
             cell.contentConfiguration = UIHostingConfiguration {
-                Text("PLACEHOLDER")
+                TestView(model: model, test: .example)
             }
             return cell
         })
@@ -73,5 +73,52 @@ final internal class _TestsCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+struct TestView: View {
+    
+    public var model: _RegexModel
+    public let test: TestModel
+    
+    @State private var param_string: String = ""
+    @State private var matches: [Substring]? = nil
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(test.name)
+                    .fontWeight(.semibold)
+                Spacer()
+                Button(action: runTest) {
+                    Image(systemName: "play.fill")
+                }
+            }
+            Text("String")
+                .fontWeight(.medium)
+            TextEditor(text: $param_string)
+                .onAppear { param_string = test.string }
+            if let matches {
+                Text(matches.isEmpty ? "No Matches" : "Matches")
+                    .fontWeight(.medium)
+                ForEach(matches, id: \.self) { match in
+                    Text("- \(String(match))")
+                }
+            }
+        }
+            .padding(10)
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color(uiColor: .systemBackground))
+            }
+            .padding(10)
+    }
+    
+    func runTest() -> Void {
+        withAnimation {
+            #warning("Uncaught errors!")
+            print(model.components)
+            matches = try! test.test(against: model.components.regex())
+        }
     }
 }

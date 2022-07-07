@@ -107,17 +107,26 @@ extension _RegexModel {
 }
 
 extension _RegexModel {
+//    static let example: [ComponentModel] = [
+//        .oneOrMore(.init(components: [
+//            .zeroOrMore(.init(components: [
+//                .string(.init(string: "lmao")),
+//            ])),
+//            .optionally(.init(components: [])),
+//            .repeat(.init(range: 1..<2, components: [])),
+//        ])),
+//        .lookahead(.init(negative: false, components: [])),
+//        .choiceOf(.init(components: [
+//            .anchor(.init(boundary: .wordBoundary))
+//        ]))
+//    ]
+    #warning("debug the above, it might be an infinite regex!!!")
+    
     static let example: [ComponentModel] = [
-        .oneOrMore(.init(components: [
-            .zeroOrMore(.init(components: [
-                .string(.init(string: "lmao")),
-            ])),
-            .optionally(.init(components: [])),
-            .repeat(.init(range: 1..<2, components: [])),
-        ])),
-        .lookahead(.init(negative: false, components: [])),
-        .choiceOf(.init(components: [
-            .anchor(.init(boundary: .wordBoundary))
-        ]))
+//        .optionally(.init(components: [
+//            .string(.init(string: "s")),
+//        ])),
+//        .string(.init(string: "car")),
+//        .anchor(.init(boundary: .wordBoundary)),
     ]
 }
