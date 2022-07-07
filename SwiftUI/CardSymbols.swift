@@ -62,6 +62,16 @@ extension ComponentModel.Proxy {
                 .foregroundColor(.other)
                 .imageScale(.large)
             
+        case .negativeLookahead:
+            Image("lookahead.app.fill")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.other)
+                .imageScale(.large)
+                .onAppear {
+                    #warning("temporary symbol, should be replaced")
+                }
+            
         case .choiceOf:
             Image("choiceof.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))

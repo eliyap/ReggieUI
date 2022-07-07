@@ -42,6 +42,9 @@ struct ComponentView<ParentHeader: View>: View {
         case .lookahead(let params):
             LookaheadCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
             
+        case .negativeLookahead(let params):
+            NegativeLookaheadCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+            
         case .choiceOf(let params):
             ChoiceOfCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
             

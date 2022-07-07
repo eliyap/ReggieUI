@@ -445,6 +445,49 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     }
 }
 
+struct NegativeLookaheadCard<ParentTitles: View>: TitledCardView {
+    
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    
+    let params: NegativeLookaheadParameter
+    let path: ModelPath
+    let mgeNamespace: Namespace.ID
+    let parentTitles: () -> ParentTitles
+    
+    let insets = cardInsets
+    
+    var contents: some View {VStack {
+            ComponentsView
+        }
+    }
+
+    private var ComponentsView: some View {
+        VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
+                ComponentView(
+                    model: model,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
+                    parentHeaders: {
+                    VStack(spacing: .zero) {
+                        parentTitles()
+                        title
+                    }
+                })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
+            }
+        }
+    }
+}
+
 struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 /// Pick a card, any card...
     
