@@ -108,7 +108,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -121,13 +121,13 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
+                            params.behavior = behavior
                             parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
                             
                             param_behavior = behavior
@@ -194,7 +194,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -207,13 +207,13 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
+                            params.behavior = behavior
                             parameterConduit.componentQueue.send((path, .oneOrMore(params)))
                             
                             param_behavior = behavior
@@ -279,7 +279,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -292,13 +292,13 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
+                            params.behavior = behavior
                             parameterConduit.componentQueue.send((path, .optionally(params)))
                             
                             param_behavior = behavior
@@ -365,7 +365,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -378,13 +378,13 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
+                            params.behavior = behavior
                             parameterConduit.componentQueue.send((path, .repeat(params)))
                             
                             param_behavior = behavior
