@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
-		222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */; };
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
@@ -33,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
-		222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRepetitionBehavior.displayTitle.swift; sourceTree = "<group>"; };
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
 		229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.release.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 		222E503E2872F65400D89CEE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -158,7 +155,6 @@
 				6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */,
 				229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -293,7 +289,6 @@
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
 				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
-				222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */,
 				22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */,
 				222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */,
 				22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */,
