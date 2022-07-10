@@ -89,6 +89,10 @@ extension RegexView: DropDelegate {
         return DropProposal(operation: .copy)
     }
     
+    func dropExited(info: DropInfo) {
+        dropConduit.dropLocation = (nil, nil)
+    }
+    
     func performDrop(info: DropInfo) -> Bool {
         
         let providers = info.itemProviders(for: [.plainText])
