@@ -11,6 +11,7 @@
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
+		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
 		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
+		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.release.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.release.xcconfig"; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
 				220229B328721EF200EAF840 /* DropRegion.swift */,
+				22594B61287B985100EBF55B /* DropRegionKey.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */,
 				22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */,
 				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
