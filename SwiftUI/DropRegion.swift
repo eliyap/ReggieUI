@@ -79,7 +79,10 @@ struct DropRegion: View {
     
     // MARK: - Height Calculation
     public static let baseHeight: CGFloat = 20
-    let heightAdjustment: CGFloat = 20
+    
+    /// - Note: If equal to the `baseHeight`, it's possible to "skip over" a drop region.
+    ///         Make it significantly less!
+    let heightAdjustment: CGFloat = 10
     
     var height: CGFloat {
         if hovered {
