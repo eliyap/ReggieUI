@@ -115,7 +115,7 @@ extension _RegexModel {
 //            .optionally(.init(components: [])),
 //            .repeat(.init(range: 1..<2, components: [])),
 //        ])),
-//        .lookahead(.init(negative: false, components: [])),
+//        .lookahead(.init(components: [])),
 //        .choiceOf(.init(components: [
 //            .anchor(.init(boundary: .wordBoundary))
 //        ]))
