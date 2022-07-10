@@ -58,6 +58,12 @@ extension TitledCardView {
                                 .sticky()
                         }
                     }
+                        /// - Important: that `GeometryReader` overlay the whole region, not the title,
+                        ///              so that root view sees accurate layout info.
+                        .preference(
+                            key: DropRegionKey.self,
+                            value: [path:geo.frame(in: .named(DropConduit.scrollCoordinateSpace))]
+                        )
                 }
             }
             .background { CardBackground() }

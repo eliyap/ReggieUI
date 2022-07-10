@@ -17,6 +17,7 @@ struct RegexView: View {
     @StateObject private var dropConduit: DropConduit = .init()
     @StateObject private var parameterConduit: ParameterConduit = .init()
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    @State private var cardLocations: DropRegionKey.Value = [:]
     @Namespace private var mgeNamespace
     
     @ObservedObject public var sheetInsetConduit: SheetInsetConduit
@@ -77,6 +78,9 @@ struct RegexView: View {
                 let (path, component) = output
                 params[path] = component
             })
+            .onPreferenceChange(DropRegionKey.self) { dict in
+                cardLocations = dict
+            }
     }
     
     public static let internalPadding: CGFloat = 30
