@@ -55,7 +55,7 @@ extension ComponentModel.Proxy {
                 .imageScale(.large)
             
         case .dateTime:
-            Image("calendar")
+            Image("calendar.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(section.color)
