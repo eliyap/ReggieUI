@@ -132,6 +132,86 @@ extension RegexView: DropDelegate {
     }
 }
 
+/// - Note: We want to avoid pointer lookups (on `indirect enum`).
+///         So we use a lot of geometry assumptions to skip path comparisons.
+extension RegexView {
+    /// Find the frames which represent direct children of this frame.
+    fileprivate func findChildFramesOf(_ parent: ModelPath) -> [CGRect] {
+        var result = cardLocations
+        
+        /// Top level clearly contains all frames. If not top level, filter for descendants.
+        if parent != .target {
+            guard let parentRect = cardLocations[parent] else {
+                assert(false, "Must pass an existing path!")
+                return []
+            }
+            result = result.filter { parentRect.contains($0.value.origin) }
+            
+            /// Remove self from contention, to be safe.
+            result[parent] = nil
+        }
+        
+        /// Remove any descendants contained by any *other* descendants.
+        let removalTargets = result.keys.filter { key in
+            let candidatePoint = result[key]!.origin
+            return result.contains(where: {
+                ($0.key != key) && ($0.value.contains(candidatePoint))
+            })
+        }
+        removalTargets.forEach { result[$0] = nil }
+        
+        return Array(result.values)
+    }
+    
+    fileprivate func findPath(parent: ModelPath, point: CGPoint) -> ModelPath {
+        let children = findChildFramesOf(parent)
+            /// Sort visually, as a proxy for actual path ordering.
+            .sorted(by: { $0.origin.y < $1.origin.y })
+        
+        /// Assertions.
+        if parent != .target {
+            guard let parentRect = cardLocations[parent] else {
+                assert(false, "Must pass an existing path!")
+                return .child(index: 0, subpath: .target)
+            }
+            /// Children frames must all be contained by parent frame.
+            let childrenInParent = children.allSatisfy({ parentRect.contains($0.origin) })
+            assert(childrenInParent, "Invalid state!")
+        }
+        
+        let nonOverlapping = children.allSatisfy { rect in
+            children.allSatisfy { ($0 == rect) || ($0.contains(rect.origin) == false) }
+        }
+        assert(nonOverlapping, "Invalid state!")
+        
+        /// If contained, split by half height.
+        if let idx = children.firstIndex(where: { $0.contains(point) }) {
+            let yDiff = point.y - children[idx].minY
+            if yDiff < children[idx].height / 2 {
+                return parent.appending(.child(index: idx, subpath: .target))
+            } else {
+                return parent.appending(.child(index: idx + 1, subpath: .target))
+            }
+        } else {
+            let precedingCount = children.filter({ $0.maxY < point.y }).count
+            return parent.appending(.child(index: precedingCount, subpath: .target))
+        }
+    }
+    
+    /// Guaranteed to find a valid insertion path, close to the given point.
+    fileprivate func closestInsertionPath(to point: CGPoint) -> ModelPath {
+        
+        /// Step 1: find the lowest (tree-wise) node on the tree that contains this point.
+        let path = cardLocations
+            .filter { $0.value.contains(point) }
+            /// Assumption: lower nodes (contained by super-node) are necessarily visually shorter.
+            .sorted(by: { $0.value.height < $1.value.height })
+            .first(where: { params[$0.key].proxy.hasComponents})
+        
+        return findPath(parent: path?.key ?? .target, point: point)
+    }
+}
+
 extension RegexView {
     fileprivate struct BackgroundColor: View {
             
