@@ -70,10 +70,6 @@ struct RegexView: View {
                 BackgroundColor()
                     .ignoresSafeArea()
             }
-            .onReceive(dropConduit.$dropPath) { output in
-                guard let (id, path) = output else { return }
-                params.move(id, to: path)
-            }
             .onReceive(parameterConduit.componentQueue, perform: { output in
                 let (path, component) = output
                 params[path] = component
@@ -124,7 +120,7 @@ extension RegexView: DropDelegate {
             
             DispatchQueue.main.async {
                 dropConduit.dropLocation = (info.location, .drop(string as String))
-                dropConduit.dropPath = (string as String, closestInsertionPath(to: info.location))
+                params.move(string as String, to: closestInsertionPath(to: info.location))
                 dropConduit.dropLocation = (nil, nil)
             }
         }

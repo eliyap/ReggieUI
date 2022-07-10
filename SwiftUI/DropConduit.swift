@@ -24,8 +24,6 @@ internal final class DropConduit: ObservableObject {
     
     /// Publishes locations & events passed from `DropDelegate`.
     @Published var dropLocation: (CGPoint?, Event?) = (nil, nil)
-    
-    @Published var dropPath: (id: String, ModelPath)? = nil
 }
 
 /// - Note: `ObservableObject` conformance lets us inject this as an `@EnvironmentObject`,
