@@ -39,6 +39,27 @@ struct ComponentView<ParentHeader: View>: View {
         case .repeat(let params):
             RepeatCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
 
+        case .dateTime(let params):
+            DateTimeCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+
+        case .currency(let params):
+            CurrencyCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+
+        case .decimal(let params):
+            DecimalCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+
+        case .wholeNumber(let params):
+            WholeNumberCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+        
+        case .decimalPercentage(let params):
+            DecimalPercentageCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+
+        case .wholeNumberPercentage(let params):
+            WholeNumberPercentageCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+
+        case .url(let params):
+            URLCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+        
         case .lookahead(let params):
             LookaheadCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
             
