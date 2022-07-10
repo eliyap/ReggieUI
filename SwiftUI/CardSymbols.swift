@@ -53,7 +53,42 @@ extension ComponentModel.Proxy {
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(section.color)
                 .imageScale(.large)
+            
+        case .dateTime:
+            Image("calendar")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(section.color)
+                .imageScale(.large)
+            
+        case .currency:
+            Locale.autoupdatingCurrent.currencySFSymbol
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(section.color)
+                .imageScale(.large)
+            
+        case .decimal, .wholeNumber:
+            Image("number")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(section.color)
+                .imageScale(.large)
         
+        case .decimalPercentage, .wholeNumberPercentage:
+            Image("percent")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(section.color)
+                .imageScale(.large)
+        
+        case .url:
+            Image("link")
+                .font(Font.system(.body, design: .rounded, weight: .black))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(section.color)
+                .imageScale(.large)
+
         case .lookahead:
             Image("lookahead.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))
