@@ -69,21 +69,21 @@ extension ComponentModel.Proxy {
                 .imageScale(.large)
             
         case .decimal, .wholeNumber:
-            Image("number")
+            Image("number.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(section.color)
                 .imageScale(.large)
         
         case .decimalPercentage, .wholeNumberPercentage:
-            Image("percent")
+            Image("percent.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(section.color)
                 .imageScale(.large)
         
         case .url:
-            Image("link")
+            Image("link.app.fill")
                 .font(Font.system(.body, design: .rounded, weight: .black))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundColor(section.color)
