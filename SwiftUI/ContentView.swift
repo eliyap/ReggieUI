@@ -124,6 +124,7 @@ extension RegexView: DropDelegate {
             
             DispatchQueue.main.async {
                 dropConduit.dropLocation = (info.location, .drop(string as String))
+                dropConduit.dropPath = (string as String, closestInsertionPath(to: info.location))
                 dropConduit.dropLocation = (nil, nil)
             }
         }

@@ -70,11 +70,6 @@ struct DropRegion: View {
             }
             hovered = inside
         }
-        
-        /// Check for drop commitment
-        if inside, case .drop(let id) = event {
-            dropConduit.dropPath = (id, path)
-        }
     }
     
     // MARK: - Height Calculation
