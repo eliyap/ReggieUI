@@ -86,7 +86,7 @@ extension RegexView: DropDelegate {
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
         dropConduit.dropLocation = (info.location, .hover)
-        return DropProposal(operation: .move)
+        return DropProposal(operation: .copy)
     }
     
     func performDrop(info: DropInfo) -> Bool {
