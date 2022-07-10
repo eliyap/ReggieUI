@@ -14,16 +14,8 @@ internal final class DropConduit: ObservableObject {
     /// Identifier for named `CoordinateSpace`.
     public static let scrollCoordinateSpace: String = "DropConduitScrollCoordinateSpaceName"
     
-    public enum Event {
-        /// Corresponds to `dropUpdated`, when the user is still holding the item.
-        case hover
-        
-        /// Corresponds `performDrop`, when the user drops the item.
-        case drop(String)
-    }
-    
     /// Publishes locations & events passed from `DropDelegate`.
-    @Published var dropLocation: (CGPoint?, Event?) = (nil, nil)
+    @Published var dropLocation: CGPoint? = nil
 }
 
 /// - Note: `ObservableObject` conformance lets us inject this as an `@EnvironmentObject`,

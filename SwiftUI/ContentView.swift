@@ -85,12 +85,12 @@ struct RegexView: View {
 extension RegexView: DropDelegate {
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        dropConduit.dropLocation = (info.location, .hover)
+        dropConduit.dropLocation = info.location
         return DropProposal(operation: .copy)
     }
     
     func dropExited(info: DropInfo) {
-        dropConduit.dropLocation = (nil, nil)
+        dropConduit.dropLocation = nil
     }
     
     func performDrop(info: DropInfo) -> Bool {
@@ -119,9 +119,8 @@ extension RegexView: DropDelegate {
             }
             
             DispatchQueue.main.async {
-                dropConduit.dropLocation = (info.location, .drop(string as String))
                 params.move(string as String, to: closestInsertionPath(to: info.location))
-                dropConduit.dropLocation = (nil, nil)
+                dropConduit.dropLocation = nil
             }
         }
         
