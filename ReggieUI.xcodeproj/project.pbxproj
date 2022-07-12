@@ -10,6 +10,7 @@
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
 		2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */; };
 		2228E6C8287D96C300B94605 /* SpuriousError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C7287D96C300B94605 /* SpuriousError.swift */; };
+		2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C9287D977700B94605 /* SheetInsetConduit.swift */; };
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
@@ -39,6 +40,7 @@
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
 		2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.TransactionToken.swift; sourceTree = "<group>"; };
 		2228E6C7287D96C300B94605 /* SpuriousError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpuriousError.swift; sourceTree = "<group>"; };
+		2228E6C9287D977700B94605 /* SheetInsetConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInsetConduit.swift; sourceTree = "<group>"; };
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */,
 				22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */,
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
+				2228E6C9287D977700B94605 /* SheetInsetConduit.swift */,
 				22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */,
 				222E50432873910800D89CEE /* SwitchedViewController.swift */,
 				222E50452873AD9900D89CEE /* TestsViewController.swift */,
@@ -295,6 +298,7 @@
 				22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */,
 				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
+				2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */,
 				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,

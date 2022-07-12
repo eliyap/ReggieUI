@@ -85,12 +85,6 @@ final internal class BuilderViewController: UIViewController {
     }
 }
 
-/// App's `Combine` based nervous system for event passing.
-final class SheetInsetConduit: ObservableObject {
-    /// The amount of height that the sheet is obscuring of the view behind.
-    @Published public var sheetObscuringHeight: CGFloat = .zero
-}
-
 /// Controls which View Controller is presenting a modal, to avoid conflicts.
 /// - Note: `ObservableObject` conformance lets us inject this as an `@EnvironmentObject`,
 ///         but this should not have `@Published` properties to avoid heavy view updates!
