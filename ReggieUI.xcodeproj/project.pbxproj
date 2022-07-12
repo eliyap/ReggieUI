@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
+		2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */; };
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
+		2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.TransactionToken.swift; sourceTree = "<group>"; };
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		222E503E2872F65400D89CEE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,
+				2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */,
 				22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */,
 				22D9E5C828709DD200E64BAA /* CardSymbols.swift in Sources */,
 				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
