@@ -50,6 +50,12 @@ final internal class BuilderViewController: UIViewController {
                 }
             }
             .store(in: &observers)
+        
+        // DEBUG
+        #if DEBUG
+//        view.layer.borderColor = UIColor.red.cgColor
+//        view.layer.borderWidth = 2
+        #endif
     }
     
     override func viewDidAppear(_ animated: Bool) {

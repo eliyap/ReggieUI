@@ -54,6 +54,9 @@ struct RegexView: View {
                 .padding(Self.internalPadding)
                 .onDrop(of: [.plainText], delegate: self)
                 .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
+                #if DEBUG
+//                .border(Color.blue, width: 3)
+                #endif
         }
             /// - Warning:
            /// When reducing sheet detent, scroll view does **NOT** move down if at bottom.
