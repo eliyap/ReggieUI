@@ -33,6 +33,7 @@
 		22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */; };
 		22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */; };
 		22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */; };
+		22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
 		6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewController.swift; sourceTree = "<group>"; };
 		22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListLayout.swift; sourceTree = "<group>"; };
+		22F70858287C46BA00E123B0 /* RealmRegexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.swift; sourceTree = "<group>"; };
 		6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.debug.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.debug.xcconfig"; sourceTree = "<group>"; };
 		A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReggieUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				22594B5F287B4C9E00EBF55B /* FoundationCards.swift */,
 				22D9E5BB28709DD200E64BAA /* ComponentView.swift */,
 				22D9E5BC28709DD200E64BAA /* ContentView.swift */,
+				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
 				22D9E5BD28709DD200E64BAA /* RegexModel.swift */,
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
@@ -300,6 +303,7 @@
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
 				2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */,
 				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
+				22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,
 				2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */,
