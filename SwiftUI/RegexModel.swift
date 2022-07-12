@@ -12,9 +12,12 @@ import Foundation
 
 final class _RegexModel: ObservableObject {
     
+    public var id: UUID
+    
     @Published public var components: [ComponentModel]
     
-    public init(components: [ComponentModel]) {
+    public init(id: UUID, components: [ComponentModel]) {
+        self.id = id
         self.components = components
     }
     

@@ -29,7 +29,7 @@ final internal class BuilderViewController: UIViewController {
     private let modalConduit: ModalConduit = .init()
     private let picker: PickerViewController
     private var observers: Set<AnyCancellable> = []
-    private let model: _RegexModel = .init(components: _RegexModel.example)
+    private let model: _RegexModel = .init(id: .init(), components: _RegexModel.example)
     
     init() {
         picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
