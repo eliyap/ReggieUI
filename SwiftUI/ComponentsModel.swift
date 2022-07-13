@@ -22,6 +22,10 @@ final class ComponentsModel: ObservableObject {
         self.id = id
         self.components = components
     }
+}
+
+// MARK: - Component Mutation
+extension ComponentsModel {
     
     public func regex() -> Regex<Substring> {
         components.regex()
@@ -86,16 +90,8 @@ final class ComponentsModel: ObservableObject {
             components[index].delete(at: subpath)
         }
     }
-}
-
-fileprivate extension Animation {
-    /// A spring that produces a slight jelly wobble when landing.
-    /// Overshoots about once, then returns.
-    static let jelly: Animation = .spring(response: 0.3, dampingFraction: 0.7)
-}
-
-extension ComponentsModel {
-    subscript(_ path: ModelPath) -> ComponentModel {
+    
+    internal subscript(_ path: ModelPath) -> ComponentModel {
         get {
             guard case .child(let index, let subpath) = path else {
                 fatalError("Cannot target model directly")
@@ -111,6 +107,7 @@ extension ComponentsModel {
     }
 }
 
+// MARK: - Misc
 extension ComponentsModel {
     static let example: [ComponentModel] = [
 //        .oneOrMore(.init(components: [
@@ -135,3 +132,10 @@ extension ComponentsModel {
 //        .anchor(.init(boundary: .wordBoundary)),
 //    ]
 }
+
+fileprivate extension Animation {
+    /// A spring that produces a slight jelly wobble when landing.
+    /// Overshoots about once, then returns.
+    static let jelly: Animation = .spring(response: 0.3, dampingFraction: 0.7)
+}
+
