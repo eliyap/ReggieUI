@@ -65,6 +65,11 @@ final internal class BuilderViewController: UIViewController {
         picker.configureSheet()
         present(picker, animated: true)
     }
+    
+    /// Explicitly allow external configuration.
+    public func setModalPresentationStyle(to style: UIModalPresentationStyle) -> Void {
+        self.modalPresentationStyle = style
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
