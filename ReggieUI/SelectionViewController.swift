@@ -45,6 +45,21 @@ final internal class SelectionViewController: UIViewController {
     }
 }
 
+final fileprivate class ErrorConduit: ObservableObject {
+    public let errorPipeline: CurrentValueSubject<SelectionError?, Never> = .init(nil)
+}
+
+enum SelectionError: LocalizedError {
+    case realmDBError(RealmDBError)
+    
+    var errorDescription: String? {
+        switch self {
+        case .realmDBError(let error):
+            return error.errorDescription
+        }
+    }
+}
+
 struct SelectionView: View {
     
     public let openBuilder: () -> Void

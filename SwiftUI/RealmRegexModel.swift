@@ -63,10 +63,21 @@ internal extension ComponentsModel {
     }
 }
 
-public enum RealmDBError: Error {
+public enum RealmDBError: LocalizedError {
     /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
     /// > Data and string properties cannot hold more than 16MB.
     ///
     /// This limitation is left as future work, it's unlikely most regexes will exceed this size.
     case dataTooLarge
+    
+    case couldNotOpen
+    
+    public var errorDescription: String? {
+        switch self {
+        case .dataTooLarge:
+            return "Object too large to save in database"
+        case .couldNotOpen:
+            return "Couldn't open database"
+        }
+    }
 }
