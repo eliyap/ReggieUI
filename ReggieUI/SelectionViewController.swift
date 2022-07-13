@@ -65,17 +65,50 @@ struct SelectionView: View {
     public let openBuilder: () -> Void
     private var realm: Realm? = nil
     
+    @State private var isShowingError: Bool = false
+    private let errorConduit: ErrorConduit = .init()
+    
     init(openBuilder: @escaping () -> Void) {
         self.openBuilder = openBuilder
         self.realm = try? Realm()
     }
     
     var body: some View {
-        if realm != nil {
-            SelectionListView(openBuilder: openBuilder)
-        } else {
-            RealmErrorView
+        ZStack {
+            ErrorView
+                .onAppear(perform: tryOpenRealm)
+            if realm != nil {
+                SelectionListView(openBuilder: openBuilder)
+            }
         }
+    }
+    
+    private func tryOpenRealm() -> Void {
+        do {
+            let _ = try Realm()
+        } catch {
+            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpen))
+        }
+    }
+    
+    private var ErrorView: some View {
+        /// Placeholder view against which to project errors.
+        Color.clear
+            .alert(isPresented: $isShowingError, error: errorConduit.errorPipeline.value, actions: { _ in
+                Button(action: { isShowingError = false }, label: {
+                    Text("Ok")
+                })
+            }, message: { error in
+                Text("""
+                    ⚠️
+                    Please contact the developer
+                    """)
+            })
+            .onReceive(errorConduit.errorPipeline) { error in
+                if error != nil {
+                    isShowingError = true
+                }
+            }
     }
     
     private var RealmErrorView: some View {
