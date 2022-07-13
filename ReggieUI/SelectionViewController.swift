@@ -99,26 +99,13 @@ struct SelectionView: View {
                     Text("Ok")
                 })
             }, message: { error in
-                Text("""
-                    ⚠️
-                    Please contact the developer
-                    """)
+                Text("⚠️\nPlease contact the developer")
             })
             .onReceive(errorConduit.errorPipeline) { error in
                 if error != nil {
                     isShowingError = true
                 }
             }
-    }
-    
-    private var RealmErrorView: some View {
-        VStack {
-            Text("⚠️")
-                .font(.largeTitle)
-            Text("Couldn't open database!")
-            Text("Please contact the developer")
-                .font(.caption)
-        }
     }
 }
 
