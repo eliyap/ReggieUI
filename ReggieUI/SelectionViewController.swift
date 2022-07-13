@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Combine
+import RealmSwift
 
 final internal class SelectionViewController: UIViewController {
     
@@ -47,11 +48,31 @@ final internal class SelectionViewController: UIViewController {
 struct SelectionView: View {
     
     public let openBuilder: () -> Void
+    private var realm: Realm? = nil
+    
+    init(openBuilder: @escaping () -> Void) {
+        self.openBuilder = openBuilder
+//        self.realm = try? Realm()
+    }
     
     var body: some View {
-        Text("todo")
-            .onTapGesture {
-                openBuilder()
-            }
+        if let realm {
+            Text("todo")
+                .onTapGesture {
+                    openBuilder()
+                }
+        } else {
+            RealmErrorView
+        }
+    }
+    
+    private var RealmErrorView: some View {
+        VStack {
+            Text("⚠️")
+                .font(.largeTitle)
+            Text("Couldn't open database!")
+            Text("Please contact the developer")
+                .font(.caption)
+        }
     }
 }
