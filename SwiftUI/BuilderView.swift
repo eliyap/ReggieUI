@@ -10,7 +10,7 @@ import SwiftUI
 struct BuilderView: View {
     
     public var sheetInsetConduit: SheetInsetConduit
-    public var params: _RegexModel
+    public var params: ComponentsModel
     public let modalConduit: ModalConduit
     
     public let closeView: () -> Void

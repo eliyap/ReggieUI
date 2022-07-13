@@ -15,7 +15,7 @@ final internal class PickerViewController: UIViewController {
     
     init(
         sheetInsetConduit: SheetInsetConduit,
-        model: _RegexModel
+        model: ComponentsModel
     ) {
         self.sheetInsetConduit = sheetInsetConduit
         self.switchedViewController = .init(model: model)

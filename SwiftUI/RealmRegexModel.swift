@@ -37,7 +37,7 @@ final class RealmRegexModel: Object {
 extension RealmRegexModel: Identifiable { }
 
 internal extension RealmRegexModel {
-    func from(_ memModel: _RegexModel) throws -> RealmRegexModel {
+    func from(_ memModel: ComponentsModel) throws -> RealmRegexModel {
         componentsData = try JSONEncoder().encode(memModel.components)
         
         /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
@@ -52,8 +52,8 @@ internal extension RealmRegexModel {
     }
 }
 
-internal extension _RegexModel {
-    func from(_ dbModel: RealmRegexModel) throws -> _RegexModel {
+internal extension ComponentsModel {
+    func from(_ dbModel: RealmRegexModel) throws -> ComponentsModel {
         let components = try JSONDecoder().decode([ComponentModel].self, from: dbModel.componentsData)
         
         return .init(

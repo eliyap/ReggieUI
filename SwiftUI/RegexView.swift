@@ -21,7 +21,7 @@ struct RegexView: View {
     @Namespace private var mgeNamespace
     
     @ObservedObject public var sheetInsetConduit: SheetInsetConduit
-    @ObservedObject public var params: _RegexModel
+    @ObservedObject public var params: ComponentsModel
     public let modalConduit: ModalConduit
     
     var body: some View {
