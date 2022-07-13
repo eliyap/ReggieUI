@@ -49,18 +49,20 @@ struct SelectionView: View {
     
     public let openBuilder: () -> Void
     private var realm: Realm? = nil
+    @ObservedResults(RealmRegexModel.self) var regexModels
     
     init(openBuilder: @escaping () -> Void) {
         self.openBuilder = openBuilder
-//        self.realm = try? Realm()
+        self.realm = try? Realm()
     }
     
     var body: some View {
-        if let realm {
-            Text("todo")
-                .onTapGesture {
-                    openBuilder()
+        if realm != nil {
+            LazyVStack {
+                ForEach(regexModels) { regexModel in
+                    Text("hello")
                 }
+            }
         } else {
             RealmErrorView
         }
