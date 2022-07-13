@@ -21,7 +21,7 @@ final internal class BuilderViewController: UIViewController {
         picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)
         
-        let hostedView = RegexView(
+        let hostedView = BuilderView(
             sheetInsetConduit: sheetInsetConduit,
             params: model,
             modalConduit: modalConduit
