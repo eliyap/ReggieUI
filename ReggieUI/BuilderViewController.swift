@@ -15,7 +15,7 @@ final internal class BuilderViewController: UIViewController {
     private let modalConduit: ModalConduit = .init()
     private let picker: PickerViewController
     private var observers: Set<AnyCancellable> = []
-    private let model: ComponentsModel = .init(id: .init(), components: ComponentsModel.example)
+    private let model: ComponentsModel = .init(components: ComponentsModel.example)
     
     init() {
         picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)

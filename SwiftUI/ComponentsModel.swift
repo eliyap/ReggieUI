@@ -14,12 +14,9 @@ import Foundation
 /// Though this does not conform to `ComponentModel`, it intentionally shares most of the API.
 final class ComponentsModel: ObservableObject {
     
-    public var id: UUID
-    
     @Published public var components: [ComponentModel]
     
-    public init(id: UUID, components: [ComponentModel]) {
-        self.id = id
+    public init(components: [ComponentModel]) {
         self.components = components
     }
 }
