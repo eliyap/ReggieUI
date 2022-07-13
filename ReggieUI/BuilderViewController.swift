@@ -44,19 +44,8 @@ final internal class BuilderViewController: UIViewController {
             host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
-        /// Coordinates presentation between SwiftUI and UIKit.
-        /// UIKit's sheet controller gets angry if SwiftUI tries to present while it is also presenting,
-        /// so we temporarily hide the sheet.
         modalConduit.hostIsPresenting
-            .sink { [weak self] isPresenting in
-                guard let self = self else { return }
-                if isPresenting {
-                    self.picker.dismiss(animated: false)
-                } else {
-                    self.picker.configureSheet()
-                    self.present(self.picker, animated: true)
-                }
-            }
+            .sink(receiveValue: duckPresentation)
             .store(in: &observers)
         
         // DEBUG
@@ -64,6 +53,18 @@ final internal class BuilderViewController: UIViewController {
 //        view.layer.borderColor = UIColor.red.cgColor
 //        view.layer.borderWidth = 2
         #endif
+    }
+    
+    /// Coordinates presentation between SwiftUI and UIKit.
+    /// UIKit's sheet controller gets angry if SwiftUI tries to present while it is also presenting,
+    /// so we temporarily hide the sheet.
+    private func duckPresentation(_ hostedViewIsPresenting: Bool) -> Void {
+        if hostedViewIsPresenting {
+            picker.dismiss(animated: false)
+        } else {
+            picker.configureSheet()
+            present(self.picker, animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
