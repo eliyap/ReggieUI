@@ -72,12 +72,20 @@ public enum RealmDBError: LocalizedError {
     
     case couldNotOpen
     
+    case writeFailed
+    
+    case createNewFailed
+    
     public var errorDescription: String? {
         switch self {
         case .dataTooLarge:
             return "Object too large to save in database"
         case .couldNotOpen:
             return "Couldn't open database"
+        case .writeFailed:
+            return "Couldn't write to database"
+        case .createNewFailed:
+            return "Couldn't make a new regex"
         }
     }
 }

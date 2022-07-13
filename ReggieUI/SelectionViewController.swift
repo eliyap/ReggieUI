@@ -45,7 +45,7 @@ final internal class SelectionViewController: UIViewController {
     }
 }
 
-final fileprivate class ErrorConduit: ObservableObject {
+final internal class ErrorConduit: ObservableObject {
     public let errorPipeline: CurrentValueSubject<SelectionError?, Never> = .init(nil)
 }
 
@@ -79,6 +79,7 @@ struct SelectionView: View {
                 .onAppear(perform: tryOpenRealm)
             if realm != nil {
                 SelectionListView(openBuilder: openBuilder)
+                    .environmentObject(errorConduit)
             }
         }
     }
@@ -150,9 +151,31 @@ struct SelectionTitleView: View {
 }
 
 struct NewRegexButton: View {
+    
+    @EnvironmentObject private var errorConduit: ErrorConduit
+    
     var body: some View {
-        Button(action: { }, label: {
+        Button(action: createRegex, label: {
             Image(systemName: "plus")
         })
+    }
+    
+    private func createRegex() -> Void {
+        guard let realm = try? Realm() else {
+            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpen))
+            return
+        }
+        guard let newRegex = try? RealmRegexModel.createNew() else {
+            errorConduit.errorPipeline.send(.realmDBError(.createNewFailed))
+            return
+        }
+        do {
+            try realm.writeWithToken { token in
+                realm.add(newRegex, update: .error)
+            }
+        } catch {
+            errorConduit.errorPipeline.send(.realmDBError(.writeFailed))
+            return
+        }
     }
 }
