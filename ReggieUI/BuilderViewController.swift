@@ -24,7 +24,12 @@ final internal class BuilderViewController: UIViewController {
         let hostedView = BuilderView(
             sheetInsetConduit: sheetInsetConduit,
             params: model,
-            modalConduit: modalConduit
+            modalConduit: modalConduit,
+            closeView: { [weak self] in
+                guard let self = self else { return }
+                self.picker.dismiss(animated: false)
+                self.dismiss(animated: true)
+            }
         )
         let host = UIHostingController(rootView: hostedView)
         addChild(host)
