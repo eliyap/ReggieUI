@@ -34,6 +34,8 @@ final class RealmRegexModel: Object {
     }
 }
 
+extension RealmRegexModel: Identifiable { }
+
 internal extension RealmRegexModel {
     func from(_ memModel: _RegexModel) throws -> RealmRegexModel {
         componentsData = try JSONEncoder().encode(memModel.components)
