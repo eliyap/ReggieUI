@@ -1,5 +1,5 @@
 //
-//  RegexModel.swift
+//  ComponentsModel.swift
 //  StickyScroll
 //
 //  Created by Secret Asian Man Dev on 29/6/22.

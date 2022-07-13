@@ -23,7 +23,7 @@
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
 		22D9E5C328709DD200E64BAA /* RegexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* RegexView.swift */; };
-		22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BD28709DD200E64BAA /* RegexModel.swift */; };
+		22D9E5C428709DD200E64BAA /* ComponentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */; };
 		22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BE28709DD200E64BAA /* Sticky.swift */; };
 		22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BF28709DD200E64BAA /* TitledCardView.swift */; };
 		22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5C028709DD200E64BAA /* ComponentCards.swift */; };
@@ -59,7 +59,7 @@
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* RegexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexView.swift; sourceTree = "<group>"; };
-		22D9E5BD28709DD200E64BAA /* RegexModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexModel.swift; sourceTree = "<group>"; };
+		22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsModel.swift; sourceTree = "<group>"; };
 		22D9E5BE28709DD200E64BAA /* Sticky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticky.swift; sourceTree = "<group>"; };
 		22D9E5BF28709DD200E64BAA /* TitledCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledCardView.swift; sourceTree = "<group>"; };
 		22D9E5C028709DD200E64BAA /* ComponentCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCards.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				22D9E5BC28709DD200E64BAA /* RegexView.swift */,
 				2228E6CF287EE91600B94605 /* BuilderView.swift */,
 				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
-				22D9E5BD28709DD200E64BAA /* RegexModel.swift */,
+				22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */,
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
 				220229B328721EF200EAF840 /* DropRegion.swift */,
@@ -316,7 +316,7 @@
 				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
 				2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */,
-				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
+				22D9E5C428709DD200E64BAA /* ComponentsModel.swift in Sources */,
 				22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,
