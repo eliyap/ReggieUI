@@ -40,6 +40,8 @@ internal extension RealmRegexModel {
     func from(_ memModel: _RegexModel) throws -> RealmRegexModel {
         componentsData = try JSONEncoder().encode(memModel.components)
         
+        /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
+        /// > Data and string properties cannot hold more than 16MB.
         let mbCount = Double(componentsData.count) / (1024.0 * 1024.0)
         guard mbCount < 16.0 else { throw RealmDBError.dataTooLarge }
         
