@@ -44,6 +44,9 @@ final internal class BuilderViewController: UIViewController {
             host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
+        /// Coordinates presentation between SwiftUI and UIKit.
+        /// UIKit's sheet controller gets angry if SwiftUI tries to present while it is also presenting,
+        /// so we temporarily hide the sheet.
         modalConduit.hostIsPresenting
             .sink { [weak self] isPresenting in
                 guard let self = self else { return }
