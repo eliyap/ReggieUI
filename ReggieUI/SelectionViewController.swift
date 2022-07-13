@@ -49,7 +49,6 @@ struct SelectionView: View {
     
     public let openBuilder: () -> Void
     private var realm: Realm? = nil
-    @ObservedResults(RealmRegexModel.self) var regexModels
     
     init(openBuilder: @escaping () -> Void) {
         self.openBuilder = openBuilder
@@ -58,11 +57,7 @@ struct SelectionView: View {
     
     var body: some View {
         if realm != nil {
-            LazyVStack {
-                ForEach(regexModels) { regexModel in
-                    Text("hello")
-                }
-            }
+            SelectionListView(openBuilder: openBuilder)
         } else {
             RealmErrorView
         }
@@ -76,5 +71,53 @@ struct SelectionView: View {
             Text("Please contact the developer")
                 .font(.caption)
         }
+    }
+}
+
+struct SelectionListView: View {
+    
+    public let openBuilder: () -> Void
+    
+    @ObservedResults(RealmRegexModel.self) private var regexModels
+    
+    var body: some View {
+        VStack(spacing: .zero) {
+            SelectionTitleView()
+            Divider()
+            LazyVStack {
+                ForEach(regexModels) { regexModel in
+                    Text("hello")
+                }
+            }
+            Spacer()
+        }
+            .background {
+                Color(uiColor: .secondarySystemBackground)
+                    .edgesIgnoringSafeArea(.bottom)
+            }
+    }
+}
+
+struct SelectionTitleView: View {
+    var body: some View {
+        HStack {
+            Text("Regexes")
+                
+            Spacer()
+            NewRegexButton()
+        }
+            .padding(BuilderTitleView.padding)
+            .background {
+                Color(uiColor: .systemBackground)
+                    .edgesIgnoringSafeArea(.top)
+            }
+    }
+}
+
+struct NewRegexButton: View {
+    var body: some View {
+        Button(action: { }, label: {
+            Image(systemName: "plus")
+        })
     }
 }
