@@ -13,6 +13,7 @@ import RealmSwift
 final internal class SelectionViewController: UIViewController {
     
     private let conduit: Conduit = .init()
+    private let errorConduit: ErrorConduit = .init()
     private var observers: Set<AnyCancellable> = []
     
     init() {
@@ -31,6 +32,7 @@ final internal class SelectionViewController: UIViewController {
         
         let hostedView = SelectionView()
             .environmentObject(conduit)
+            .environmentObject(errorConduit)
         let host = UIHostingController(rootView: hostedView)
         addChild(host)
         view.addSubview(host.view)
@@ -88,7 +90,7 @@ struct SelectionView: View {
     private var realm: Realm? = nil
     
     @State private var isShowingError: Bool = false
-    private let errorConduit: ErrorConduit = .init()
+    @EnvironmentObject private var errorConduit: ErrorConduit
     
     init() {
         self.realm = try? Realm()
@@ -100,7 +102,6 @@ struct SelectionView: View {
                 .onAppear(perform: tryOpenRealm)
             if realm != nil {
                 SelectionListView()
-                    .environmentObject(errorConduit)
             }
         }
     }
