@@ -75,7 +75,7 @@ public enum RealmDBError: LocalizedError {
     
     case writeFailed
     
-    case createNewFailed
+    case createNewObjectFailed
     
     public var errorDescription: String? {
         switch self {
@@ -85,8 +85,8 @@ public enum RealmDBError: LocalizedError {
             return "Couldn't open database"
         case .writeFailed:
             return "Couldn't write to database"
-        case .createNewFailed:
-            return "Couldn't make a new regex"
+        case .createNewObjectFailed:
+            return "Couldn't make a new object"
         }
     }
 }

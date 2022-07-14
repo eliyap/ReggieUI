@@ -191,7 +191,7 @@ struct NewRegexButton: View {
             return
         }
         guard let newRegex = try? RealmRegexModel.createNew() else {
-            errorConduit.errorPipeline.send(.realmDBError(.createNewFailed))
+            errorConduit.errorPipeline.send(.realmDBError(.createNewObjectFailed))
             return
         }
         do {
