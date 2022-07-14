@@ -12,6 +12,7 @@ import RealmSwift
 
 final internal class SelectionViewController: UIViewController {
     
+    private let conduit: Conduit = .init()
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,6 +43,12 @@ final internal class SelectionViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension SelectionViewController {
+    final class Conduit: ObservableObject {
+        public let pipeline: PassthroughSubject<Void, Never> = .init()
     }
 }
 
