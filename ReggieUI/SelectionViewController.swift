@@ -48,9 +48,13 @@ final internal class SelectionViewController: UIViewController {
     }
     
     private func presentBuilder() -> Void {
-        let vc: BuilderViewController = .init(errorConduit: errorConduit)
-        vc.setModalPresentationStyle(to: .fullScreen)
-        present(vc, animated: true)
+        switch BuilderViewController.create(errorConduit: errorConduit) {
+        case .success(let vc):
+            vc.setModalPresentationStyle(to: .fullScreen)
+            present(vc, animated: true)
+        case .failure(let error):
+            errorConduit.errorPipeline.send(error)
+        }
     }
     
     required init?(coder: NSCoder) {

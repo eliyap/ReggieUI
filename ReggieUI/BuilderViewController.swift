@@ -19,7 +19,14 @@ final internal class BuilderViewController: UIViewController {
     
     private var errorConduit: ErrorConduit
     
-    init(errorConduit: ErrorConduit) {
+    static func create(errorConduit: ErrorConduit) -> Result<BuilderViewController, SelectionError> {
+        return .failure(.spurious(.problem))
+        
+//        let vc: BuilderViewController = .init(errorConduit: errorConduit)
+//        return .success(vc)
+    }
+    
+    private init(errorConduit: ErrorConduit) {
         self.errorConduit = errorConduit
         self.picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)
