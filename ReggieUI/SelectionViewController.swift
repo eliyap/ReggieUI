@@ -110,7 +110,7 @@ struct SelectionView: View {
         do {
             let _ = try Realm()
         } catch {
-            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpen))
+            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpenRealm))
         }
     }
     
@@ -187,7 +187,7 @@ struct NewRegexButton: View {
     
     private func createRegex() -> Void {
         guard let realm = try? Realm() else {
-            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpen))
+            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpenRealm))
             return
         }
         guard let newRegex = try? RealmRegexModel.createNew() else {

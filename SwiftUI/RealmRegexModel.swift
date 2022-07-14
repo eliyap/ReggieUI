@@ -71,7 +71,7 @@ public enum RealmDBError: LocalizedError {
     /// This limitation is left as future work, it's unlikely most regexes will exceed this size.
     case dataTooLarge
     
-    case couldNotOpen
+    case couldNotOpenRealm
     
     case writeFailed
     
@@ -81,7 +81,7 @@ public enum RealmDBError: LocalizedError {
         switch self {
         case .dataTooLarge:
             return "Object too large to save in database"
-        case .couldNotOpen:
+        case .couldNotOpenRealm:
             return "Couldn't open database"
         case .writeFailed:
             return "Couldn't write to database"
