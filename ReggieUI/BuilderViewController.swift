@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Combine
+import RealmSwift
 
 final internal class BuilderViewController: UIViewController {
     
@@ -19,7 +20,8 @@ final internal class BuilderViewController: UIViewController {
     
     private var errorConduit: ErrorConduit
     
-    static func create(errorConduit: ErrorConduit) -> Result<BuilderViewController, SelectionError> {
+    static func create(errorConduit: ErrorConduit, id: RealmRegexModel.ID) -> Result<BuilderViewController, SelectionError> {
+        
         return .failure(.spurious(.problem))
         
 //        let vc: BuilderViewController = .init(errorConduit: errorConduit)

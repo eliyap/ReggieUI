@@ -20,9 +20,9 @@ final internal class SelectionViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         conduit.pipeline
-            .sink { [weak self] _ in
+            .sink { [weak self] id in
                 guard let self = self else { return }
-                self.presentBuilder()
+                self.presentBuilder(id: id)
             }
             .store(in: &observers)
     }
@@ -47,8 +47,8 @@ final internal class SelectionViewController: UIViewController {
         ])
     }
     
-    private func presentBuilder() -> Void {
-        switch BuilderViewController.create(errorConduit: errorConduit) {
+    private func presentBuilder(id: RealmRegexModel.ID) -> Void {
+        switch BuilderViewController.create(errorConduit: errorConduit, id: id) {
         case .success(let vc):
             vc.setModalPresentationStyle(to: .fullScreen)
             present(vc, animated: true)
@@ -70,7 +70,7 @@ final internal class SelectionViewController: UIViewController {
 
 extension SelectionViewController {
     final class Conduit: ObservableObject {
-        public let pipeline: PassthroughSubject<Void, Never> = .init()
+        public let pipeline: PassthroughSubject<RealmRegexModel.ID, Never> = .init()
     }
 }
 
@@ -150,10 +150,8 @@ struct SelectionListView: View {
             Divider()
             LazyVStack {
                 ForEach(regexModels) { regexModel in
-                    Text(regexModel.name)
-                        .onTapGesture {
-                            conduit.pipeline.send(Void())
-                        }
+                    /// - Note: since reading / init happens on the same (main) thread, this should be safe
+                    RegexListItem(name: regexModel.name, id: regexModel.id)
                 }
             }
             Spacer()
@@ -161,6 +159,21 @@ struct SelectionListView: View {
             .background {
                 Color(uiColor: .secondarySystemBackground)
                     .edgesIgnoringSafeArea(.bottom)
+            }
+    }
+}
+
+struct RegexListItem: View {
+    
+    @EnvironmentObject private var conduit: SelectionViewController.Conduit
+    
+    public let name: String
+    public let id: RealmRegexModel.ID
+    
+    var body: some View {
+        Text(name)
+            .onTapGesture {
+                conduit.pipeline.send(id)
             }
     }
 }
@@ -210,6 +223,7 @@ struct NewRegexButton: View {
             return
         }
 
-        conduit.pipeline.send(Void())
+        /// - Note: same function, same thread, therefore this is safe.
+        conduit.pipeline.send(newRegex.id)
     }
 }
