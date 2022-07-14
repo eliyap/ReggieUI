@@ -21,6 +21,20 @@ final internal class BuilderViewController: UIViewController {
         picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)
         
+        addHostedView()
+        
+        modalConduit.hostIsPresenting
+            .sink(receiveValue: duckPresentation)
+            .store(in: &observers)
+        
+        // DEBUG
+        #if DEBUG
+//        view.layer.borderColor = UIColor.red.cgColor
+//        view.layer.borderWidth = 2
+        #endif
+    }
+    
+    private func addHostedView() -> Void {
         let hostedView = BuilderView(
             sheetInsetConduit: sheetInsetConduit,
             params: model,
@@ -43,16 +57,6 @@ final internal class BuilderViewController: UIViewController {
             host.view.topAnchor.constraint(equalTo: view.topAnchor),
             host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        
-        modalConduit.hostIsPresenting
-            .sink(receiveValue: duckPresentation)
-            .store(in: &observers)
-        
-        // DEBUG
-        #if DEBUG
-//        view.layer.borderColor = UIColor.red.cgColor
-//        view.layer.borderWidth = 2
-        #endif
     }
     
     /// Coordinates presentation between SwiftUI and UIKit.
