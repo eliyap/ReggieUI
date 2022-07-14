@@ -24,6 +24,8 @@ public enum RealmDBError: LocalizedError {
     
     case dataDecodeFailed
     
+    case dataEncodeFailed
+    
     public var errorDescription: String? {
         switch self {
         case .dataTooLarge:
@@ -37,7 +39,9 @@ public enum RealmDBError: LocalizedError {
         case .failedToFindObjectInRealm:
             return "Couldn't find an object"
         case .dataDecodeFailed:
-            return "Couldn't deode object"
+            return "Couldn't decode object"
+        case .dataEncodeFailed:
+            return "Couldn't encode object"
         }
     }
 }

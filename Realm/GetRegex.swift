@@ -39,3 +39,31 @@ internal func regexIdToModel(id: RealmRegexModel.ID) -> Result<(RealmRegexModel.
     
     return .success((regex.id, .init(components: components)))
 }
+
+internal func save(components: [ComponentModel], to id: RealmRegexModel.ID) -> Result<Void, RealmDBError> {
+    guard let realm = try? Realm() else {
+        return .failure(.couldNotOpenRealm)
+    }
+    
+    let regex: RealmRegexModel
+    switch getRegex(id: id) {
+    case .failure(let error):
+        return .failure(error)
+    case .success(let r):
+        regex = r
+    }
+    
+    guard let data = try? JSONEncoder().encode(components) else {
+        return .failure(.dataEncodeFailed)
+    }
+    
+    do {
+        try realm.writeWithToken { token in
+            regex.componentsData = data
+        }
+    } catch {
+        return .failure(.writeFailed)
+    }
+    
+    return .success(Void())
+}

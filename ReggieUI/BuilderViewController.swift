@@ -38,6 +38,21 @@ final internal class BuilderViewController: UIViewController {
             .sink(receiveValue: duckPresentation)
             .store(in: &observers)
         
+        model.$components
+            .receive(on: DispatchQueue.global(qos: .background))
+            .sink { [weak self] components in
+                guard let self = self else { return }
+                
+                switch save(components: components, to: regexID) {
+                case .failure(let error):
+                    self.dismiss(animated: false)
+                    self.errorConduit.errorPipeline.send(.realmDBError(error))
+                case .success:
+                    break
+                }
+            }
+            .store(in: &observers)
+        
         // DEBUG
         #if DEBUG
 //        view.layer.borderColor = UIColor.red.cgColor
