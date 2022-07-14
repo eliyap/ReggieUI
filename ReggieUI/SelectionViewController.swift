@@ -17,12 +17,20 @@ final internal class SelectionViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        conduit.pipeline
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.presentBuilder()
+            }
+            .store(in: &observers)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let hostedView = SelectionView(openBuilder: presentBuilder)
+            .environmentObject(conduit)
         let host = UIHostingController(rootView: hostedView)
         addChild(host)
         view.addSubview(host.view)
@@ -130,6 +138,7 @@ struct SelectionListView: View {
     public let openBuilder: () -> Void
     
     @ObservedResults(RealmRegexModel.self) private var regexModels
+    @EnvironmentObject private var conduit: SelectionViewController.Conduit
     
     var body: some View {
         VStack(spacing: .zero) {
@@ -137,7 +146,10 @@ struct SelectionListView: View {
             Divider()
             LazyVStack {
                 ForEach(regexModels) { regexModel in
-                    Text("hello")
+                    Text(regexModel.name)
+                        .onTapGesture {
+                            conduit.pipeline.send(Void())
+                        }
                 }
             }
             Spacer()
@@ -168,6 +180,7 @@ struct SelectionTitleView: View {
 struct NewRegexButton: View {
     
     @EnvironmentObject private var errorConduit: ErrorConduit
+    @EnvironmentObject private var conduit: SelectionViewController.Conduit
     
     var body: some View {
         Button(action: createRegex, label: {
@@ -192,5 +205,7 @@ struct NewRegexButton: View {
             errorConduit.errorPipeline.send(.realmDBError(.writeFailed))
             return
         }
+
+        conduit.pipeline.send(Void())
     }
 }
