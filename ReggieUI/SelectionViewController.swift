@@ -49,7 +49,7 @@ final internal class SelectionViewController: UIViewController {
     
     @MainActor
     private func presentBuilder() -> Void {
-        let vc: BuilderViewController = .init()
+        let vc: BuilderViewController = .init(errorConduit: errorConduit)
         vc.setModalPresentationStyle(to: .fullScreen)
         present(vc, animated: true)
     }

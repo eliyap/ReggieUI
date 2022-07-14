@@ -17,8 +17,11 @@ final internal class BuilderViewController: UIViewController {
     private var observers: Set<AnyCancellable> = []
     private let model: ComponentsModel = .init(components: ComponentsModel.example)
     
-    init() {
-        picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
+    private var errorConduit: ErrorConduit
+    
+    init(errorConduit: ErrorConduit) {
+        self.errorConduit = errorConduit
+        self.picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)
         
         addHostedView()
