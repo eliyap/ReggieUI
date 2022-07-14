@@ -14,7 +14,8 @@ final class RealmRegexModel: Object {
     /// > When declaring default values ... `@Persisted var value = UUID()` will result in poorer performance.
     /// > [It] creates a new identifier that is never used any time an object is read from the realm
     @Persisted(primaryKey: true)
-    public var id: UUID
+    public var id: ID
+    public typealias ID = UUID
     
     /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
     /// > Data and string properties cannot hold more than 16MB.
