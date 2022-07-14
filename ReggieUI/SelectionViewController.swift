@@ -47,24 +47,10 @@ final internal class SelectionViewController: UIViewController {
         ])
     }
     
-    @MainActor
     private func presentBuilder() -> Void {
         let vc: BuilderViewController = .init(errorConduit: errorConduit)
         vc.setModalPresentationStyle(to: .fullScreen)
         present(vc, animated: true)
-    }
-    
-    @MainActor
-    private func regex(for id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmDBError> {
-        guard let realm = try? Realm() else {
-            return .failure(.couldNotOpenRealm)
-        }
-        
-        guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
-            return .failure(.failedToFindObjectInRealm)
-        }
-        
-        return .success(regex)
     }
     
     required init?(coder: NSCoder) {
