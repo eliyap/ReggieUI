@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import RegexModel
 
 /// - Warning: be very conscious of the thread on which this object lives!
 internal func getRegex(id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmDBError> {
@@ -19,4 +20,22 @@ internal func getRegex(id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmD
     }
     
     return .success(regex)
+}
+
+/// Translates ID into Realm Object, then into SwiftUI friendly struct, reporting failures, if any.
+/// Encapsulating within a function guarantees thread safety: no realm object crosses a boundary.
+internal func regexIdToModel(id: RealmRegexModel.ID) -> Result<(RealmRegexModel.ID, ComponentsModel), RealmDBError> {
+    let regex: RealmRegexModel
+    switch getRegex(id: id) {
+    case .success(let r):
+        regex = r
+    case .failure(let error):
+        return .failure(error)
+    }
+    
+    guard let components = try? JSONDecoder().decode([ComponentModel].self, from: regex.componentsData) else {
+        return .failure(.dataDecodeFailed)
+    }
+    
+    return .success((regex.id, .init(components: components)))
 }

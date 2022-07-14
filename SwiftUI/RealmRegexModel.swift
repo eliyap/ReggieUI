@@ -7,7 +7,6 @@
 
 import Foundation
 import RealmSwift
-import RegexModel
 
 final class RealmRegexModel: Object {
     /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
@@ -24,10 +23,14 @@ final class RealmRegexModel: Object {
     @Persisted
     public var componentsData: Data
     
+    @Persisted
+    public var name: String
+    
     public init(id: UUID, componentsData: Data) {
         super.init()
         self.id = UUID()
         self.componentsData = componentsData
+        self.name = "My Cool Regex"
     }
     
     override required init() {
@@ -37,30 +40,10 @@ final class RealmRegexModel: Object {
 
 extension RealmRegexModel: Identifiable { }
 
-internal extension RealmRegexModel {
-    func from(_ memModel: ComponentsModel) throws -> RealmRegexModel {
-        componentsData = try JSONEncoder().encode(memModel.components)
-        
-        /// Via the docs: https://www.mongodb.com/docs/realm/sdk/swift/data-types/supported-property-types/
-        /// > Data and string properties cannot hold more than 16MB.
-        let mbCount = Double(componentsData.count) / (1024.0 * 1024.0)
-        guard mbCount < 16.0 else { throw RealmDBError.dataTooLarge }
-        
-        return .init(
-            id: memModel.id,
-            componentsData: componentsData
-        )
+extension RealmRegexModel {
+    public static func createNew() throws -> RealmRegexModel {
+        let model = ComponentsModel(components: [])
+        let componentsData = try JSONEncoder().encode(model.components)
+        return .init(id: UUID(), componentsData: componentsData)
     }
 }
-
-internal extension ComponentsModel {
-    func from(_ dbModel: RealmRegexModel) throws -> ComponentsModel {
-        let components = try JSONDecoder().decode([ComponentModel].self, from: dbModel.componentsData)
-        
-        return .init(
-            id: dbModel.id,
-            components: components
-        )
-    }
-}
-

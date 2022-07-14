@@ -9,7 +9,6 @@ import UIKit
 import SwiftUI
 import Combine
 import RealmSwift
-import RegexModel
 
 final internal class BuilderViewController: UIViewController {
     
