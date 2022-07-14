@@ -76,10 +76,13 @@ final internal class ErrorConduit: ObservableObject {
 
 enum SelectionError: LocalizedError {
     case realmDBError(RealmDBError)
+    case spurious(SpuriousError)
     
     var errorDescription: String? {
         switch self {
         case .realmDBError(let error):
+            return error.errorDescription
+        case .spurious(let error):
             return error.errorDescription
         }
     }

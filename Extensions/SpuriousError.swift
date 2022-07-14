@@ -8,6 +8,13 @@
 import Foundation
 
 /// An error which can be thrown in development to test error handling.
-internal enum SpuriousError: Error {
+internal enum SpuriousError: LocalizedError {
     case problem
+    
+    var errorDescription: String? {
+        switch self {
+        case .problem:
+            return "Developer Testing Error"
+        }
+    }
 }
