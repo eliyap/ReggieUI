@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import Combine
 import RealmSwift
+import RegexModel
 
 final internal class BuilderViewController: UIViewController {
     
@@ -16,19 +17,18 @@ final internal class BuilderViewController: UIViewController {
     private let modalConduit: ModalConduit = .init()
     private let picker: PickerViewController
     private var observers: Set<AnyCancellable> = []
-    private let model: ComponentsModel = .init(components: ComponentsModel.example)
+    private let regexID: RealmRegexModel.ID
+    private let model: ComponentsModel
     
     private var errorConduit: ErrorConduit
-    
-    static func create(errorConduit: ErrorConduit, id: RealmRegexModel.ID) -> Result<BuilderViewController, SelectionError> {
-        
-        return .failure(.spurious(.problem))
-        
-//        let vc: BuilderViewController = .init(errorConduit: errorConduit)
-//        return .success(vc)
-    }
-    
-    private init(errorConduit: ErrorConduit) {
+          
+    init(
+        regexID: RealmRegexModel.ID,
+        model: ComponentsModel,
+        errorConduit: ErrorConduit
+    ) {
+        self.regexID = regexID
+        self.model = model
         self.errorConduit = errorConduit
         self.picker = .init(sheetInsetConduit: sheetInsetConduit, model: model)
         super.init(nibName: nil, bundle: nil)

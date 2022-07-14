@@ -48,12 +48,13 @@ final internal class SelectionViewController: UIViewController {
     }
     
     private func presentBuilder(id: RealmRegexModel.ID) -> Void {
-        switch BuilderViewController.create(errorConduit: errorConduit, id: id) {
-        case .success(let vc):
+        switch regexIdToModel(id: id) {
+        case .failure(let error):
+            errorConduit.errorPipeline.send(.realmDBError(error))
+        case .success((let regexID, let model)):
+            let vc: BuilderViewController = .init(regexID: regexID, model: model, errorConduit: errorConduit)
             vc.setModalPresentationStyle(to: .fullScreen)
             present(vc, animated: true)
-        case .failure(let error):
-            errorConduit.errorPipeline.send(error)
         }
     }
     
