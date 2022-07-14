@@ -29,7 +29,7 @@ final internal class SelectionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let hostedView = SelectionView(openBuilder: presentBuilder)
+        let hostedView = SelectionView()
             .environmentObject(conduit)
         let host = UIHostingController(rootView: hostedView)
         addChild(host)
@@ -85,14 +85,12 @@ enum SelectionError: LocalizedError {
 
 struct SelectionView: View {
     
-    public let openBuilder: () -> Void
     private var realm: Realm? = nil
     
     @State private var isShowingError: Bool = false
     private let errorConduit: ErrorConduit = .init()
     
-    init(openBuilder: @escaping () -> Void) {
-        self.openBuilder = openBuilder
+    init() {
         self.realm = try? Realm()
     }
     
@@ -101,7 +99,7 @@ struct SelectionView: View {
             ErrorView
                 .onAppear(perform: tryOpenRealm)
             if realm != nil {
-                SelectionListView(openBuilder: openBuilder)
+                SelectionListView()
                     .environmentObject(errorConduit)
             }
         }
@@ -134,8 +132,6 @@ struct SelectionView: View {
 }
 
 struct SelectionListView: View {
-    
-    public let openBuilder: () -> Void
     
     @ObservedResults(RealmRegexModel.self) private var regexModels
     @EnvironmentObject private var conduit: SelectionViewController.Conduit
