@@ -74,9 +74,13 @@ struct RegexView: View {
                 BackgroundColor()
                     .ignoresSafeArea()
             }
-            .onReceive(parameterConduit.componentQueue, perform: { output in
-                let (path, component) = output
-                params[path] = component
+            .onReceive(parameterConduit.componentQueue, perform: { action in
+                switch action {
+                case .delete(let path):
+                    break
+                case .set(let path, let component):
+                    params[path] = component
+                }
             })
             .onPreferenceChange(DropRegionKey.self) { dict in
                 cardLocations = dict

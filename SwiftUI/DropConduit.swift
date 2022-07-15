@@ -22,6 +22,11 @@ internal final class DropConduit: ObservableObject {
 ///         but this should not have `@Published` properties to avoid heavy view updates!
 internal final class ParameterConduit: ObservableObject {
     
+    enum Action {
+        case set(ModelPath, ComponentModel)
+        case delete(ModelPath)
+    }
+    
     /// Pipeline for requesting changes to the model.
-    public let componentQueue: PassthroughSubject<(ModelPath, ComponentModel), Never> = .init()
+    public let componentQueue: PassthroughSubject<Action, Never> = .init()
 }

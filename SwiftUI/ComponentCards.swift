@@ -56,7 +56,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     private func commit_string() -> Void {
         var params = params
         params.string = param_string
-        parameterConduit.componentQueue.send((path, .string(params)))
+        parameterConduit.componentQueue.send(.set(path, .string(params)))
     }
 }
 
@@ -128,7 +128,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                         Button(behavior.displayTitle) {
                             var params = params
                             params.behavior = behavior
-                            parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
+                            parameterConduit.componentQueue.send(.set(path, .zeroOrMore(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -214,7 +214,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                         Button(behavior.displayTitle) {
                             var params = params
                             params.behavior = behavior
-                            parameterConduit.componentQueue.send((path, .oneOrMore(params)))
+                            parameterConduit.componentQueue.send(.set(path, .oneOrMore(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -299,7 +299,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                         Button(behavior.displayTitle) {
                             var params = params
                             params.behavior = behavior
-                            parameterConduit.componentQueue.send((path, .optionally(params)))
+                            parameterConduit.componentQueue.send(.set(path, .optionally(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -385,7 +385,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                         Button(behavior.displayTitle) {
                             var params = params
                             params.behavior = behavior
-                            parameterConduit.componentQueue.send((path, .repeat(params)))
+                            parameterConduit.componentQueue.send(.set(path, .repeat(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -579,7 +579,7 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
                         Button(boundary.displayTitle) {
                             var params = params
                             params.boundary = boundary
-                            parameterConduit.componentQueue.send((path, .anchor(params)))
+                            parameterConduit.componentQueue.send(.set(path, .anchor(params)))
                             
                             param_boundary = boundary
                             modalConduit.hostIsPresenting.send(false)
