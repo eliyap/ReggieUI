@@ -130,6 +130,11 @@ func DefaultTitle(_ string: String, _ symbol: some View, delete: @escaping () ->
         symbol
         Text(string)
         Spacer()
+        Button(action: delete) {
+            Image(systemName: "xmark.circle.fill")
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(Color(uiColor: .secondaryLabel))
+        }
     }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(titlePadding)
