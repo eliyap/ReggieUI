@@ -11,7 +11,7 @@ import RegexModel
 
 struct StringCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: StringParameter
@@ -62,7 +62,7 @@ struct StringCard<ParentTitles: View>: TitledCardView {
 
 struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -147,7 +147,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -233,7 +233,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -318,7 +318,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
 
 struct RepeatCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -404,6 +404,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
 
 struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
@@ -447,6 +448,7 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
 
 struct NegativeLookaheadCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
@@ -491,6 +493,7 @@ struct NegativeLookaheadCard<ParentTitles: View>: TitledCardView {
 struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 /// Pick a card, any card...
     
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
@@ -535,7 +538,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 
 struct AnchorCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     

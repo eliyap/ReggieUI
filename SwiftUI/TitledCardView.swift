@@ -26,6 +26,8 @@ protocol TitledCardView: View {
     var params: Parameters               { get }
     var path: ModelPath                  { get }
     var mgeNamespace: Namespace.ID       { get }
+    
+    var parameterConduit: ParameterConduit { get }
 }
 
 internal let titleCornerRadius: CGFloat = 16

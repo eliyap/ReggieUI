@@ -11,7 +11,7 @@ import RegexModel
 
 struct DateTimeCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: DateTimeParameter
@@ -35,7 +35,7 @@ struct DateTimeCard<ParentTitles: View>: TitledCardView {
 
 struct CurrencyCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: CurrencyParameter
@@ -59,7 +59,7 @@ struct CurrencyCard<ParentTitles: View>: TitledCardView {
 
 struct DecimalCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: DecimalParameter
@@ -83,7 +83,7 @@ struct DecimalCard<ParentTitles: View>: TitledCardView {
 
 struct WholeNumberCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: WholeNumberParameter
@@ -107,7 +107,7 @@ struct WholeNumberCard<ParentTitles: View>: TitledCardView {
 
 struct DecimalPercentageCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: DecimalPercentageParameter
@@ -131,7 +131,7 @@ struct DecimalPercentageCard<ParentTitles: View>: TitledCardView {
 
 struct WholeNumberPercentageCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: WholeNumberPercentageParameter
@@ -155,7 +155,7 @@ struct WholeNumberPercentageCard<ParentTitles: View>: TitledCardView {
 
 struct URLCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: URLParameter
