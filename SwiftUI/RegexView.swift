@@ -10,6 +10,49 @@ import Combine
 import RegexModel
 import UniformTypeIdentifiers
 
+/// Captures drops that fall outside of (i.e. below) the view.
+struct ScrollDropDelegate: DropDelegate {
+    
+    public let params: ComponentsModel
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .copy)
+    }
+    
+    /// Messy copy pasted boilerplate can't be refactored because of yucky completion handler code.
+    func performDrop(info: DropInfo) -> Bool {
+        let providers = info.itemProviders(for: [TransferableComponent.uti])
+        guard providers.count == 1 else {
+            Swift.debugPrint("Wrong item count \(providers.count)")
+            return false
+        }
+        
+        let provider = providers[0]
+        guard provider.canLoadObject(ofClass: TransferableComponent.self) else {
+            Swift.debugPrint("Could not load string")
+            return false
+        }
+        
+        provider.loadObject(ofClass: TransferableComponent.self) { object, error in
+            if let error {
+                assert(false, error.localizedDescription)
+                return
+            }
+            
+            guard let transferable = object as? TransferableComponent else {
+                assert(false, "Unexpected type!")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                params.move(transferable.string, to: .child(index: params.components.count, subpath: .target))
+            }
+        }
+        
+        return true
+    }
+}
+
 struct RegexView: View {
     
     /// In case of multiple instances, ensure this is instance specific.
@@ -53,6 +96,8 @@ struct RegexView: View {
                 .environmentObject(parameterConduit)
                 .environmentObject(modalConduit)
                 .padding(Self.internalPadding)
+                /// Causes `.padding` to be a valid drop target too.
+                .contentShape(.interaction, Rectangle())
                 .onDrop(of: [TransferableComponent.uti], delegate: self)
                 .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
                 #if DEBUG
@@ -78,6 +123,7 @@ struct RegexView: View {
            .onPreferenceChange(DropRegionKey.self) { dict in
                cardLocations = dict
            }
+           .onDrop(of: [TransferableComponent.uti], delegate: ScrollDropDelegate(params: params))
     }
     
     public static let internalPadding: CGFloat = 30
