@@ -69,10 +69,12 @@ extension TitledCardView {
             .background { CardBackground() }
             .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
             .modifier(TitleShadow())
-            .onDrag {
+            .onDrag ({
                 let transferable = TransferableComponent(string: params.id)
                 return NSItemProvider(object: transferable)
-            }
+            }, preview: {
+                params.proxy.symbol
+            })
     }
 }
 
