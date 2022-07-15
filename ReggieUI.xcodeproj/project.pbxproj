@@ -3,18 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		220229B428721EF200EAF840 /* DropRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220229B328721EF200EAF840 /* DropRegion.swift */; };
-		222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */; };
+		2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */; };
+		2228E6C8287D96C300B94605 /* SpuriousError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C7287D96C300B94605 /* SpuriousError.swift */; };
+		2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6C9287D977700B94605 /* SheetInsetConduit.swift */; };
+		2228E6CC287D97E500B94605 /* ModalConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6CB287D97E500B94605 /* ModalConduit.swift */; };
+		2228E6CE287D982200B94605 /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6CD287D982200B94605 /* BuilderViewController.swift */; };
+		2228E6D0287EE91600B94605 /* BuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6CF287EE91600B94605 /* BuilderView.swift */; };
+		2228E6D2287EF34200B94605 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D1287EF34200B94605 /* SelectionViewController.swift */; };
+		2228E6D52880D36700B94605 /* RealmDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D42880D36700B94605 /* RealmDBError.swift */; };
+		2228E6D72880D4EC00B94605 /* GetRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D62880D4EC00B94605 /* GetRegex.swift */; };
+		2228E6D928818CC500B94605 /* TransferableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D828818CC500B94605 /* TransferableComponent.swift */; };
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
+		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
+		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
+		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
 		22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 22D9E5B828709D6B00E64BAA /* RegexModel */; };
 		22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BB28709DD200E64BAA /* ComponentView.swift */; };
-		22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* ContentView.swift */; };
-		22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BD28709DD200E64BAA /* RegexModel.swift */; };
+		22D9E5C328709DD200E64BAA /* RegexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BC28709DD200E64BAA /* RegexView.swift */; };
+		22D9E5C428709DD200E64BAA /* ComponentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */; };
 		22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BE28709DD200E64BAA /* Sticky.swift */; };
 		22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5BF28709DD200E64BAA /* TitledCardView.swift */; };
 		22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9E5C028709DD200E64BAA /* ComponentCards.swift */; };
@@ -28,17 +40,32 @@
 		22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */; };
 		22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */; };
 		22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */; };
+		22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
+		6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
-		222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRepetitionBehavior.displayTitle.swift; sourceTree = "<group>"; };
+		2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.TransactionToken.swift; sourceTree = "<group>"; };
+		2228E6C7287D96C300B94605 /* SpuriousError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpuriousError.swift; sourceTree = "<group>"; };
+		2228E6C9287D977700B94605 /* SheetInsetConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInsetConduit.swift; sourceTree = "<group>"; };
+		2228E6CB287D97E500B94605 /* ModalConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalConduit.swift; sourceTree = "<group>"; };
+		2228E6CD287D982200B94605 /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
+		2228E6CF287EE91600B94605 /* BuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderView.swift; sourceTree = "<group>"; };
+		2228E6D1287EF34200B94605 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectionViewController.swift; path = /Users/SAM/Documents/ReggieUI/ReggieUI/SelectionViewController.swift; sourceTree = "<absolute>"; };
+		2228E6D42880D36700B94605 /* RealmDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBError.swift; sourceTree = "<group>"; };
+		2228E6D62880D4EC00B94605 /* GetRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRegex.swift; sourceTree = "<group>"; };
+		2228E6D828818CC500B94605 /* TransferableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferableComponent.swift; sourceTree = "<group>"; };
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
+		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
+		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
+		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
+		229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.release.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.release.xcconfig"; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
-		22D9E5BC28709DD200E64BAA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		22D9E5BD28709DD200E64BAA /* RegexModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexModel.swift; sourceTree = "<group>"; };
+		22D9E5BC28709DD200E64BAA /* RegexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexView.swift; sourceTree = "<group>"; };
+		22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsModel.swift; sourceTree = "<group>"; };
 		22D9E5BE28709DD200E64BAA /* Sticky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticky.swift; sourceTree = "<group>"; };
 		22D9E5BF28709DD200E64BAA /* TitledCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledCardView.swift; sourceTree = "<group>"; };
 		22D9E5C028709DD200E64BAA /* ComponentCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCards.swift; sourceTree = "<group>"; };
@@ -54,6 +81,9 @@
 		22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewController.swift; sourceTree = "<group>"; };
 		22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListLayout.swift; sourceTree = "<group>"; };
+		22F70858287C46BA00E123B0 /* RealmRegexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.swift; sourceTree = "<group>"; };
+		6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.debug.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.debug.xcconfig"; sourceTree = "<group>"; };
+		A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReggieUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,16 +92,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */,
+				6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2228E6D32880D34C00B94605 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				2228E6D42880D36700B94605 /* RealmDBError.swift */,
+				2228E6D62880D4EC00B94605 /* GetRegex.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		222E503E2872F65400D89CEE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				222E503F2872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift */,
+				2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */,
+				2228E6C7287D96C300B94605 /* SpuriousError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -87,6 +128,7 @@
 		22D9E5B728709D6B00E64BAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,12 +138,18 @@
 			children = (
 				22D9E5C128709DD200E64BAA /* CardSymbols.swift */,
 				22D9E5C028709DD200E64BAA /* ComponentCards.swift */,
+				22594B5F287B4C9E00EBF55B /* FoundationCards.swift */,
 				22D9E5BB28709DD200E64BAA /* ComponentView.swift */,
-				22D9E5BC28709DD200E64BAA /* ContentView.swift */,
-				22D9E5BD28709DD200E64BAA /* RegexModel.swift */,
+				22D9E5BC28709DD200E64BAA /* RegexView.swift */,
+				2228E6D828818CC500B94605 /* TransferableComponent.swift */,
+				2228E6CF287EE91600B94605 /* BuilderView.swift */,
+				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
+				22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */,
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
 				220229B328721EF200EAF840 /* DropRegion.swift */,
+				22594B65287B994C00EBF55B /* DropConduit.swift */,
+				22594B61287B985100EBF55B /* DropRegionKey.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -113,8 +161,10 @@
 				22E3ECB72868D0E5003B6F55 /* ReggieUI */,
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
 				222E503E2872F65400D89CEE /* Extensions */,
+				2228E6D32880D34C00B94605 /* Realm */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
 				22D9E5B728709D6B00E64BAA /* Frameworks */,
+				B05CF853370D549C54D439A6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +182,10 @@
 				22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */,
 				22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */,
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
+				2228E6D1287EF34200B94605 /* SelectionViewController.swift */,
+				2228E6CD287D982200B94605 /* BuilderViewController.swift */,
+				2228E6C9287D977700B94605 /* SheetInsetConduit.swift */,
+				2228E6CB287D97E500B94605 /* ModalConduit.swift */,
 				22E3ECD02868D9D8003B6F55 /* PickerViewController.swift */,
 				222E50432873910800D89CEE /* SwitchedViewController.swift */,
 				222E50452873AD9900D89CEE /* TestsViewController.swift */,
@@ -145,6 +199,15 @@
 			path = ReggieUI;
 			sourceTree = "<group>";
 		};
+		B05CF853370D549C54D439A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */,
+				229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22E3ECC92868D0E7003B6F55 /* Build configuration list for PBXNativeTarget "ReggieUI" */;
 			buildPhases = (
+				3D0472427D53D42A8C83DA89 /* [CP] Check Pods Manifest.lock */,
 				22E3ECB12868D0E5003B6F55 /* Sources */,
 				22E3ECB22868D0E5003B6F55 /* Frameworks */,
 				22E3ECB32868D0E5003B6F55 /* Resources */,
+				F8CF69B65AF113837C2EA93C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,7 +249,7 @@
 				};
 			};
 			buildConfigurationList = 22E3ECB02868D0E4003B6F55 /* Build configuration list for PBXProject "ReggieUI" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -214,25 +279,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D0472427D53D42A8C83DA89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReggieUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8CF69B65AF113837C2EA93C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		22E3ECB12868D0E5003B6F55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2228E6D0287EE91600B94605 /* BuilderView.swift in Sources */,
+				2228E6CE287D982200B94605 /* BuilderViewController.swift in Sources */,
+				22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */,
 				22D9E5C528709DD200E64BAA /* Sticky.swift in Sources */,
 				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
-				22D9E5C428709DD200E64BAA /* RegexModel.swift in Sources */,
+				2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */,
+				22D9E5C428709DD200E64BAA /* ComponentsModel.swift in Sources */,
+				22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
 				22E3ECBD2868D0E5003B6F55 /* ViewController.swift in Sources */,
-				22D9E5C328709DD200E64BAA /* ContentView.swift in Sources */,
+				2228E6C6287D962600B94605 /* Realm.TransactionToken.swift in Sources */,
+				22D9E5C328709DD200E64BAA /* RegexView.swift in Sources */,
 				22D9E5C828709DD200E64BAA /* CardSymbols.swift in Sources */,
 				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
 				22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */,
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
+				22594B66287B994C00EBF55B /* DropConduit.swift in Sources */,
+				2228E6D52880D36700B94605 /* RealmDBError.swift in Sources */,
+				2228E6CC287D97E500B94605 /* ModalConduit.swift in Sources */,
+				2228E6D928818CC500B94605 /* TransferableComponent.swift in Sources */,
+				2228E6D72880D4EC00B94605 /* GetRegex.swift in Sources */,
 				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
+				2228E6C8287D96C300B94605 /* SpuriousError.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
-				222E50402872F66F00D89CEE /* RegexRepetitionBehavior.displayTitle.swift in Sources */,
+				2228E6D2287EF34200B94605 /* SelectionViewController.swift in Sources */,
+				22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */,
 				22E3ECD12868D9D8003B6F55 /* PickerViewController.swift in Sources */,
 				222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */,
 				22E3ECBB2868D0E5003B6F55 /* SceneDelegate.swift in Sources */,
@@ -377,6 +497,7 @@
 		};
 		22E3ECCA2868D0E7003B6F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -405,6 +526,7 @@
 		};
 		22E3ECCB2868D0E7003B6F55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

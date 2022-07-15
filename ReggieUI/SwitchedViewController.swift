@@ -12,7 +12,7 @@ final internal class SwitchedViewController: UIViewController {
     public let componentsViewController = ComponentCollectionViewController()
     public let testsViewController: TestsViewController
     
-    init(model: _RegexModel) {
+    init(model: ComponentsModel) {
         self.testsViewController = .init(model: model)
         super.init(nibName: nil, bundle: nil)
 

@@ -28,7 +28,7 @@ final internal class TestsViewController: UICollectionViewController {
     
     public typealias Cell = _TestsCell
     
-    init(model: _RegexModel) {
+    init(model: ComponentsModel) {
         let layout = createListLayout()
         super.init(collectionViewLayout: layout)
         /// Defuse implicitly unwrapped nil.
@@ -78,7 +78,7 @@ final internal class _TestsCell: UICollectionViewCell {
 
 struct TestView: View {
     
-    public var model: _RegexModel
+    public var model: ComponentsModel
     public let test: TestModel
     
     @State private var param_string: String = ""

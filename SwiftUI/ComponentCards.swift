@@ -11,7 +11,7 @@ import RegexModel
 
 struct StringCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
     let params: StringParameter
@@ -56,13 +56,13 @@ struct StringCard<ParentTitles: View>: TitledCardView {
     private func commit_string() -> Void {
         var params = params
         params.string = param_string
-        parameterConduit.componentQueue.send((path, .string(params)))
+        parameterConduit.componentQueue.send(.set(path, .string(params)))
     }
 }
 
 struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -108,7 +108,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -121,14 +121,14 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
-                            parameterConduit.componentQueue.send((path, .zeroOrMore(params)))
+                            params.behavior = behavior
+                            parameterConduit.componentQueue.send(.set(path, .zeroOrMore(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -147,7 +147,7 @@ struct ZeroOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -194,7 +194,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -207,14 +207,14 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
-                            parameterConduit.componentQueue.send((path, .oneOrMore(params)))
+                            params.behavior = behavior
+                            parameterConduit.componentQueue.send(.set(path, .oneOrMore(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -233,7 +233,7 @@ struct OneOrMoreCard<ParentTitles: View>: TitledCardView {
 
 struct OptionallyCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -279,7 +279,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -292,14 +292,14 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
-                            parameterConduit.componentQueue.send((path, .optionally(params)))
+                            params.behavior = behavior
+                            parameterConduit.componentQueue.send(.set(path, .optionally(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -318,7 +318,7 @@ struct OptionallyCard<ParentTitles: View>: TitledCardView {
 
 struct RepeatCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
@@ -365,7 +365,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
         }
     }
     
-    @State private var param_behavior: RegexRepetitionBehavior = .default
+    @State private var param_behavior: RepetitionBehavior = .default
     @State private var showBehaviorMenu: Bool = false
     private let param_behavior_name = "Repetition"
     private var ParamBehavior: some View {
@@ -378,14 +378,14 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
                 showBehaviorMenu = true
             }
                 .onAppear {
-                    param_behavior = params.behaviour
+                    param_behavior = params.behavior
                 }
                 .confirmationDialog(param_behavior_name, isPresented: $showBehaviorMenu, titleVisibility: .visible) {
-                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RegexRepetitionBehavior) in
+                    ForEach([.reluctant, .eager, .possessive], id: \.self) { (behavior: RepetitionBehavior) in
                         Button(behavior.displayTitle) {
                             var params = params
-                            params.behaviour = behavior
-                            parameterConduit.componentQueue.send((path, .repeat(params)))
+                            params.behavior = behavior
+                            parameterConduit.componentQueue.send(.set(path, .repeat(params)))
                             
                             param_behavior = behavior
                             modalConduit.hostIsPresenting.send(false)
@@ -404,6 +404,7 @@ struct RepeatCard<ParentTitles: View>: TitledCardView {
 
 struct LookaheadCard<ParentTitles: View>: TitledCardView {
     
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
@@ -445,9 +446,54 @@ struct LookaheadCard<ParentTitles: View>: TitledCardView {
     }
 }
 
+struct NegativeLookaheadCard<ParentTitles: View>: TitledCardView {
+    
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
+    @State private var cardHovered: DropRegion.RelativeLocation? = nil
+    
+    let params: NegativeLookaheadParameter
+    let path: ModelPath
+    let mgeNamespace: Namespace.ID
+    let parentTitles: () -> ParentTitles
+    
+    let insets = cardInsets
+    
+    var contents: some View {VStack {
+            ComponentsView
+        }
+    }
+
+    private var ComponentsView: some View {
+        VStack(spacing: interCardSpacing) {
+            DropRegion(cardHovered: $cardHovered, path: path.appending(.child(index: 0, subpath: .target)), relativeLocation: .top)
+            ForEach(Array(params.components.enumerated()), id: \.element.id) { index, model in
+                ComponentView(
+                    model: model,
+                    path: path.appending(.child(index: index, subpath: .target)),
+                    mgeNamespace: mgeNamespace,
+                    parentHeaders: {
+                    VStack(spacing: .zero) {
+                        parentTitles()
+                        title
+                    }
+                })
+                DropRegion(
+                    cardHovered: $cardHovered,
+                    path: path.appending(.child(index: index + 1, subpath: .target)),
+                    relativeLocation: model.id == params.components.last?.id
+                        ? .bottom
+                        : .middle
+                )
+            }
+        }
+    }
+}
+
 struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 /// Pick a card, any card...
     
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     @State private var cardHovered: DropRegion.RelativeLocation? = nil
     
@@ -492,7 +538,7 @@ struct ChoiceOfCard<ParentTitles: View>: TitledCardView {
 
 struct AnchorCard<ParentTitles: View>: TitledCardView {
     
-    @EnvironmentObject private var parameterConduit: ParameterConduit
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
     @EnvironmentObject private var modalConduit: ModalConduit
     @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
     
@@ -533,7 +579,7 @@ struct AnchorCard<ParentTitles: View>: TitledCardView {
                         Button(boundary.displayTitle) {
                             var params = params
                             params.boundary = boundary
-                            parameterConduit.componentQueue.send((path, .anchor(params)))
+                            parameterConduit.componentQueue.send(.set(path, .anchor(params)))
                             
                             param_boundary = boundary
                             modalConduit.hostIsPresenting.send(false)

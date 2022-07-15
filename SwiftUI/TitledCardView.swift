@@ -26,6 +26,8 @@ protocol TitledCardView: View {
     var params: Parameters               { get }
     var path: ModelPath                  { get }
     var mgeNamespace: Namespace.ID       { get }
+    
+    var parameterConduit: ParameterConduit { get }
 }
 
 internal let titleCornerRadius: CGFloat = 16
@@ -35,7 +37,9 @@ internal let cardInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8
 extension TitledCardView {
     
     var title: some View {
-        DefaultTitle(params.proxy)
+        DefaultTitle(params.proxy, delete: {
+            parameterConduit.componentQueue.send(.delete(path))
+        })
     }
     
     var body: some View {
@@ -58,13 +62,21 @@ extension TitledCardView {
                                 .sticky()
                         }
                     }
+                        /// - Important: that `GeometryReader` overlay the whole region, not the title,
+                        ///              so that root view sees accurate layout info.
+                        .preference(
+                            key: DropRegionKey.self,
+                            value: [path:geo.frame(in: .named(DropConduit.scrollCoordinateSpace))]
+                        )
                 }
             }
             .background { CardBackground() }
             .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
+            .contentShape(.dragPreview, RoundedRectangle(cornerRadius: titleCornerRadius))
             .modifier(TitleShadow())
             .onDrag {
-                NSItemProvider(object: params.id as NSString)
+                let transferable = TransferableComponent(string: params.id)
+                return NSItemProvider(object: transferable)
             }
     }
 }
@@ -108,15 +120,20 @@ fileprivate struct CardBackground: View {
 
 fileprivate let titlePadding: CGFloat = 12
 
-func DefaultTitle(_ proxy: ComponentModel.Proxy) -> some View {
-    DefaultTitle(proxy.displayTitle, proxy.symbol)
+func DefaultTitle(_ proxy: ComponentModel.Proxy, delete: @escaping () -> Void) -> some View {
+    DefaultTitle(proxy.displayTitle, proxy.symbol, delete: delete)
 }
 
-func DefaultTitle(_ string: String, _ symbol: some View) -> some View {
+func DefaultTitle(_ string: String, _ symbol: some View, delete: @escaping () -> Void) -> some View {
     HStack(spacing: titlePadding / 2) {
         symbol
         Text(string)
         Spacer()
+        Button(action: delete) {
+            Image(systemName: "xmark.circle.fill")
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(Color(uiColor: .secondaryLabel))
+        }
     }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(titlePadding)

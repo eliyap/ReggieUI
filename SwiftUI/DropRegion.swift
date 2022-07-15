@@ -34,29 +34,21 @@ struct DropRegion: View {
     private var DropWatcher: some View {
         GeometryReader { proxy in
             Color.clear
-                .onReceive(dropConduit.$dropLocation) { location, event in
-                    respondTo(location: location, event: event, proxy: proxy)
+                .onReceive(dropConduit.$dropLocation) { location in
+                    respondTo(location: location, proxy: proxy)
                 }
         }
     }
     
     let animation: Animation = .easeInOut(duration: 0.15)
     
-    private func respondTo(location: CGPoint?, event: DropConduit.Event?, proxy: GeometryProxy) -> Void {
+    private func respondTo(location: CGPoint?, proxy: GeometryProxy) -> Void {
         /// Check whether location is within region.
         guard let location else {
             withAnimation(animation) {
-                if case .drop = event {
-                    /// Clear UI on drop.
-                    hovered = false
-                    cardHovered = nil
-                } else {
-                    /// Trigger variable changes simultaneously, as `.onChanged` has a slight delay.
-                    if hovered == true {
-                        cardHovered = nil
-                    }
-                    hovered = false
-                }
+                /// Clear UI.
+                hovered = false
+                cardHovered = nil
             }
             return
         }
@@ -70,16 +62,14 @@ struct DropRegion: View {
             }
             hovered = inside
         }
-        
-        /// Check for drop commitment
-        if inside, case .drop(let id) = event {
-            dropConduit.dropPath = (id, path)
-        }
     }
     
     // MARK: - Height Calculation
     public static let baseHeight: CGFloat = 20
-    let heightAdjustment: CGFloat = 20
+    
+    /// - Note: If equal to the `baseHeight`, it's possible to "skip over" a drop region.
+    ///         Make it significantly less!
+    let heightAdjustment: CGFloat = 10
     
     var height: CGFloat {
         if hovered {

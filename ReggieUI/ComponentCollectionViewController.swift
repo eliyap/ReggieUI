@@ -76,7 +76,8 @@ extension ComponentCollectionViewController: UICollectionViewDragDelegate {
             return []
         }
         
-        let itemProvider = NSItemProvider(object: proxy.rawValue as NSString)
+        let transferable = TransferableComponent(string: proxy.rawValue)
+        let itemProvider = NSItemProvider(object: transferable)
         return [UIDragItem(itemProvider: itemProvider)]
     }
 }
