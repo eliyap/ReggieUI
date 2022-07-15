@@ -68,16 +68,16 @@ struct RegexView: View {
                Color.clear
                    .frame(height: sheetInsetConduit.sheetObscuringHeight)
            })
-            .coordinateSpace(name: scrollCoordinateSpaceName)
-            .scrollCoordinateSpaceName(scrollCoordinateSpaceName)
-            .background {
-                BackgroundColor()
-                    .ignoresSafeArea()
-            }
-            .onReceive(parameterConduit.componentQueue, perform: params.execute)
-            .onPreferenceChange(DropRegionKey.self) { dict in
-                cardLocations = dict
-            }
+           .coordinateSpace(name: scrollCoordinateSpaceName)
+           .scrollCoordinateSpaceName(scrollCoordinateSpaceName)
+           .background {
+               BackgroundColor()
+                   .ignoresSafeArea()
+           }
+           .onReceive(parameterConduit.componentQueue, perform: params.execute)
+           .onPreferenceChange(DropRegionKey.self) { dict in
+               cardLocations = dict
+           }
     }
     
     public static let internalPadding: CGFloat = 30
