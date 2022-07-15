@@ -105,7 +105,7 @@ extension ComponentsModel {
 }
 
 extension ComponentsModel {
-    func execute(_ action: ParameterConduit.Action) -> Void {
+    internal func execute(_ action: ParameterConduit.Action) -> Void {
         switch action {
         case .delete(let path):
             withAnimation(.jelly) {
