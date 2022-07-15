@@ -8,7 +8,13 @@
 import Foundation
 import UniformTypeIdentifiers
 
+/// A custom drag'n'drop type.
 final internal class TransferableComponent: NSObject {
+    /// Exposes a single UniformTypeIdentifier as its interface.
+    /// 
+    /// Motivation: `NSString` can be drag'n'dropped, with `.plainText` as the UTI.
+    /// However, as "text", any object dragged this way can enter other apps, our own text boxes, etc.
+    /// A custom UTI avoids this over-permissive behavior.
     static let uti: String = "com.elijah.regexcomponent"
     
     /// Internal data representation is very simple.
