@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import RegexModel
+import UniformTypeIdentifiers
 
 struct RegexView: View {
     
@@ -52,7 +53,7 @@ struct RegexView: View {
                 .environmentObject(parameterConduit)
                 .environmentObject(modalConduit)
                 .padding(Self.internalPadding)
-                .onDrop(of: [.plainText], delegate: self)
+                .onDrop(of: [TransferableComponent.uti], delegate: self)
                 .coordinateSpace(name: DropConduit.scrollCoordinateSpace)
                 #if DEBUG
 //                .border(Color.blue, width: 3)
@@ -98,31 +99,31 @@ extension RegexView: DropDelegate {
     
     func performDrop(info: DropInfo) -> Bool {
         
-        let providers = info.itemProviders(for: [.plainText])
+        let providers = info.itemProviders(for: [TransferableComponent.uti])
         guard providers.count == 1 else {
             Swift.debugPrint("Wrong item count \(providers.count)")
             return false
         }
         
         let provider = providers[0]
-        guard provider.canLoadObject(ofClass: NSString.self) else {
+        guard provider.canLoadObject(ofClass: TransferableComponent.self) else {
             Swift.debugPrint("Could not load string")
             return false
         }
         
-        provider.loadObject(ofClass: NSString.self) { object, error in
+        provider.loadObject(ofClass: TransferableComponent.self) { object, error in
             if let error {
                 assert(false, error.localizedDescription)
                 return
             }
             
-            guard let string = object as? NSString else {
+            guard let transferable = object as? TransferableComponent else {
                 assert(false, "Unexpected type!")
                 return
             }
             
             DispatchQueue.main.async {
-                params.move(string as String, to: closestInsertionPath(to: info.location))
+                params.move(transferable.string, to: closestInsertionPath(to: info.location))
                 dropConduit.dropLocation = nil
             }
         }
@@ -228,4 +229,3 @@ extension RegexView {
         }
     }
 }
-

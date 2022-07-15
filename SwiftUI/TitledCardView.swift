@@ -70,7 +70,8 @@ extension TitledCardView {
             .clipShape(RoundedRectangle(cornerRadius: titleCornerRadius))
             .modifier(TitleShadow())
             .onDrag {
-                NSItemProvider(object: params.id as NSString)
+                let transferable = TransferableComponent(string: params.id)
+                return NSItemProvider(object: transferable)
             }
     }
 }
