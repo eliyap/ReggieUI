@@ -9,8 +9,9 @@ import Foundation
 import RealmSwift
 import RegexModel
 
-/// - Warning: be very conscious of the thread on which this object lives!
-internal func getRegex(id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmDBError> {
+/// - Warning: be very conscious of the thread on which this object lives
+///            Where possible, *only* use the object within a single function call
+fileprivate func getRegex(id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmDBError> {
     guard let realm = try? Realm() else {
         return .failure(.couldNotOpenRealm)
     }
