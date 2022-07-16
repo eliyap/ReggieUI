@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RegexModel
+import RealmSwift
 
 /// Multiplexer view that resolves the enum to a specific case.
 struct ComponentView<ParentHeader: View>: View {
