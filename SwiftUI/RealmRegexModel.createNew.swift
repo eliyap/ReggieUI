@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// - Note: needed for GUI, not for extension, hence broken into own file.
 extension RealmRegexModel {
     public static func createNew() throws -> RealmRegexModel {
         let model = ComponentsModel(components: [])
