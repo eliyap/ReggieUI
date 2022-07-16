@@ -95,6 +95,8 @@
 		223B73002882F428004BCFC9 /* RexIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexIntents.swift; sourceTree = "<group>"; };
 		223B73022882F428004BCFC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223B731B2883205F004BCFC9 /* RegexEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexEntity.swift; sourceTree = "<group>"; };
+		223B731D288320D9004BCFC9 /* ReggieUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReggieUI.entitlements; sourceTree = "<group>"; };
+		223B731E28832108004BCFC9 /* RexIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexIntents.entitlements; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		223B72FD2882F428004BCFC9 /* RexIntents */ = {
 			isa = PBXGroup;
 			children = (
+				223B731E28832108004BCFC9 /* RexIntents.entitlements */,
 				223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */,
 				223B73002882F428004BCFC9 /* RexIntents.swift */,
 				223B731B2883205F004BCFC9 /* RegexEntity.swift */,
@@ -235,6 +238,7 @@
 		22E3ECB72868D0E5003B6F55 /* ReggieUI */ = {
 			isa = PBXGroup;
 			children = (
+				223B731D288320D9004BCFC9 /* ReggieUI.entitlements */,
 				22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */,
 				22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */,
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
@@ -447,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = RexIntents/RexIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -474,6 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = RexIntents/RexIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -616,6 +622,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReggieUI/ReggieUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -645,6 +652,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReggieUI/ReggieUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
