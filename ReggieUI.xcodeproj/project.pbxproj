@@ -23,6 +23,8 @@
 		223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */; };
 		223B73012882F428004BCFC9 /* RexIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73002882F428004BCFC9 /* RexIntents.swift */; };
 		223B73052882F428004BCFC9 /* RexIntents.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 223B72FC2882F428004BCFC9 /* RexIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		223B73112882FE15004BCFC9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73102882FE15004BCFC9 /* Realm */; };
+		223B73132882FE15004BCFC9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73122882FE15004BCFC9 /* RealmSwift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -125,6 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B73132882FE15004BCFC9 /* RealmSwift in Frameworks */,
+				223B73112882FE15004BCFC9 /* Realm in Frameworks */,
 				22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +275,8 @@
 			name = ReggieUI;
 			packageProductDependencies = (
 				22D9E5B828709D6B00E64BAA /* RegexModel */,
+				223B73102882FE15004BCFC9 /* Realm */,
+				223B73122882FE15004BCFC9 /* RealmSwift */,
 			);
 			productName = ReggieUI;
 			productReference = 22E3ECB52868D0E5003B6F55 /* ReggieUI.app */;
@@ -303,6 +309,9 @@
 				Base,
 			);
 			mainGroup = 22E3ECAC2868D0E4003B6F55;
+			packageReferences = (
+				223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 22E3ECB62868D0E5003B6F55 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -668,7 +677,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		223B73102882FE15004BCFC9 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		223B73122882FE15004BCFC9 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		22D9E5B828709D6B00E64BAA /* RegexModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RegexModel;
