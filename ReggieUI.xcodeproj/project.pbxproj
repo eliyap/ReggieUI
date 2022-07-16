@@ -20,6 +20,11 @@
 		2228E6D928818CC500B94605 /* TransferableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D828818CC500B94605 /* TransferableComponent.swift */; };
 		222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50432873910800D89CEE /* SwitchedViewController.swift */; };
 		222E50462873AD9900D89CEE /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E50452873AD9900D89CEE /* TestsViewController.swift */; };
+		223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */; };
+		223B73012882F428004BCFC9 /* RexIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73002882F428004BCFC9 /* RexIntents.swift */; };
+		223B73052882F428004BCFC9 /* RexIntents.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 223B72FC2882F428004BCFC9 /* RexIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		223B73112882FE15004BCFC9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73102882FE15004BCFC9 /* Realm */; };
+		223B73132882FE15004BCFC9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73122882FE15004BCFC9 /* RealmSwift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -41,8 +46,31 @@
 		22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */; };
 		22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */; };
 		22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
-		6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		223B73032882F428004BCFC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22E3ECAD2868D0E4003B6F55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 223B72FB2882F428004BCFC9;
+			remoteInfo = RexIntents;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		223B73062882F428004BCFC9 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				223B73052882F428004BCFC9 /* RexIntents.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		220229B328721EF200EAF840 /* DropRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegion.swift; sourceTree = "<group>"; };
@@ -58,10 +86,13 @@
 		2228E6D828818CC500B94605 /* TransferableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferableComponent.swift; sourceTree = "<group>"; };
 		222E50432873910800D89CEE /* SwitchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchedViewController.swift; sourceTree = "<group>"; };
 		222E50452873AD9900D89CEE /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
+		223B72FC2882F428004BCFC9 /* RexIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = RexIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexIntentsExtension.swift; sourceTree = "<group>"; };
+		223B73002882F428004BCFC9 /* RexIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexIntents.swift; sourceTree = "<group>"; };
+		223B73022882F428004BCFC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
-		229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.release.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.release.xcconfig"; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* RegexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexView.swift; sourceTree = "<group>"; };
@@ -82,17 +113,23 @@
 		22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewController.swift; sourceTree = "<group>"; };
 		22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListLayout.swift; sourceTree = "<group>"; };
 		22F70858287C46BA00E123B0 /* RealmRegexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.swift; sourceTree = "<group>"; };
-		6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.debug.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.debug.xcconfig"; sourceTree = "<group>"; };
-		A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReggieUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		223B72F92882F428004BCFC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22E3ECB22868D0E5003B6F55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B73132882FE15004BCFC9 /* RealmSwift in Frameworks */,
+				223B73112882FE15004BCFC9 /* Realm in Frameworks */,
 				22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */,
-				6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,20 +154,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		223B72FD2882F428004BCFC9 /* RexIntents */ = {
+			isa = PBXGroup;
+			children = (
+				223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */,
+				223B73002882F428004BCFC9 /* RexIntents.swift */,
+				223B73022882F428004BCFC9 /* Info.plist */,
+			);
+			path = RexIntents;
+			sourceTree = "<group>";
+		};
 		22D9E5B528709D5900E64BAA /* Packages */ = {
 			isa = PBXGroup;
 			children = (
 				22D9E5B628709D5900E64BAA /* RegexModel */,
 			);
 			name = Packages;
-			sourceTree = "<group>";
-		};
-		22D9E5B728709D6B00E64BAA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		22D9E5BA28709DBB00E64BAA /* SwiftUI */ = {
@@ -162,9 +201,8 @@
 				22D9E5BA28709DBB00E64BAA /* SwiftUI */,
 				222E503E2872F65400D89CEE /* Extensions */,
 				2228E6D32880D34C00B94605 /* Realm */,
+				223B72FD2882F428004BCFC9 /* RexIntents */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
-				22D9E5B728709D6B00E64BAA /* Frameworks */,
-				B05CF853370D549C54D439A6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				22E3ECB52868D0E5003B6F55 /* ReggieUI.app */,
+				223B72FC2882F428004BCFC9 /* RexIntents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,35 +238,45 @@
 			path = ReggieUI;
 			sourceTree = "<group>";
 		};
-		B05CF853370D549C54D439A6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */,
-				229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22E3ECB42868D0E5003B6F55 /* ReggieUI */ = {
+		223B72FB2882F428004BCFC9 /* RexIntents */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22E3ECC92868D0E7003B6F55 /* Build configuration list for PBXNativeTarget "ReggieUI" */;
+			buildConfigurationList = 223B73092882F428004BCFC9 /* Build configuration list for PBXNativeTarget "RexIntents" */;
 			buildPhases = (
-				3D0472427D53D42A8C83DA89 /* [CP] Check Pods Manifest.lock */,
-				22E3ECB12868D0E5003B6F55 /* Sources */,
-				22E3ECB22868D0E5003B6F55 /* Frameworks */,
-				22E3ECB32868D0E5003B6F55 /* Resources */,
-				F8CF69B65AF113837C2EA93C /* [CP] Embed Pods Frameworks */,
+				223B72F82882F428004BCFC9 /* Sources */,
+				223B72F92882F428004BCFC9 /* Frameworks */,
+				223B72FA2882F428004BCFC9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = RexIntents;
+			productName = RexIntents;
+			productReference = 223B72FC2882F428004BCFC9 /* RexIntents.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
+		22E3ECB42868D0E5003B6F55 /* ReggieUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22E3ECC92868D0E7003B6F55 /* Build configuration list for PBXNativeTarget "ReggieUI" */;
+			buildPhases = (
+				22E3ECB12868D0E5003B6F55 /* Sources */,
+				22E3ECB22868D0E5003B6F55 /* Frameworks */,
+				22E3ECB32868D0E5003B6F55 /* Resources */,
+				223B73062882F428004BCFC9 /* Embed ExtensionKit Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				223B73042882F428004BCFC9 /* PBXTargetDependency */,
+			);
 			name = ReggieUI;
 			packageProductDependencies = (
 				22D9E5B828709D6B00E64BAA /* RegexModel */,
+				223B73102882FE15004BCFC9 /* Realm */,
+				223B73122882FE15004BCFC9 /* RealmSwift */,
 			);
 			productName = ReggieUI;
 			productReference = 22E3ECB52868D0E5003B6F55 /* ReggieUI.app */;
@@ -243,6 +292,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					223B72FB2882F428004BCFC9 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					22E3ECB42868D0E5003B6F55 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -257,16 +309,27 @@
 				Base,
 			);
 			mainGroup = 22E3ECAC2868D0E4003B6F55;
+			packageReferences = (
+				223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 22E3ECB62868D0E5003B6F55 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				22E3ECB42868D0E5003B6F55 /* ReggieUI */,
+				223B72FB2882F428004BCFC9 /* RexIntents */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		223B72FA2882F428004BCFC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22E3ECB32868D0E5003B6F55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,49 +342,16 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3D0472427D53D42A8C83DA89 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReggieUI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F8CF69B65AF113837C2EA93C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReggieUI/Pods-ReggieUI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		223B72F82882F428004BCFC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */,
+				223B73012882F428004BCFC9 /* RexIntents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22E3ECB12868D0E5003B6F55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,6 +391,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		223B73042882F428004BCFC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 223B72FB2882F428004BCFC9 /* RexIntents */;
+			targetProxy = 223B73032882F428004BCFC9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		22E3ECBE2868D0E5003B6F55 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -381,6 +419,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		223B73072882F428004BCFC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RexIntents/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ReggieUI.RexIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		223B73082882F428004BCFC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RexIntents/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ReggieUI.RexIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		22E3ECC72868D0E7003B6F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -497,8 +589,8 @@
 		};
 		22E3ECCA2868D0E7003B6F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,8 +618,8 @@
 		};
 		22E3ECCB2868D0E7003B6F55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -556,6 +648,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		223B73092882F428004BCFC9 /* Build configuration list for PBXNativeTarget "RexIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				223B73072882F428004BCFC9 /* Debug */,
+				223B73082882F428004BCFC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		22E3ECB02868D0E4003B6F55 /* Build configuration list for PBXProject "ReggieUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -576,7 +677,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		223B73102882FE15004BCFC9 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		223B73122882FE15004BCFC9 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		22D9E5B828709D6B00E64BAA /* RegexModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RegexModel;
