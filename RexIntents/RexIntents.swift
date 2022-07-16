@@ -6,6 +6,7 @@
 //
 
 import AppIntents
+import RealmSwift
 
 public struct RexIntent: AppIntent {
     public static var title: LocalizedStringResource = "RexIntents"
