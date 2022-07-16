@@ -44,7 +44,6 @@
 		22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */; };
 		22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */; };
 		22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
-		6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +91,6 @@
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
-		229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.release.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.release.xcconfig"; sourceTree = "<group>"; };
 		22D9E5B628709D5900E64BAA /* RegexModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RegexModel; path = ../RegexModel; sourceTree = "<group>"; };
 		22D9E5BB28709DD200E64BAA /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		22D9E5BC28709DD200E64BAA /* RegexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexView.swift; sourceTree = "<group>"; };
@@ -113,8 +111,6 @@
 		22E3ECD22868DA02003B6F55 /* ComponentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewController.swift; sourceTree = "<group>"; };
 		22E3ECD42868DC5C003B6F55 /* CreateListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListLayout.swift; sourceTree = "<group>"; };
 		22F70858287C46BA00E123B0 /* RealmRegexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.swift; sourceTree = "<group>"; };
-		6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReggieUI.debug.xcconfig"; path = "Target Support Files/Pods-ReggieUI/Pods-ReggieUI.debug.xcconfig"; sourceTree = "<group>"; };
-		A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReggieUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D9E5B928709D6B00E64BAA /* RegexModel in Frameworks */,
-				6AE31A41CA219AFDAA6EFB4B /* Pods_ReggieUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,14 +168,6 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
-		22D9E5B728709D6B00E64BAA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A527F22047CCB4C5D671CC3D /* Pods_ReggieUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		22D9E5BA28709DBB00E64BAA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,8 +199,6 @@
 				2228E6D32880D34C00B94605 /* Realm */,
 				223B72FD2882F428004BCFC9 /* RexIntents */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
-				22D9E5B728709D6B00E64BAA /* Frameworks */,
-				B05CF853370D549C54D439A6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,15 +232,6 @@
 				22E3ECC62868D0E7003B6F55 /* Info.plist */,
 			);
 			path = ReggieUI;
-			sourceTree = "<group>";
-		};
-		B05CF853370D549C54D439A6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */,
-				229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,7 +624,6 @@
 		};
 		22E3ECCA2868D0E7003B6F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ADC583ECBB05E03A177640C /* Pods-ReggieUI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -678,7 +653,6 @@
 		};
 		22E3ECCB2868D0E7003B6F55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 229D49C5F6CA6A329643948F /* Pods-ReggieUI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
