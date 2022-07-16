@@ -14,19 +14,24 @@ internal func withRegex<Output>(
     id: RealmRegexModel.ID,
     _ action: (Result<(RealmRegexModel, Realm), RealmDBError>) -> Output
 ) -> Output {
-    action(getRegex(id: id))
+    return action(getRegex(id: id))
 }
 
 /// - Warning: be very conscious of the thread on which this object lives
 ///            Where possible, *only* use the object within a single function call
 fileprivate func getRegex(id: RealmRegexModel.ID) -> Result<(RealmRegexModel, Realm), RealmDBError> {
-    guard let realm = try? Realm() else {
-        return .failure(.couldNotOpenRealm)
+    return accessRealm { result in
+        switch result {
+        case .failure(let error):
+            return .failure(error)
+        
+        case .success(let realm):
+            guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
+                return .failure(.failedToFindObjectInRealm)
+            }
+            
+            /// - Note: a specific exception to not returning the `Realm`, since this is another temp-access closure.
+            return .success((regex, realm))
+        }
     }
-    
-    guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
-        return .failure(.failedToFindObjectInRealm)
-    }
-    
-    return .success((regex, realm))
 }
