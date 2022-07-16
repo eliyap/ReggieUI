@@ -26,11 +26,14 @@ public enum RealmDBError: LocalizedError {
     
     case dataEncodeFailed
     
+    /// We were unable to open the URL associated with our shared app group.
+    case openAppGroupFailed
+    
     public var errorDescription: String? {
         switch self {
         case .dataTooLarge:
             return "Object too large to save in database"
-        case .couldNotOpenRealm:
+        case .couldNotOpenRealm, .openAppGroupFailed:
             return "Couldn't open database"
         case .writeFailed:
             return "Couldn't write to database"

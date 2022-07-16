@@ -115,10 +115,13 @@ struct SelectionView: View {
     }
     
     private func tryOpenRealm() -> Void {
-        do {
-            let _ = try Realm()
-        } catch {
-            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpenRealm))
+        accessRealm { result in
+            switch result {
+            case .success:
+                break
+            case .failure(let error):
+                errorConduit.errorPipeline.send(.realmDBError(error))
+            }
         }
     }
     
