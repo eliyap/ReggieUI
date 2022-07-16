@@ -32,6 +32,8 @@
 		223B731F288321A6004BCFC9 /* RealmDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D42880D36700B94605 /* RealmDBError.swift */; };
 		223B7320288321F2004BCFC9 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
 		223B73232883222A004BCFC9 /* RealmRegexModel.createNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73212883221D004BCFC9 /* RealmRegexModel.createNew.swift */; };
+		223B732728832779004BCFC9 /* UseRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732528832766004BCFC9 /* UseRegex.swift */; };
+		223B73282883278A004BCFC9 /* GetRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D62880D4EC00B94605 /* GetRegex.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -101,6 +103,7 @@
 		223B731D288320D9004BCFC9 /* ReggieUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReggieUI.entitlements; sourceTree = "<group>"; };
 		223B731E28832108004BCFC9 /* RexIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexIntents.entitlements; sourceTree = "<group>"; };
 		223B73212883221D004BCFC9 /* RealmRegexModel.createNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.createNew.swift; sourceTree = "<group>"; };
+		223B732528832766004BCFC9 /* UseRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseRegex.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
 				2228E6D42880D36700B94605 /* RealmDBError.swift */,
 				2228E6D62880D4EC00B94605 /* GetRegex.swift */,
+				223B732528832766004BCFC9 /* UseRegex.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -378,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B73282883278A004BCFC9 /* GetRegex.swift in Sources */,
 				223B7320288321F2004BCFC9 /* RealmRegexModel.swift in Sources */,
 				223B731C2883205F004BCFC9 /* RegexEntity.swift in Sources */,
 				223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */,
@@ -407,6 +412,7 @@
 				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
 				22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */,
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
+				223B732728832779004BCFC9 /* UseRegex.swift in Sources */,
 				22594B66287B994C00EBF55B /* DropConduit.swift in Sources */,
 				223B73232883222A004BCFC9 /* RealmRegexModel.createNew.swift in Sources */,
 				2228E6D52880D36700B94605 /* RealmDBError.swift in Sources */,
