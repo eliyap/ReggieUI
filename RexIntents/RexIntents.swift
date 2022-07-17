@@ -27,17 +27,7 @@ public struct WholeMatchIntent: AppIntent {
     }
     
     public func perform() async throws -> PerformResult {
-        try accessRealm { result in
-            switch result {
-            case .failure(let error):
-                throw error
-
-            case .success(let realm):
-                let objCount = realm.objects(RealmRegexModel.self).count
-                #warning("todo: return app entity matches?")
-                return .result(value: "Hello World, \(objCount)")
-            }
-        }
+        return .result(value: "Hello World")
     }
 }
 
