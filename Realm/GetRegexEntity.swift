@@ -20,3 +20,17 @@ internal func getEntities(for identifiers: [RegexEntity.ID]) -> Result<[RegexEnt
         }
     }
 }
+
+internal func getSuggestedEntities(maxCount: Int) -> Result<[RegexEntity], RealmDBError> {
+    return withSuggestedRegexes(maxCount: maxCount) { result in
+        switch result {
+        case .failure(let error):
+            return .failure(error)
+        
+        case .success((let models, _)):
+            return .success(models.map { model in
+                return RegexEntity(id: model.id, name: model.name)
+            })
+        }
+    }
+}

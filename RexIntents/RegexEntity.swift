@@ -47,4 +47,14 @@ public struct RegexQuery: EntityQuery {
             return entities
         }
     }
+    public static let suggestionLimit = 1000
+    public func suggestedEntities() async throws -> [Entity] {
+        switch getSuggestedEntities(maxCount: Self.suggestionLimit) {
+        case .failure(let error):
+            throw error
+            
+        case .success(let entities):
+            return entities
+        }
+    }
 }

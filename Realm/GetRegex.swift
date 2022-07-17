@@ -55,3 +55,25 @@ fileprivate func getRegexes(ids: [RealmRegexModel.ID]) -> Result<([RealmRegexMod
         return .success((models, realm))
     }
 }
+
+/// - Warning: By convention, do not capture the `RealmRegexModel` or `Realm` for use outside the closure, this ensures object thread safety.
+internal func withSuggestedRegexes<Output>(
+    maxCount: Int,
+    _ action: (Result<([RealmRegexModel], Realm), RealmDBError>) -> Output
+) -> Output {
+    return action(getSuggesedRegexes(maxCount: maxCount))
+}
+
+/// - Warning: be very conscious of the thread on which this object lives
+///            Where possible, *only* use the object within a single function call
+fileprivate func getSuggesedRegexes(maxCount: Int) -> Result<([RealmRegexModel], Realm), RealmDBError> {
+    return accessRealm { realm in
+        let models = realm.objects(RealmRegexModel.self)
+            /// Reverse chronological sort.
+            .sorted(by: \.lastUpdated, ascending: false)
+            .prefix(maxCount)
+            
+        /// - Note: a specific exception to not returning the `Realm`, since this is another temp-access closure.
+        return .success((Array(models), realm))
+    }
+}
