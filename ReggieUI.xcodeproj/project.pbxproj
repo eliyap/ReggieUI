@@ -40,6 +40,7 @@
 		223B73302884A68E004BCFC9 /* LocaleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732F2884A68E004BCFC9 /* LocaleEntity.swift */; };
 		223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
 		223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
+		2251A7302884B864009041A6 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2251A72F2884B864009041A6 /* OrderedCollections */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -146,6 +147,7 @@
 			files = (
 				223B731A2882FF61004BCFC9 /* RealmSwift in Frameworks */,
 				223B73182882FF61004BCFC9 /* Realm in Frameworks */,
+				2251A7302884B864009041A6 /* OrderedCollections in Frameworks */,
 				223B73162882FF61004BCFC9 /* RegexModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +304,7 @@
 				223B73152882FF61004BCFC9 /* RegexModel */,
 				223B73172882FF61004BCFC9 /* Realm */,
 				223B73192882FF61004BCFC9 /* RealmSwift */,
+				2251A72F2884B864009041A6 /* OrderedCollections */,
 			);
 			productName = RexIntents;
 			productReference = 223B72FC2882F428004BCFC9 /* RexIntents.appex */;
@@ -360,6 +363,7 @@
 			mainGroup = 22E3ECAC2868D0E4003B6F55;
 			packageReferences = (
 				223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 22E3ECB62868D0E5003B6F55 /* Products */;
 			projectDirPath = "";
@@ -751,6 +755,14 @@
 				minimumVersion = 10.28.2;
 			};
 		};
+		2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -777,6 +789,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		2251A72F2884B864009041A6 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		22D9E5B828709D6B00E64BAA /* RegexModel */ = {
 			isa = XCSwiftPackageProductDependency;
