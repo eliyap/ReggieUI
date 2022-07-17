@@ -10,7 +10,7 @@ import RealmSwift
 
 public struct WholeMatchIntent: AppIntent {
     public static var title: LocalizedStringResource = "Match Entire Text"
-    public typealias PerformResult = IntentResultContainer<String, Never, Never, Never>
+    public typealias PerformResult = IntentResultContainer<Bool, Never, Never, Never>
     
     @Parameter(title: "Text")
     var text: String
@@ -25,7 +25,9 @@ public struct WholeMatchIntent: AppIntent {
     }
     
     public func perform() async throws -> PerformResult {
-        return .result(value: "Hello World")
+        let regex = pattern.components.regex()
+        let match = try regex.wholeMatch(in: text)
+        return .result(value: match != nil)
     }
 }
 
