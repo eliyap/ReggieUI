@@ -26,11 +26,15 @@ final class RealmRegexModel: Object {
     @Persisted
     public var name: String
     
+    @Persisted
+    public var lastUpdated: Date
+    
     public init(id: UUID, componentsData: Data) {
         super.init()
         self.id = UUID()
         self.componentsData = componentsData
         self.name = "My Cool Regex"
+        self.lastUpdated = Date()
     }
     
     override required init() {
