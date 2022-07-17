@@ -15,10 +15,8 @@ public struct WholeMatchIntent: AppIntent {
     @Parameter(title: "Text")
     var text: String
     
-    #warning("replace with real pattern")
-    #warning("look into default value argument")
     @Parameter(title: "Pattern")
-    var pattern: String
+    var pattern: RegexEntity
     
     public init() { }
     
@@ -37,10 +35,8 @@ public struct FindMatchesIntent: AppIntent {
     @Parameter(title: "Number of Matches", default: MatchMode.first)
     var matchMode: MatchMode
     
-    #warning("replace with real pattern")
-    #warning("look into default value argument")
     @Parameter(title: "Pattern")
-    var pattern: String
+    var pattern: RegexEntity
     
     @Parameter(title: "Text")
     var text: String
