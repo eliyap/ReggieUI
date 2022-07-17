@@ -39,6 +39,12 @@ public struct RegexQuery: EntityQuery {
     public init() { }
     
     public func entities(for identifiers: [Entity.ID]) async throws -> [Entity] {
-        return []
+        switch getEntities(for: identifiers) {
+        case .failure(let error):
+            throw error
+        
+        case .success(let entities):
+            return entities
+        }
     }
 }
