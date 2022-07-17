@@ -10,7 +10,8 @@ import RealmSwift
 
 public struct WholeMatchIntent: AppIntent {
     public static var title: LocalizedStringResource = "Match Entire Text"
-
+    public typealias PerformResult = IntentResultContainer<String, Never, Never, Never>
+    
     @Parameter(title: "Text")
     var text: String
     
@@ -25,9 +26,18 @@ public struct WholeMatchIntent: AppIntent {
         Summary("Check if \(\.$text) matches \(\.$pattern)")
     }
     
-    public func perform() async throws -> some IntentResult {
-        #warning("todo: return app entity matches?")
-        return .result(value: "Hello World")
+    public func perform() async throws -> PerformResult {
+        try accessRealm { result in
+            switch result {
+            case .failure(let error):
+                throw error
+
+            case .success(let realm):
+                let objCount = realm.objects(RealmRegexModel.self).count
+                #warning("todo: return app entity matches?")
+                return .result(value: "Hello World, \(objCount)")
+            }
+        }
     }
 }
 
