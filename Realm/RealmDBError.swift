@@ -30,6 +30,12 @@ public enum RealmDBError: LocalizedError {
     case openAppGroupFailed
     
     public var errorDescription: String? {
+        return localizedStringResource.key
+    }
+}
+
+extension RealmDBError: CustomLocalizedStringResourceConvertible {
+    public var localizedStringResource: LocalizedStringResource {
         switch self {
         case .dataTooLarge:
             return "Object too large to save in database"
