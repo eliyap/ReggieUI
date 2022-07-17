@@ -11,8 +11,8 @@ import RealmSwift
 internal let AppGroupName = "group.elijah.regex"
 
 /// - Warning: by convention, do not capture `Realm` for use outside closure, this ensures thread safe access.
-internal func accessRealm<Output>(operation: (Result<Realm, RealmDBError>) -> Output) -> Output {
-    return operation(openRealm())
+internal func accessRealm<Output>(operation: (Result<Realm, RealmDBError>) throws -> Output) rethrows -> Output {
+    return try operation(openRealm())
 }
 
 internal func getOptionalConfiguration() -> Realm.Configuration? {
