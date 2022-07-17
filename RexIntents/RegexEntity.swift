@@ -7,11 +7,13 @@
 
 import AppIntents
 import RealmSwift
+import RegexModel
 
 /// The `AppIntents` representation of our model / database layer.
 public struct RegexEntity {
     public let id: UUID
     public let name: String
+    public let components: [ComponentModel]
 }
 
 // MARK: - AppEntity Conformance
