@@ -27,9 +27,7 @@ extension RegexEntity: AppEntity {
         DisplayRepresentation(title: "\(name)")
     }
     
-    public static var defaultQuery: RegexQuery {
-        .init()
-    }
+    public static var defaultQuery = RegexQuery()
 }
 
 public struct RegexQuery: EntityQuery {
