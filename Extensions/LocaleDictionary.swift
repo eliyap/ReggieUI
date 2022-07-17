@@ -7,43 +7,48 @@
 
 import Foundation
 
-/// Maps human readable locale descriptions to locale codes.
-/// e.g. `[China mainland (Chinese, Simplified Han): zh_Hans]`
-/// Descriptions are localized to current locale.
-func makeLocaleDictionary() -> [String: String] {
-    var localeDictionary: [String: String] = [:]
-    for code in Locale.availableIdentifiers {
-        let locale = Locale(identifier: code)
-        
-        var localeName = ""
+extension Locale {
+    func displayName() -> String? {
+        var name = ""
         
         /// Region name (like "United States")
-        guard
-            let region = locale.region,
-            let regionName = Locale.current.localizedString(forRegion: region)
-        else {
+        guard let region, let regionName = Locale.current.localizedString(forRegion: region) else {
             /// In testing, this *never* happened for ~1000 locales.
-            Swift.debugPrint("No region for \(code)")
-            continue
+            Swift.debugPrint("No region for \(identifier)")
+            return nil
         }
-        localeName += regionName
+        name += regionName
         
         var langScript = ""
         
         /// Language name (like "English")
-        if let languageCode = locale.languageCode, let lang = Locale.current.localizedString(forLanguageCode: languageCode) {
+        if let languageCode, let lang = Locale.current.localizedString(forLanguageCode: languageCode) {
             langScript += lang
         }
 
         /// Script name (like "simplified chinese")
-        if let scriptCode = locale.scriptCode, let script = Locale.current.localizedString(forScriptCode: scriptCode) {
+        if let scriptCode, let script = Locale.current.localizedString(forScriptCode: scriptCode) {
             if langScript.isEmpty == false { langScript += ", " }
             langScript += script
         }
 
         /// Append language information.
         if langScript.isEmpty == false {
-            localeName += " (" + langScript + ")"
+            name += " (" + langScript + ")"
+        }
+        
+        return name
+    }
+}
+
+/// Maps human readable locale descriptions to locale codes.
+/// e.g. `[China mainland (Chinese, Simplified Han): zh_Hans]`
+/// Descriptions are localized to current locale.
+func makeLocaleDictionary() -> [String: String] {
+    var localeDictionary: [String: String] = [:]
+    for code in Locale.availableIdentifiers {
+        guard let localeName = Locale(identifier: code).displayName() else {
+            continue
         }
         
         /// Check for a duplicate descriptor.
