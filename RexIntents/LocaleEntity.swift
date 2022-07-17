@@ -48,6 +48,10 @@ public struct LocaleQuery: EntityQuery {
         }
     }
     public func suggestedEntities() async throws -> [Entity] {
+        return entites()
+    }
+    
+    private var orderedLocales: OrderedDictionary<String, String> {
         /// Insert the special value and current locale first.
         var locales: OrderedDictionary<String, String> = [
             LocaleEntity.currentLocaleTitle: LocaleEntity.currentLocaleIdentifier,
@@ -56,40 +60,38 @@ public struct LocaleQuery: EntityQuery {
             locales[currentName] = Locale.current.identifier
         }
         
+        var otherLocales: OrderedDictionary<String, String> = [:]
+        for (k, v) in makeLocaleDictionary() {
+            otherLocales[k] = v
+        }
+        otherLocales.sort { kv1, kv2 in
+            return kv1.key < kv2.key
+        }
+        
         /// Append to end of ordered dict, taking care not to overwrite.
-        for (k, v) in orderedLocales where locales[k] == nil {
+        for (k, v) in otherLocales where locales[k] == nil {
             locales[k] = v
         }
         
-        return locales.values
-            .prefix(Self.maxResults)
-            .map { identifier in
-                LocaleEntity(identifier: identifier)
-            }
-    }
-    
-    var orderedLocales: OrderedDictionary<String, String> {
-        var locales: OrderedDictionary<String, String> = [:]
-        for (k, v) in makeLocaleDictionary() {
-            locales[k] = v
-        }
-        locales.sort { kv1, kv2 in
-            return kv1.key < kv2.key
-        }
         return locales
     }
 }
 
 extension LocaleQuery: EntityStringQuery {
-    public func entities(matching string: String) async throws -> [Entity] {
+    private  func entites(containing substring: String? = nil) -> [Entity] {
         orderedLocales
             .filter { element in
-                return element.key.localizedCaseInsensitiveContains(string) || element.value.localizedCaseInsensitiveContains(string)
+                guard let substring else { return true }
+                return element.key.localizedCaseInsensitiveContains(substring) || element.value.localizedCaseInsensitiveContains(substring)
             }
             .values
             .prefix(Self.maxResults)
             .map { identifier in
                 LocaleEntity(identifier: identifier)
             }
+    }
+    
+    public func entities(matching string: String) async throws -> [Entity] {
+        return entites(containing: string)
     }
 }
