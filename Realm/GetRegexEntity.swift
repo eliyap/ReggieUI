@@ -21,8 +21,8 @@ internal func getEntities(for identifiers: [RegexEntity.ID]) -> Result<[RegexEnt
     }
 }
 
-internal func getSuggestedEntities(maxCount: Int) -> Result<[RegexEntity], RealmDBError> {
-    return withSuggestedRegexes(maxCount: maxCount) { result in
+internal func getSuggestedEntities(maxCount: Int, search: String? = nil) -> Result<[RegexEntity], RealmDBError> {
+    return withSuggestedRegexes(maxCount: maxCount, search: search) { result in
         switch result {
         case .failure(let error):
             return .failure(error)

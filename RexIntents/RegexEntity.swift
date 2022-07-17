@@ -53,3 +53,15 @@ public struct RegexQuery: EntityQuery {
         }
     }
 }
+
+extension RegexQuery: EntityStringQuery {
+    public func entities(matching string: String) async throws -> [Entity] {
+        switch getSuggestedEntities(maxCount: Self.suggestionLimit, search: string) {
+        case .failure(let error):
+            throw error
+            
+        case .success(let entities):
+            return entities
+        }
+    }
+}
