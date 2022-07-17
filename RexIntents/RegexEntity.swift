@@ -10,8 +10,6 @@ import RealmSwift
 
 /// The `AppIntents` representation of our model / database layer.
 public struct RegexEntity {
-    
-    
     public let id: UUID
     public let name: String
 }
@@ -19,9 +17,7 @@ public struct RegexEntity {
 // MARK: - AppEntity Conformance
 extension RegexEntity: AppEntity {
     
-    public static var typeDisplayRepresentation: TypeDisplayRepresentation {
-        "Regular Expression"
-    }
+    public static var typeDisplayRepresentation: TypeDisplayRepresentation = "Regular Expression"
     
     public var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(name)")
