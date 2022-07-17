@@ -40,6 +40,7 @@ internal func save(components: [ComponentModel], to id: RealmRegexModel.ID) -> R
             do {
                 try realm.writeWithToken { token in
                     model.componentsData = data
+                    model.lastUpdated = Date()
                 }
                 return .success(Void())
             } catch {
