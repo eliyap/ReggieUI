@@ -37,6 +37,9 @@
 		223B732A288327B1004BCFC9 /* OpenRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B7329288327B1004BCFC9 /* OpenRealm.swift */; };
 		223B732B288329A1004BCFC9 /* OpenRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B7329288327B1004BCFC9 /* OpenRealm.swift */; };
 		223B732E28844850004BCFC9 /* GetRegexEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732C28844848004BCFC9 /* GetRegexEntity.swift */; };
+		223B73302884A68E004BCFC9 /* LocaleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732F2884A68E004BCFC9 /* LocaleEntity.swift */; };
+		223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
+		223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -109,6 +112,8 @@
 		223B732528832766004BCFC9 /* UseRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseRegex.swift; sourceTree = "<group>"; };
 		223B7329288327B1004BCFC9 /* OpenRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRealm.swift; sourceTree = "<group>"; };
 		223B732C28844848004BCFC9 /* GetRegexEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRegexEntity.swift; sourceTree = "<group>"; };
+		223B732F2884A68E004BCFC9 /* LocaleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEntity.swift; sourceTree = "<group>"; };
+		223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDictionary.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 			children = (
 				2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */,
 				2228E6C7287D96C300B94605 /* SpuriousError.swift */,
+				223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 				223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */,
 				223B73002882F428004BCFC9 /* RexIntents.swift */,
 				223B731B2883205F004BCFC9 /* RegexEntity.swift */,
+				223B732F2884A68E004BCFC9 /* LocaleEntity.swift */,
 				223B73022882F428004BCFC9 /* Info.plist */,
 			);
 			path = RexIntents;
@@ -390,7 +397,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				223B73282883278A004BCFC9 /* GetRegex.swift in Sources */,
+				223B73302884A68E004BCFC9 /* LocaleEntity.swift in Sources */,
 				223B732A288327B1004BCFC9 /* OpenRealm.swift in Sources */,
+				223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */,
 				223B7320288321F2004BCFC9 /* RealmRegexModel.swift in Sources */,
 				223B731C2883205F004BCFC9 /* RegexEntity.swift in Sources */,
 				223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */,
@@ -429,6 +438,7 @@
 				2228E6CC287D97E500B94605 /* ModalConduit.swift in Sources */,
 				2228E6D928818CC500B94605 /* TransferableComponent.swift in Sources */,
 				2228E6D72880D4EC00B94605 /* GetRegex.swift in Sources */,
+				223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */,
 				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
 				2228E6C8287D96C300B94605 /* SpuriousError.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
