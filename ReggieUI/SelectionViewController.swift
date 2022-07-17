@@ -110,13 +110,17 @@ struct SelectionView: View {
     }
     
     private func tryOpenRealm() -> Void {
-        accessRealm { result in
-            switch result {
-            case .success:
-                didOpenRealm = true
-            case .failure(let error):
-                errorConduit.errorPipeline.send(.realmDBError(error))
-            }
+        /// A no-op function that does nothing with the passed realm.
+        let realmNoOp: (Realm) -> Result<Void, RealmDBError> = { _ in
+            return .success(Void())
+        }
+        
+        /// Just want to check if realm is open-able.
+        switch accessRealm(operation: realmNoOp) {
+        case .success:
+            didOpenRealm = true
+        case .failure(let error):
+            errorConduit.errorPipeline.send(.realmDBError(error))
         }
     }
     
@@ -207,28 +211,28 @@ struct NewRegexButton: View {
     }
     
     private func createRegex() -> Void {
-        accessRealm { result in
-            switch result {
-            case .failure(let error):
-                errorConduit.errorPipeline.send(.realmDBError(error))
-
-            case .success(let realm):
-                guard let newRegex = try? RealmRegexModel.createNew() else {
-                    errorConduit.errorPipeline.send(.realmDBError(.createNewObjectFailed))
-                    return
-                }
-                do {
-                    try realm.writeWithToken { token in
-                        realm.add(newRegex, update: .error)
-                    }
-                } catch {
-                    errorConduit.errorPipeline.send(.realmDBError(.writeFailed))
-                    return
-                }
-
-                /// - Note: same function, same thread, therefore this is safe.
-                conduit.pipeline.send(newRegex.id)
+        func realmOp(realm: Realm) -> Result<RealmRegexModel.ID, RealmDBError> {
+            guard let newRegex = try? RealmRegexModel.createNew() else {
+                return .failure(.createNewObjectFailed)
             }
+            do {
+                try realm.writeWithToken { token in
+                    realm.add(newRegex, update: .error)
+                }
+            } catch {
+                return .failure(.writeFailed)
+            }
+
+            /// - Note: same function, same thread, therefore this is safe.
+            return .success(newRegex.id)
+        }
+        
+        switch accessRealm(operation: realmOp) {
+        case .failure(let error):
+            errorConduit.errorPipeline.send(.realmDBError(error))
+            
+        case .success(let id):
+            conduit.pipeline.send(id)
         }
     }
 }
