@@ -13,9 +13,6 @@ public struct LocaleEntity {
     
     /// Locale identifier, e.g `en_US`.
     public let identifier: String
-    
-    public static let currentLocaleIdentifier: String = "currentLocaleIdentifier"
-    public static let currentLocaleTitle: String = "Current Locale"
 }
 
 // MARK: - AppEntity Conformance
@@ -27,11 +24,7 @@ extension LocaleEntity: AppEntity {
     public static var defaultQuery = LocaleQuery()
     
     var title: String {
-        if identifier == Self.currentLocaleIdentifier {
-            return Self.currentLocaleTitle
-        } else {
-            return Locale(identifier: identifier).displayName() ?? "Unknown Locale"
-        }
+        Locale(identifier: identifier).displayName() ?? "Unknown Locale"
     }
 }
 
@@ -52,10 +45,8 @@ public struct LocaleQuery: EntityQuery {
     }
     
     private var orderedLocales: OrderedDictionary<String, String> {
-        /// Insert the special value and current locale first.
-        var locales: OrderedDictionary<String, String> = [
-            LocaleEntity.currentLocaleTitle: LocaleEntity.currentLocaleIdentifier,
-        ]
+        /// Insert the current locale first.
+        var locales: OrderedDictionary<String, String> = [:]
         if let currentName = Locale.current.displayName() {
             locales[currentName] = Locale.current.identifier
         }

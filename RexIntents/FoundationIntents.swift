@@ -19,9 +19,7 @@ public struct DateIntent: AppIntent {
     @Parameter(title: "Locale")
     var locale: LocaleEntity
     
-    public init() {
-        locale = .current
-    }
+    public init() { }
     
     public static var parameterSummary: some ParameterSummary {
         When(\Self.$useCurrentLocale, .equalTo, true) {
@@ -40,7 +38,9 @@ public struct DateIntent: AppIntent {
     public func perform() async throws -> PerformResult {
         let regex = Date.ParseStrategy.date(
             .abbreviated,
-            locale: Locale(identifier: locale.identifier),
+            locale: useCurrentLocale
+                ? .current
+                : Locale(identifier: locale.identifier),
             timeZone: .current
         )
         let match = try regex.regex.firstMatch(in: text)
@@ -63,9 +63,7 @@ public struct CurrencyIntent: AppIntent {
     @Parameter(title: "Locale")
     var locale: LocaleEntity
     
-    public init() {
-        locale = .current
-    }
+    public init() { }
     
     public static var parameterSummary: some ParameterSummary {
         When(\Self.$useCurrentLocale, .equalTo, true) {
