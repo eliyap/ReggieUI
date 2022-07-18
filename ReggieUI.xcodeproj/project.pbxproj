@@ -41,6 +41,7 @@
 		223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
 		223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
 		2251A7302884B864009041A6 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2251A72F2884B864009041A6 /* OrderedCollections */; };
+		2251A7322884C2AD009041A6 /* FoundationIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251A7312884C2AD009041A6 /* FoundationIntents.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -115,6 +116,7 @@
 		223B732C28844848004BCFC9 /* GetRegexEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRegexEntity.swift; sourceTree = "<group>"; };
 		223B732F2884A68E004BCFC9 /* LocaleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEntity.swift; sourceTree = "<group>"; };
 		223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDictionary.swift; sourceTree = "<group>"; };
+		2251A7312884C2AD009041A6 /* FoundationIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationIntents.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				223B731E28832108004BCFC9 /* RexIntents.entitlements */,
 				223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */,
 				223B73002882F428004BCFC9 /* RexIntents.swift */,
+				2251A7312884C2AD009041A6 /* FoundationIntents.swift */,
 				223B731B2883205F004BCFC9 /* RegexEntity.swift */,
 				223B732F2884A68E004BCFC9 /* LocaleEntity.swift */,
 				223B73022882F428004BCFC9 /* Info.plist */,
@@ -410,6 +413,7 @@
 				223B731F288321A6004BCFC9 /* RealmDBError.swift in Sources */,
 				223B73012882F428004BCFC9 /* RexIntents.swift in Sources */,
 				223B732E28844850004BCFC9 /* GetRegexEntity.swift in Sources */,
+				2251A7322884C2AD009041A6 /* FoundationIntents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
