@@ -24,6 +24,9 @@ struct ComponentView<ParentHeader: View>: View {
     @ViewBuilder
     private var Mux: some View {
         switch model {
+        case .character(let params):
+            CharacterCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
+            
         case .string(let params):
             StringCard(params: params, path: path, mgeNamespace: mgeNamespace, parentTitles: parentHeaders)
         

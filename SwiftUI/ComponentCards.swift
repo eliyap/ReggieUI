@@ -9,6 +9,64 @@ import SwiftUI
 import RegexBuilder
 import RegexModel
 
+struct CharacterCard<ParentTitles: View>: TitledCardView {
+    @EnvironmentObject internal var parameterConduit: ParameterConduit
+    @EnvironmentObject private var modalConduit: ModalConduit
+    @Environment(\.scrollCoordinateSpaceName) var coordinateSpaceName
+    
+    let params: CharacterParamter
+    let path: ModelPath
+    let mgeNamespace: Namespace.ID
+    let parentTitles: () -> ParentTitles
+    
+    let insets = cardInsets
+    
+    var contents: some View {
+        VStack {
+            ParamChar
+                .padding(.trailing, cardInsets.trailing)
+        }
+            /// Add padding since there aren't any component `DropRegion`s.
+            .padding(.vertical, DropRegion.baseHeight / 2)
+    }
+    
+    @State private var param_char: CharacterKind = .default
+    @State private var showCharMenu: Bool = false
+    private let param_char_name = "Character Class"
+    private var ParamChar: some View {
+        HStack {
+            Text(param_char_name)
+                .fontWeight(.medium)
+            Spacer()
+            Button(param_char.displayTitle) {
+                modalConduit.hostIsPresenting.send(true)
+                showCharMenu = true
+            }
+                .onAppear {
+                    param_char = params.characterKind
+                }
+                .confirmationDialog(param_char_name, isPresented: $showCharMenu, titleVisibility: .visible) {
+                    ForEach(CharacterKind.allCases, id: \.self) { (char: CharacterKind) in
+                        Button(char.displayTitle) {
+                            var params = params
+                            params.characterKind = char
+                            parameterConduit.componentQueue.send(.set(path, .character(params)))
+                            
+                            param_char = char
+                            modalConduit.hostIsPresenting.send(false)
+                        }
+                    }
+                    /// - Note: explicitly providing and tagging this causes the closure to be called
+                    ///         when the user taps *outside* the buttons to dismiss.
+                    Button("Cancel", role: .cancel) {
+                        showCharMenu = false
+                        modalConduit.hostIsPresenting.send(false)
+                    }
+                }
+        }
+    }
+}
+
 struct StringCard<ParentTitles: View>: TitledCardView {
     
     @EnvironmentObject internal var parameterConduit: ParameterConduit
