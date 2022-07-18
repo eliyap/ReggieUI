@@ -78,17 +78,22 @@ public struct CurrencyIntent: AppIntent {
         }
     }
     
-    public typealias PerformResult = IntentResultContainer<Date?, Never, Never, Never>
+    public typealias PerformResult = IntentResultContainer<Double?, Never, Never, Never>
     public func perform() async throws -> PerformResult {
-        let regex = Date.ParseStrategy.date(
-            .abbreviated,
-            locale: Locale(identifier: locale.identifier),
-            timeZone: .current
+        let locale = useCurrentLocale
+            ? .current
+            : Locale(identifier: self.locale.identifier)
+        let regex = Decimal.FormatStyle.Currency.localizedCurrency(
+            code: locale.currency ?? .unknown,
+            locale: locale
         )
         let match = try regex.regex.firstMatch(in: text)
         
-        #warning("bugged?")
-        let date: Date? = match?.output
-        return .result(value: date)
+        if let decimal = match?.output {
+            let doubleValue = NSDecimalNumber(decimal: decimal).doubleValue
+            return .result(value: doubleValue)
+        } else {
+            return .result(value: nil)
+        }
     }
 }
