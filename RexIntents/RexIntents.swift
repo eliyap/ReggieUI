@@ -34,9 +34,6 @@ public struct WholeMatchIntent: AppIntent {
 public struct FindMatchesIntent: AppIntent {
     public static var title: LocalizedStringResource = "Find Matches in Text"
 
-    @Parameter(title: "Number of Matches", default: MatchMode.first)
-    var matchMode: MatchMode
-    
     @Parameter(title: "Pattern")
     var pattern: RegexEntity
     
@@ -46,26 +43,11 @@ public struct FindMatchesIntent: AppIntent {
     public init() { }
     
     static public var parameterSummary: some ParameterSummary {
-        Summary("Find \(\.$matchMode) of \(\.$pattern) in \(\.$text)")
+        Summary("Find \(\.$pattern) in \(\.$text)")
     }
     
     public func perform() async throws -> some IntentResult {
         #warning("todo: return app entity matches?")
         return .result(value: "Hello World")
     }
-}
-
-public enum MatchMode: String, RawRepresentable {
-    case first
-    case all
-}
-
-extension MatchMode: AppEnum {
-    
-    public static var typeDisplayRepresentation: TypeDisplayRepresentation = "Number of Matches"
-    
-    public static var caseDisplayRepresentations: [MatchMode : DisplayRepresentation] = [
-        .first: "first match",
-        .all: "all matches",
-    ]
 }
