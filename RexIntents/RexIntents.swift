@@ -47,7 +47,8 @@ public struct FindMatchesIntent: AppIntent {
     }
     
     public func perform() async throws -> some IntentResult {
-        #warning("todo: return app entity matches?")
-        return .result(value: "Hello World")
+        let regex = pattern.components.regex()
+        let matches = try regex.allMatches(in: text)
+        return .result(value: matches.map { String($0) })
     }
 }
