@@ -78,7 +78,7 @@ public struct CurrencyIntent: AppIntent {
         }
     }
     
-    public typealias PerformResult = IntentResultContainer<Double?, Never, Never, Never>
+    public typealias PerformResult = IntentResultContainer<[Double]?, Never, Never, Never>
     public func perform() async throws -> PerformResult {
         let locale = useCurrentLocale
             ? .current
@@ -87,13 +87,15 @@ public struct CurrencyIntent: AppIntent {
             code: locale.currency ?? .unknown,
             locale: locale
         )
-        let match = try regex.regex.firstMatch(in: text)
         
-        if let decimal = match?.output {
-            let doubleValue = NSDecimalNumber(decimal: decimal).doubleValue
-            return .result(value: doubleValue)
-        } else {
+        let matches = try regex.regex.allMatches(in: text)
+        if matches.isEmpty {
             return .result(value: nil)
+        } else {
+            let doubles = matches.map { decimal in
+                return NSDecimalNumber(decimal: decimal).doubleValue
+            }
+            return .result(value: doubles)
         }
     }
 }
