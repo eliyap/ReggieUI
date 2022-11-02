@@ -26,11 +26,15 @@ final class RealmRegexModel: Object {
     @Persisted
     public var name: String
     
+    @Persisted
+    public var lastUpdated: Date
+    
     public init(id: UUID, componentsData: Data) {
         super.init()
         self.id = UUID()
         self.componentsData = componentsData
         self.name = "My Cool Regex"
+        self.lastUpdated = Date()
     }
     
     override required init() {
@@ -39,11 +43,3 @@ final class RealmRegexModel: Object {
 }
 
 extension RealmRegexModel: Identifiable { }
-
-extension RealmRegexModel {
-    public static func createNew() throws -> RealmRegexModel {
-        let model = ComponentsModel(components: [])
-        let componentsData = try JSONEncoder().encode(model.components)
-        return .init(id: UUID(), componentsData: componentsData)
-    }
-}

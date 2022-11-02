@@ -25,6 +25,23 @@
 		223B73052882F428004BCFC9 /* RexIntents.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 223B72FC2882F428004BCFC9 /* RexIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		223B73112882FE15004BCFC9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73102882FE15004BCFC9 /* Realm */; };
 		223B73132882FE15004BCFC9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73122882FE15004BCFC9 /* RealmSwift */; };
+		223B73162882FF61004BCFC9 /* RegexModel in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73152882FF61004BCFC9 /* RegexModel */; };
+		223B73182882FF61004BCFC9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73172882FF61004BCFC9 /* Realm */; };
+		223B731A2882FF61004BCFC9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 223B73192882FF61004BCFC9 /* RealmSwift */; };
+		223B731C2883205F004BCFC9 /* RegexEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B731B2883205F004BCFC9 /* RegexEntity.swift */; };
+		223B731F288321A6004BCFC9 /* RealmDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D42880D36700B94605 /* RealmDBError.swift */; };
+		223B7320288321F2004BCFC9 /* RealmRegexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F70858287C46BA00E123B0 /* RealmRegexModel.swift */; };
+		223B73232883222A004BCFC9 /* RealmRegexModel.createNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73212883221D004BCFC9 /* RealmRegexModel.createNew.swift */; };
+		223B732728832779004BCFC9 /* UseRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732528832766004BCFC9 /* UseRegex.swift */; };
+		223B73282883278A004BCFC9 /* GetRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228E6D62880D4EC00B94605 /* GetRegex.swift */; };
+		223B732A288327B1004BCFC9 /* OpenRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B7329288327B1004BCFC9 /* OpenRealm.swift */; };
+		223B732B288329A1004BCFC9 /* OpenRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B7329288327B1004BCFC9 /* OpenRealm.swift */; };
+		223B732E28844850004BCFC9 /* GetRegexEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732C28844848004BCFC9 /* GetRegexEntity.swift */; };
+		223B73302884A68E004BCFC9 /* LocaleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B732F2884A68E004BCFC9 /* LocaleEntity.swift */; };
+		223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
+		223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */; };
+		2251A7302884B864009041A6 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2251A72F2884B864009041A6 /* OrderedCollections */; };
+		2251A7322884C2AD009041A6 /* FoundationIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251A7312884C2AD009041A6 /* FoundationIntents.swift */; };
 		22594B60287B4C9E00EBF55B /* FoundationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B5F287B4C9E00EBF55B /* FoundationCards.swift */; };
 		22594B62287B985100EBF55B /* DropRegionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B61287B985100EBF55B /* DropRegionKey.swift */; };
 		22594B66287B994C00EBF55B /* DropConduit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594B65287B994C00EBF55B /* DropConduit.swift */; };
@@ -90,6 +107,16 @@
 		223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexIntentsExtension.swift; sourceTree = "<group>"; };
 		223B73002882F428004BCFC9 /* RexIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RexIntents.swift; sourceTree = "<group>"; };
 		223B73022882F428004BCFC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		223B731B2883205F004BCFC9 /* RegexEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexEntity.swift; sourceTree = "<group>"; };
+		223B731D288320D9004BCFC9 /* ReggieUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReggieUI.entitlements; sourceTree = "<group>"; };
+		223B731E28832108004BCFC9 /* RexIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RexIntents.entitlements; sourceTree = "<group>"; };
+		223B73212883221D004BCFC9 /* RealmRegexModel.createNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRegexModel.createNew.swift; sourceTree = "<group>"; };
+		223B732528832766004BCFC9 /* UseRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseRegex.swift; sourceTree = "<group>"; };
+		223B7329288327B1004BCFC9 /* OpenRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRealm.swift; sourceTree = "<group>"; };
+		223B732C28844848004BCFC9 /* GetRegexEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRegexEntity.swift; sourceTree = "<group>"; };
+		223B732F2884A68E004BCFC9 /* LocaleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEntity.swift; sourceTree = "<group>"; };
+		223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDictionary.swift; sourceTree = "<group>"; };
+		2251A7312884C2AD009041A6 /* FoundationIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationIntents.swift; sourceTree = "<group>"; };
 		22594B5F287B4C9E00EBF55B /* FoundationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationCards.swift; sourceTree = "<group>"; };
 		22594B61287B985100EBF55B /* DropRegionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropRegionKey.swift; sourceTree = "<group>"; };
 		22594B65287B994C00EBF55B /* DropConduit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropConduit.swift; sourceTree = "<group>"; };
@@ -120,6 +147,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B731A2882FF61004BCFC9 /* RealmSwift in Frameworks */,
+				223B73182882FF61004BCFC9 /* Realm in Frameworks */,
+				2251A7302884B864009041A6 /* OrderedCollections in Frameworks */,
+				223B73162882FF61004BCFC9 /* RegexModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +170,12 @@
 		2228E6D32880D34C00B94605 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				223B7329288327B1004BCFC9 /* OpenRealm.swift */,
+				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
 				2228E6D42880D36700B94605 /* RealmDBError.swift */,
 				2228E6D62880D4EC00B94605 /* GetRegex.swift */,
+				223B732C28844848004BCFC9 /* GetRegexEntity.swift */,
+				223B732528832766004BCFC9 /* UseRegex.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -150,6 +185,7 @@
 			children = (
 				2228E6C5287D962600B94605 /* Realm.TransactionToken.swift */,
 				2228E6C7287D96C300B94605 /* SpuriousError.swift */,
+				223B73312884A6AE004BCFC9 /* LocaleDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -157,11 +193,22 @@
 		223B72FD2882F428004BCFC9 /* RexIntents */ = {
 			isa = PBXGroup;
 			children = (
+				223B731E28832108004BCFC9 /* RexIntents.entitlements */,
 				223B72FE2882F428004BCFC9 /* RexIntentsExtension.swift */,
 				223B73002882F428004BCFC9 /* RexIntents.swift */,
+				2251A7312884C2AD009041A6 /* FoundationIntents.swift */,
+				223B731B2883205F004BCFC9 /* RegexEntity.swift */,
+				223B732F2884A68E004BCFC9 /* LocaleEntity.swift */,
 				223B73022882F428004BCFC9 /* Info.plist */,
 			);
 			path = RexIntents;
+			sourceTree = "<group>";
+		};
+		223B73142882FF61004BCFC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		22D9E5B528709D5900E64BAA /* Packages */ = {
@@ -182,7 +229,7 @@
 				22D9E5BC28709DD200E64BAA /* RegexView.swift */,
 				2228E6D828818CC500B94605 /* TransferableComponent.swift */,
 				2228E6CF287EE91600B94605 /* BuilderView.swift */,
-				22F70858287C46BA00E123B0 /* RealmRegexModel.swift */,
+				223B73212883221D004BCFC9 /* RealmRegexModel.createNew.swift */,
 				22D9E5BD28709DD200E64BAA /* ComponentsModel.swift */,
 				22D9E5BE28709DD200E64BAA /* Sticky.swift */,
 				22D9E5BF28709DD200E64BAA /* TitledCardView.swift */,
@@ -203,6 +250,7 @@
 				2228E6D32880D34C00B94605 /* Realm */,
 				223B72FD2882F428004BCFC9 /* RexIntents */,
 				22E3ECB62868D0E5003B6F55 /* Products */,
+				223B73142882FF61004BCFC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,6 +266,7 @@
 		22E3ECB72868D0E5003B6F55 /* ReggieUI */ = {
 			isa = PBXGroup;
 			children = (
+				223B731D288320D9004BCFC9 /* ReggieUI.entitlements */,
 				22E3ECB82868D0E5003B6F55 /* AppDelegate.swift */,
 				22E3ECBA2868D0E5003B6F55 /* SceneDelegate.swift */,
 				22E3ECBC2868D0E5003B6F55 /* ViewController.swift */,
@@ -254,6 +303,12 @@
 			dependencies = (
 			);
 			name = RexIntents;
+			packageProductDependencies = (
+				223B73152882FF61004BCFC9 /* RegexModel */,
+				223B73172882FF61004BCFC9 /* Realm */,
+				223B73192882FF61004BCFC9 /* RealmSwift */,
+				2251A72F2884B864009041A6 /* OrderedCollections */,
+			);
 			productName = RexIntents;
 			productReference = 223B72FC2882F428004BCFC9 /* RexIntents.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
@@ -311,6 +366,7 @@
 			mainGroup = 22E3ECAC2868D0E4003B6F55;
 			packageReferences = (
 				223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 22E3ECB62868D0E5003B6F55 /* Products */;
 			projectDirPath = "";
@@ -347,8 +403,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B73282883278A004BCFC9 /* GetRegex.swift in Sources */,
+				223B73302884A68E004BCFC9 /* LocaleEntity.swift in Sources */,
+				223B732A288327B1004BCFC9 /* OpenRealm.swift in Sources */,
+				223B73322884A6AE004BCFC9 /* LocaleDictionary.swift in Sources */,
+				223B7320288321F2004BCFC9 /* RealmRegexModel.swift in Sources */,
+				223B731C2883205F004BCFC9 /* RegexEntity.swift in Sources */,
 				223B72FF2882F428004BCFC9 /* RexIntentsExtension.swift in Sources */,
+				223B731F288321A6004BCFC9 /* RealmDBError.swift in Sources */,
 				223B73012882F428004BCFC9 /* RexIntents.swift in Sources */,
+				223B732E28844850004BCFC9 /* GetRegexEntity.swift in Sources */,
+				2251A7322884C2AD009041A6 /* FoundationIntents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +428,7 @@
 				222E50442873910800D89CEE /* SwitchedViewController.swift in Sources */,
 				22E3ECD32868DA02003B6F55 /* ComponentCollectionViewController.swift in Sources */,
 				2228E6CA287D977700B94605 /* SheetInsetConduit.swift in Sources */,
+				223B732B288329A1004BCFC9 /* OpenRealm.swift in Sources */,
 				22D9E5C428709DD200E64BAA /* ComponentsModel.swift in Sources */,
 				22F70859287C46BA00E123B0 /* RealmRegexModel.swift in Sources */,
 				22D9E5C728709DD200E64BAA /* ComponentCards.swift in Sources */,
@@ -373,11 +439,14 @@
 				22D9E5C628709DD200E64BAA /* TitledCardView.swift in Sources */,
 				22E3ECB92868D0E5003B6F55 /* AppDelegate.swift in Sources */,
 				22D9E5C228709DD200E64BAA /* ComponentView.swift in Sources */,
+				223B732728832779004BCFC9 /* UseRegex.swift in Sources */,
 				22594B66287B994C00EBF55B /* DropConduit.swift in Sources */,
+				223B73232883222A004BCFC9 /* RealmRegexModel.createNew.swift in Sources */,
 				2228E6D52880D36700B94605 /* RealmDBError.swift in Sources */,
 				2228E6CC287D97E500B94605 /* ModalConduit.swift in Sources */,
 				2228E6D928818CC500B94605 /* TransferableComponent.swift in Sources */,
 				2228E6D72880D4EC00B94605 /* GetRegex.swift in Sources */,
+				223B73332884A6B5004BCFC9 /* LocaleDictionary.swift in Sources */,
 				220229B428721EF200EAF840 /* DropRegion.swift in Sources */,
 				2228E6C8287D96C300B94605 /* SpuriousError.swift in Sources */,
 				22E3ECD52868DC5C003B6F55 /* CreateListLayout.swift in Sources */,
@@ -424,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = RexIntents/RexIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -451,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = RexIntents/RexIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -593,6 +664,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReggieUI/ReggieUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -622,6 +694,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReggieUI/ReggieUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 949D776DFQ;
@@ -686,6 +759,14 @@
 				minimumVersion = 10.28.2;
 			};
 		};
+		2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -698,6 +779,25 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		223B73152882FF61004BCFC9 /* RegexModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RegexModel;
+		};
+		223B73172882FF61004BCFC9 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		223B73192882FF61004BCFC9 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B730F2882FE15004BCFC9 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		2251A72F2884B864009041A6 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2251A72E2884B864009041A6 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		22D9E5B828709D6B00E64BAA /* RegexModel */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,61 +9,79 @@ import Foundation
 import RealmSwift
 import RegexModel
 
-/// - Warning: be very conscious of the thread on which this object lives!
-internal func getRegex(id: RealmRegexModel.ID) -> Result<RealmRegexModel, RealmDBError> {
-    guard let realm = try? Realm() else {
-        return .failure(.couldNotOpenRealm)
-    }
-    
-    guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
-        return .failure(.failedToFindObjectInRealm)
-    }
-    
-    return .success(regex)
+/// - Warning: By convention, do not capture the `RealmRegexModel` or `Realm` for use outside the closure, this ensures object thread safety.
+internal func withRegex<Output>(
+    id: RealmRegexModel.ID,
+    _ action: (Result<(RealmRegexModel, Realm), RealmDBError>) -> Output
+) -> Output {
+    return action(getRegex(id: id))
 }
 
-/// Translates ID into Realm Object, then into SwiftUI friendly struct, reporting failures, if any.
-/// Encapsulating within a function guarantees thread safety: no realm object crosses a boundary.
-internal func regexIdToModel(id: RealmRegexModel.ID) -> Result<(RealmRegexModel.ID, ComponentsModel), RealmDBError> {
-    let regex: RealmRegexModel
-    switch getRegex(id: id) {
-    case .success(let r):
-        regex = r
-    case .failure(let error):
-        return .failure(error)
-    }
-    
-    guard let components = try? JSONDecoder().decode([ComponentModel].self, from: regex.componentsData) else {
-        return .failure(.dataDecodeFailed)
-    }
-    
-    return .success((regex.id, .init(components: components)))
-}
-
-internal func save(components: [ComponentModel], to id: RealmRegexModel.ID) -> Result<Void, RealmDBError> {
-    guard let realm = try? Realm() else {
-        return .failure(.couldNotOpenRealm)
-    }
-    
-    let regex: RealmRegexModel
-    switch getRegex(id: id) {
-    case .failure(let error):
-        return .failure(error)
-    case .success(let r):
-        regex = r
-    }
-    
-    guard let data = try? JSONEncoder().encode(components) else {
-        return .failure(.dataEncodeFailed)
-    }
-    
-    do {
-        try realm.writeWithToken { token in
-            regex.componentsData = data
+/// - Warning: be very conscious of the thread on which this object lives
+///            Where possible, *only* use the object within a single function call
+fileprivate func getRegex(id: RealmRegexModel.ID) -> Result<(RealmRegexModel, Realm), RealmDBError> {
+    return accessRealm { realm in
+        guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
+            return .failure(.failedToFindObjectInRealm)
         }
-    } catch {
-        return .failure(.writeFailed)
+        
+        /// - Note: a specific exception to not returning the `Realm`, since this is another temp-access closure.
+        return .success((regex, realm))
     }
-    
-    return .success(Void())
+}
+
+/// - Warning: By convention, do not capture the `RealmRegexModel` or `Realm` for use outside the closure, this ensures object thread safety.
+internal func withRegexes<Output>(
+    ids: [RealmRegexModel.ID],
+    _ action: (Result<([RealmRegexModel], Realm), RealmDBError>) -> Output
+) -> Output {
+    return action(getRegexes(ids: ids))
+}
+
+/// - Warning: be very conscious of the thread on which this object lives
+///            Where possible, *only* use the object within a single function call
+fileprivate func getRegexes(ids: [RealmRegexModel.ID]) -> Result<([RealmRegexModel], Realm), RealmDBError> {
+    return accessRealm { realm in
+        var models: [RealmRegexModel] = []
+        for id in ids {
+            guard let regex = realm.object(ofType: RealmRegexModel.self, forPrimaryKey: id) else {
+                return .failure(.failedToFindObjectInRealm)
+            }
+            models.append(regex)
+        }
+        
+        
+        /// - Note: a specific exception to not returning the `Realm`, since this is another temp-access closure.
+        return .success((models, realm))
+    }
+}
+
+/// - Warning: By convention, do not capture the `RealmRegexModel` or `Realm` for use outside the closure, this ensures object thread safety.
+internal func withSuggestedRegexes<Output>(
+    maxCount: Int,
+    search: String? = nil,
+    _ action: (Result<([RealmRegexModel], Realm), RealmDBError>) -> Output
+) -> Output {
+    return action(getSuggesedRegexes(maxCount: maxCount, search: search))
+}
+
+/// - Warning: be very conscious of the thread on which this object lives
+///            Where possible, *only* use the object within a single function call
+fileprivate func getSuggesedRegexes(maxCount: Int, search: String? = nil) -> Result<([RealmRegexModel], Realm), RealmDBError> {
+    return accessRealm { realm in
+        let models = realm.objects(RealmRegexModel.self)
+            /// Reverse chronological sort.
+            .sorted(by: \.lastUpdated, ascending: false)
+            .filter { model in
+                if let search {
+                    return model.name.localizedCaseInsensitiveContains(search)
+                } else {
+                    return true
+                }
+            }
+            .prefix(maxCount)
+           
+        /// - Note: a specific exception to not returning the `Realm`, since this is another temp-access closure.
+        return .success((Array(models), realm))
+    }
 }

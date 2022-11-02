@@ -95,30 +95,32 @@ enum SelectionError: LocalizedError {
 
 struct SelectionView: View {
     
-    private var realm: Realm? = nil
-    
+    @State private var didOpenRealm = false
     @State private var isShowingError: Bool = false
     @EnvironmentObject private var errorConduit: ErrorConduit
-    
-    init() {
-        self.realm = try? Realm()
-    }
     
     var body: some View {
         ZStack {
             ErrorView
                 .onAppear(perform: tryOpenRealm)
-            if realm != nil {
+            if didOpenRealm {
                 SelectionListView()
             }
         }
     }
     
     private func tryOpenRealm() -> Void {
-        do {
-            let _ = try Realm()
-        } catch {
-            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpenRealm))
+        /// A no-op function that does nothing with the passed realm.
+        let realmNoOp: (Realm) -> Result<Void, RealmDBError> = { _ in
+            return .success(Void())
+        }
+        
+        /// Just want to check if realm is open-able.
+        switch accessRealm(operation: realmNoOp) {
+        case .success:
+            didOpenRealm = true
+        case .failure(let error):
+            errorConduit.errorPipeline.send(.realmDBError(error))
         }
     }
     
@@ -142,7 +144,9 @@ struct SelectionView: View {
 
 struct SelectionListView: View {
     
-    @ObservedResults(RealmRegexModel.self) private var regexModels
+    @ObservedResults(RealmRegexModel.self, configuration: getOptionalConfiguration())
+    private var regexModels
+    
     @EnvironmentObject private var conduit: SelectionViewController.Conduit
     
     var body: some View {
@@ -207,24 +211,28 @@ struct NewRegexButton: View {
     }
     
     private func createRegex() -> Void {
-        guard let realm = try? Realm() else {
-            errorConduit.errorPipeline.send(.realmDBError(.couldNotOpenRealm))
-            return
-        }
-        guard let newRegex = try? RealmRegexModel.createNew() else {
-            errorConduit.errorPipeline.send(.realmDBError(.createNewObjectFailed))
-            return
-        }
-        do {
-            try realm.writeWithToken { token in
-                realm.add(newRegex, update: .error)
+        func realmOp(realm: Realm) -> Result<RealmRegexModel.ID, RealmDBError> {
+            guard let newRegex = try? RealmRegexModel.createNew() else {
+                return .failure(.createNewObjectFailed)
             }
-        } catch {
-            errorConduit.errorPipeline.send(.realmDBError(.writeFailed))
-            return
-        }
+            do {
+                try realm.writeWithToken { token in
+                    realm.add(newRegex, update: .error)
+                }
+            } catch {
+                return .failure(.writeFailed)
+            }
 
-        /// - Note: same function, same thread, therefore this is safe.
-        conduit.pipeline.send(newRegex.id)
+            /// - Note: same function, same thread, therefore this is safe.
+            return .success(newRegex.id)
+        }
+        
+        switch accessRealm(operation: realmOp) {
+        case .failure(let error):
+            errorConduit.errorPipeline.send(.realmDBError(error))
+            
+        case .success(let id):
+            conduit.pipeline.send(id)
+        }
     }
 }
